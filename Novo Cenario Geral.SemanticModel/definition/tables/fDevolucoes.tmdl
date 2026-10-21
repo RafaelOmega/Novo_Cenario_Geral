@@ -1,0 +1,198 @@
+table fDevolucoes
+	lineageTag: ac54367b-4418-4818-9877-15faeb99164d
+
+	column cod_dev
+		dataType: int64
+		formatString: 0
+		lineageTag: c0828da7-2f32-4e32-a8ea-2c43453d3c86
+		summarizeBy: sum
+		sourceColumn: cod_dev
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_item
+		dataType: int64
+		formatString: 0
+		lineageTag: e1ff4214-b291-481e-8f8d-9440f7a1c560
+		summarizeBy: sum
+		sourceColumn: cod_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6e2c412e-3871-409f-9aee-f446e11b086d
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hora
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: ccb3d5ad-1311-406f-b8ae-5e7f54d38641
+		summarizeBy: none
+		sourceColumn: hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column venda_cod_venda
+		dataType: string
+		lineageTag: 30e0e427-998b-4131-9a7a-7ad20f4ef34e
+		summarizeBy: none
+		sourceColumn: venda_cod_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column venda_dest_cod_venda
+		dataType: string
+		lineageTag: 7616ad7b-e62c-4d16-bbae-c90188e95e50
+		summarizeBy: none
+		sourceColumn: venda_dest_cod_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f5bc9ed-60a9-4012-8992-e12eebcbdc11
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: d7161879-b0c2-4834-8d0d-5ec64d9f898e
+		summarizeBy: none
+		sourceColumn: cod_vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_prod
+		dataType: string
+		lineageTag: 20cc5f71-3c68-4134-8204-063d07e1fb60
+		summarizeBy: none
+		sourceColumn: cod_prod
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd
+		dataType: double
+		lineageTag: 412a49a0-ce99-436a-a432-6aec25681b46
+		summarizeBy: sum
+		sourceColumn: qtd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unidade
+		dataType: string
+		lineageTag: 2802cb5c-c92a-4bcd-83b9-6901513db1b3
+		summarizeBy: none
+		sourceColumn: unidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column preco_custo
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: ede9ca55-ec40-4e04-b01e-611052a41b33
+		summarizeBy: sum
+		sourceColumn: preco_custo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_unitario
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: b9ce73f5-f7dc-4316-8b2a-6953d8625d60
+		summarizeBy: sum
+		sourceColumn: vr_unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_bruto
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 197eae74-e256-4730-bb99-b5f1b5a2fcc3
+		summarizeBy: sum
+		sourceColumn: vr_bruto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_desconto
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 3cf34588-a3b9-49a2-a3a9-f81d9e1f23b2
+		summarizeBy: sum
+		sourceColumn: vr_desconto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_acrescimo
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: a499bf1b-cddc-42c5-9e98-4c4af43b1abc
+		summarizeBy: sum
+		sourceColumn: vr_acrescimo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_liquido
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: d867caa2-46e0-4b74-9507-67ce2e39350d
+		summarizeBy: sum
+		sourceColumn: vr_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_unitario_venda
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: e2f8ba60-1c5e-4d2d-8a3d-c0bc72fddd3c
+		summarizeBy: sum
+		sourceColumn: vr_unitario_venda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition fDevolucoes = m
+		mode: import
+		queryGroup: VENDAS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"40e921ed-4dfa-4cab-830e-367eac84b432" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="40e921ed-4dfa-4cab-830e-367eac84b432"]}[Data],
+				    fDevolucoes_ = #"40e921ed-4dfa-4cab-830e-367eac84b432"{[entity="fDevolucoes",version=""]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(fDevolucoes_,{{"preco_custo", Currency.Type}, {"vr_unitario", Currency.Type}, {"vr_bruto", Currency.Type}, {"vr_desconto", Currency.Type}, {"vr_acrescimo", Currency.Type}, {"vr_liquido", Currency.Type}, {"vr_unitario_venda", Currency.Type}, {"venda_cod_venda", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

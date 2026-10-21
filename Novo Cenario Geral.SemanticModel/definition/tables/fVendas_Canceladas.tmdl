@@ -1,0 +1,178 @@
+table fVendas_Canceladas
+	lineageTag: 55183d91-76cc-49bd-bfbb-975aa5a71ab8
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 12604975-0543-4ac9-87f3-743f715d66e4
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hora
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 87bbfd30-f5b5-4877-8792-b667cea33f4f
+		summarizeBy: none
+		sourceColumn: hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column cod_venda
+		dataType: string
+		lineageTag: 9d054344-1fc4-4d01-9df3-82f145817bcd
+		summarizeBy: none
+		sourceColumn: cod_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_pv
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dff8c6f-d64b-4315-b284-c0b79e49bf1e
+		summarizeBy: sum
+		sourceColumn: cod_pv
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a7cdaa2-8479-49ac-aba5-41ac19d9fa6c
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_item
+		dataType: int64
+		formatString: 0
+		lineageTag: 285dd316-217e-415a-be79-b985e7d6f052
+		summarizeBy: sum
+		sourceColumn: cod_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cod_prod
+		dataType: string
+		lineageTag: dc0a527c-ef96-417c-8309-68cec3f3f149
+		summarizeBy: none
+		sourceColumn: Cod_prod
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd
+		dataType: double
+		lineageTag: 55f798ea-4dee-40ef-972e-151bade766f7
+		summarizeBy: sum
+		sourceColumn: qtd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_unitario
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: e6c6fce9-d21b-47ec-8564-ce9aea164e1b
+		summarizeBy: sum
+		sourceColumn: vr_unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_liquido
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 54ed045f-61c4-4e99-b1e9-d8c66bb1a3f3
+		summarizeBy: sum
+		sourceColumn: vr_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column flag_cancelado
+		dataType: int64
+		formatString: 0
+		lineageTag: 42a92d13-403a-49c0-888d-83a30ffed29c
+		summarizeBy: sum
+		sourceColumn: flag_cancelado
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_cancelamento
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c69159fb-cac3-4d44-90e0-9e5b1bb61819
+		summarizeBy: none
+		sourceColumn: data_cancelamento
+
+		variation Variation
+			isDefault
+			relationship: 895f0c8e-e902-496c-840f-0d21442ec94b
+			defaultHierarchy: LocalDateTable_f5f3f958-98b4-4e7d-b5a1-0f3bd99d59ae.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hora_cancelamento
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 27db49aa-0da9-450c-93e7-f4f265e604eb
+		summarizeBy: none
+		sourceColumn: hora_cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column login_cancelamento
+		dataType: string
+		lineageTag: 674fa94e-310a-47cc-88ca-0385ac4ccfd7
+		summarizeBy: none
+		sourceColumn: login_cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column motivo_cancelamento
+		dataType: string
+		lineageTag: 7b22b2bb-59ea-427c-baa9-11a1fa7ca8c6
+		summarizeBy: none
+		sourceColumn: motivo_cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_situacao
+		dataType: string
+		lineageTag: b81321bf-cba5-4898-8e86-9d676950605d
+		summarizeBy: none
+		sourceColumn: flag_situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fVendas_Canceladas = m
+		mode: import
+		queryGroup: VENDAS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"40e921ed-4dfa-4cab-830e-367eac84b432" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="40e921ed-4dfa-4cab-830e-367eac84b432"]}[Data],
+				    fVendas_Canceladas_ = #"40e921ed-4dfa-4cab-830e-367eac84b432"{[entity="fVendas_Canceladas",version=""]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(fVendas_Canceladas_,{{"cod_venda", type text}, {"vr_unitario", Currency.Type}, {"vr_liquido", Currency.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

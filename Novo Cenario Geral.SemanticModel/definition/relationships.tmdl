@@ -1,0 +1,388 @@
+relationship 895f0c8e-e902-496c-840f-0d21442ec94b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fVendas_Canceladas.data_cancelamento
+	toColumn: LocalDateTable_f5f3f958-98b4-4e7d-b5a1-0f3bd99d59ae.Date
+
+relationship dd7c8db4-2d47-4f4e-960d-a12e82f06f66
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dProdutos.data_ultimo_reajuste
+	toColumn: LocalDateTable_c17a2f11-980b-494b-a4cb-3335edec25fb.Date
+
+relationship 24ae4880-9fde-4026-8f12-a96f038123e7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dClientes.data_cadastro
+	toColumn: LocalDateTable_d1bda748-b1ab-4188-bcf3-98ee831b9c30.Date
+
+relationship 8c32507b-a110-4c55-93f8-b53d9a9622b4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dClientes.data_alteracao
+	toColumn: LocalDateTable_30c8d6d0-5088-42ad-9439-36d19af637fa.Date
+
+relationship c8a0e54b-13c0-4fa2-8d6a-09e3f80916dc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dVendedores.data_cadastro
+	toColumn: LocalDateTable_adad0e53-5bd8-4ee4-8a2b-d5072b235739.Date
+
+relationship 4db70dcc-3bfe-4807-b2a2-a4f1a3b51660
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dVendedores.data_alteracao
+	toColumn: LocalDateTable_f1358c46-0f52-4d37-9fc4-bc55d54976b2.Date
+
+relationship 797071ea-aa5a-4fd8-9f14-7597f072ab07
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fRecebidos.fat_data_emissao
+	toColumn: LocalDateTable_68e989da-5cf6-4320-a62f-38bdbc9b4d80.Date
+
+relationship d012bd6a-5a53-4628-aa3f-9379f8bdba21
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fRecebidos.prc_data_vencimento
+	toColumn: LocalDateTable_282d4b96-f037-48ae-9531-80783b5b488f.Date
+
+relationship 446ed0af-a890-42d8-8ea1-22dadabd8868
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fRecebidos.prc_data_recebimento
+	toColumn: LocalDateTable_ef01cf39-43e9-46e9-b7f3-9d56d924057e.Date
+
+relationship 7d6a4594-9ed1-47ab-9cdd-fcba7f907ba3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fRecebidos.bxa_data_contabil
+	toColumn: LocalDateTable_20212259-7e85-4692-b46f-77472a69e50e.Date
+
+relationship 9840788b-f1d6-49b3-9cb4-f2e1b032ac8c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fRecebidos.nta_data_emissao
+	toColumn: LocalDateTable_79eeccd6-0e1f-4a5f-94dc-b08614bc8e95.Date
+
+relationship bdeb65ff-711b-4efb-afdb-f5a52adc846e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPagos.data_vencimento
+	toColumn: LocalDateTable_ab6756b3-61c0-4840-a3a9-f7951ae6e1d8.Date
+
+relationship 2d160484-3007-4e21-b074-0a76a40a14c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPagos.data_emissao
+	toColumn: LocalDateTable_66241a86-abd2-4f88-a33b-1ffd95a8cda4.Date
+
+relationship cd05d8e0-1b62-4765-8014-e9035aa89279
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fOperadoras.DATA
+	toColumn: LocalDateTable_242bbf38-f542-4d77-851f-53be88b1ad6f.Date
+
+relationship d6c97814-45d7-40da-bc34-d009c253d921
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Data
+	toColumn: LocalDateTable_9595b029-c464-4f34-baca-4db4300e964a.Date
+
+relationship e8c44488-d0a8-45c8-8e4c-39c194b9597a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.InicioMes
+	toColumn: LocalDateTable_8ca8fc21-cb38-4521-a3a1-cb0467c1e137.Date
+
+relationship 8d4148a1-e4dc-4987-8df3-d94ff6fccf2f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.FinalMes
+	toColumn: LocalDateTable_c0d9500d-c8d9-4bd5-8400-423b585baafb.Date
+
+relationship 26d1dd14-0e89-4387-895b-49fdf261b88a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.InicioSemana
+	toColumn: LocalDateTable_5a59152a-2e23-404b-b445-8599460d9d81.Date
+
+relationship 5f95c65a-6ed6-4bd8-9620-e8d65a5a0429
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.FinalSemana
+	toColumn: LocalDateTable_fe3c6a4c-9707-4db0-9aac-73954dcbf3de.Date
+
+relationship f5ec5d4c-1e85-53d8-776b-f174e0516929
+	fromColumn: fVendas.DATA
+	toColumn: dCalendario.Data
+
+relationship 0a95cbad-19ab-afe5-cc72-ededdb6fd4ce
+	fromColumn: fVendas.cod_cliente
+	toColumn: dClientes.cod_cliente
+
+relationship e0739efb-caa8-b66c-f14d-7225e328ae82
+	fromColumn: fVendas.cod_vendedor
+	toColumn: dVendedores.cod_vendedor
+
+relationship 6e04bce2-162a-471d-a28e-7c8a54646e29
+	fromColumn: fVendas.cod_prod
+	toColumn: dProdutos.cod_produto
+
+relationship 2a011267-352c-1779-aaff-35519f11c998
+	fromColumn: fDevolucoes.DATA
+	toColumn: dCalendario.Data
+
+relationship 0d01de94-25f5-e3f9-65e5-a5ae0e6158f4
+	fromColumn: fDevolucoes.cod_cliente
+	toColumn: dClientes.cod_cliente
+
+relationship 9b520bc2-919a-8f34-b4eb-8d2cea8b6249
+	fromColumn: fDevolucoes.cod_vendedor
+	toColumn: dVendedores.cod_vendedor
+
+relationship 192d5f12-891a-afae-5aec-53079b50944e
+	fromColumn: fDevolucoes.cod_prod
+	toColumn: dProdutos.cod_produto
+
+relationship 28c53fb4-925f-a136-a57b-63da065b0109
+	fromColumn: fVendas_Canceladas.DATA
+	toColumn: dCalendario.Data
+
+relationship 4849aecc-7092-74c0-3157-c76c022d9e76
+	fromColumn: fVendas_Canceladas.cod_cliente
+	toColumn: dClientes.cod_cliente
+
+relationship 891f685d-8df1-0963-1be7-e1652e70b3e8
+	fromColumn: fVendas_Canceladas.Cod_prod
+	toColumn: dProdutos.cod_produto
+
+relationship 5314c5f3-dfe5-ff45-36a6-8d77b7ee0204
+	fromColumn: fRecebidos.bxa_data_recebimento
+	toColumn: dCalendario.Data
+
+relationship a6224ead-88ad-f58f-58a7-a85e3b48775c
+	fromColumn: fRecebidos.fat_cod_cliente
+	toColumn: dClientes.cod_cliente
+
+relationship 19a35ea0-579f-3403-0430-297c50e33a3e
+	fromColumn: fRecebidos.fat_cod_vendedor
+	toColumn: dVendedores.cod_vendedor
+
+relationship f263a923-89aa-b917-c827-6df19c0d6049
+	fromColumn: fRecebidos.cod_cc
+	toColumn: dGrupo_Centro_Custos.COD
+
+relationship 0a189a57-8b06-2561-8622-81f58db91685
+	fromColumn: fRecebidos.cod_pc
+	toColumn: dPlano_Contas.'COD_PLANO CONTAS'
+
+relationship 6deacfb2-01cd-64b3-533b-2209f08dc0d9
+	fromColumn: fPagos.cod_cc
+	toColumn: dGrupo_Centro_Custos.COD
+
+relationship c8b5270b-b446-b861-a8a4-1cc525eb01ee
+	fromColumn: fPagos.cod_pc
+	toColumn: dPlano_Contas.'COD_PLANO CONTAS'
+
+relationship 82557679-a348-acb3-762c-d3057cc20bc6
+	fromColumn: fOperadoras.PAGAMENTO
+	toColumn: dCalendario.Data
+
+relationship f542bfd3-2eff-4f27-883f-a9ff2e3cec4f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fNotas_Fiscais_Saida.data_emissao
+	toColumn: LocalDateTable_9def1e1d-da8e-49bb-a5d5-b9c75d78802f.Date
+
+relationship 3750ea1f-4082-4b8c-8d46-1b530f7d8aec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fNotas_Fiscais_Saida.data_entrada
+	toColumn: LocalDateTable_dcb873c8-ff28-4df4-bac6-c71f77139ce7.Date
+
+relationship AutoDetected_8b8a2dc1-198e-4736-8b67-e5ce9d32c7ac
+	fromColumn: fRecebidos.cod_pagto
+	toColumn: dForma_Pgto.cod_pagto
+
+relationship c6b4c6df-6004-4829-babe-e45ed5b6d0c3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPagos.data_contabil
+	toColumn: LocalDateTable_c37cf4a7-6e19-4f57-85d1-f60c8aa52f89.Date
+
+relationship 4360cc98-1cd9-3d3f-8390-1b7757cafb15
+	fromColumn: fPagos.data_pagamento
+	toColumn: dCalendario.Data
+
+relationship AutoDetected_d3672d92-1ba3-4218-9196-c9b10338262f
+	fromColumn: fVendas.cod_venda
+	toColumn: dNum_Vendas.cod_venda
+
+relationship AutoDetected_8234103e-4ff3-46ae-9009-a6070a77d6a4
+	fromColumn: fVendas_Canceladas.cod_venda
+	toColumn: dNum_Vendas.cod_venda
+
+relationship 5d40985c-3b55-c9b2-ad72-4bd2ab8f1c7e
+	fromColumn: fRecebidos.fat_cod_venda
+	toColumn: dNum_Vendas.cod_venda
+
+relationship cec10574-42a2-7d71-986e-d466e8df3b2b
+	fromColumn: fEntregas.DATA
+	toColumn: dCalendario.Data
+
+relationship AutoDetected_1f3f0276-6a1e-4767-ae1c-81afc01160d9
+	fromColumn: fEntregas.cod_cliente
+	toColumn: dClientes.cod_cliente
+
+relationship AutoDetected_cc037f1b-93fa-4706-b92f-87d8d18f05f3
+	fromColumn: fEntregas.cod_vendedor
+	toColumn: dVendedores.cod_vendedor
+
+relationship 503f9f7b-7048-bd05-1c57-fdc2181713de
+	fromColumn: fEntregas.cod_prod
+	toColumn: dProdutos.cod_produto
+
+relationship a266015e-dc39-0670-c806-c1160fe8a57f
+	fromColumn: fEntregas.vend_cod_venda
+	toColumn: dNum_Vendas.cod_venda
+
+relationship 8bce6b61-0a5b-43a2-8978-4406cbcac19b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fA_Receber.data_emissao
+	toColumn: LocalDateTable_8ba6aef7-94bb-4a93-856e-7ae0b081498f.Date
+
+relationship 52cacea3-ea7e-4574-9c05-08d97dc1b826
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fA_Receber.data_recebimento
+	toColumn: LocalDateTable_df506ad3-585d-491a-b73f-1cbd89cbd0b4.Date
+
+relationship d9d918df-24ea-488e-af86-aaeb9221d17b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fA_Receber.data_atual
+	toColumn: LocalDateTable_a0dcf7a0-4ddd-4f62-ae3a-8e22c8d7e3e4.Date
+
+relationship c7603e26-f327-4ede-a862-ba9d80d98ec1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fA_Pagar.data_emissao
+	toColumn: LocalDateTable_1d8e0388-000c-49de-a8de-b680d057ae9a.Date
+
+relationship AutoDetected_5412255a-1707-45ad-84ff-cd73c982b08d
+	fromColumn: fA_Receber.cod_cliente
+	toColumn: dClientes.cod_cliente
+
+relationship AutoDetected_605934ce-717d-423c-8d5c-7cb473567a8b
+	fromColumn: fA_Receber.cod_vendedor
+	toColumn: dVendedores.cod_vendedor
+
+relationship ca368ca6-ba1b-d8c4-2d5d-a55649dbd512
+	fromColumn: fA_Receber.data_vencimento
+	toColumn: dCalendario.Data
+
+relationship bc434a28-eaa5-4589-afb5-57d630ea1d9b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dFornecedor.data_cadastro
+	toColumn: LocalDateTable_97cfb1b1-ef37-4c4b-aa63-fc4b0f621166.Date
+
+relationship ea858bf9-4543-4baa-9d96-344f57f1bf81
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dFornecedor.data_alteracao
+	toColumn: LocalDateTable_df91f757-eb2b-4d74-862d-bee7730b0324.Date
+
+relationship AutoDetected_523b2a1b-984b-4cf7-b189-24e6e5e51983
+	fromColumn: fPagos.cod_fornecedor
+	toColumn: dFornecedor.cod_fornecedor
+
+relationship AutoDetected_feeb484d-d415-4f80-aab0-ec3ff16b262f
+	fromColumn: fA_Pagar.cod_fornecedor
+	toColumn: dFornecedor.cod_fornecedor
+
+relationship 54cb1c66-241f-1fa5-113f-a448fe0fdc33
+	fromColumn: fA_Pagar.data_vencimento
+	toColumn: dCalendario.Data
+
+relationship 577ccb23-da31-d34d-7433-d000ceca0622
+	fromColumn: fA_Pagar.cod_pc
+	toColumn: dPlano_Contas.'COD_PLANO CONTAS'
+
+relationship 03bcaf7c-e53b-0bbb-9b57-ccf7483fa410
+	fromColumn: fA_Pagar.cod_cc
+	toColumn: dGrupo_Centro_Custos.COD
+
+relationship de39cf55-2803-49ea-af29-e5cdce3074e4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioA.Data
+	toColumn: LocalDateTable_e537bcd0-174e-4e05-a546-43156327763d.Date
+
+relationship de7591ac-55f2-4c5c-bdd9-d663bffb0944
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioA.InicioMes
+	toColumn: LocalDateTable_28fa943c-5b80-4f30-9da3-623dc57a6032.Date
+
+relationship 40018341-a76a-4440-a777-ab7c66543b73
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioA.FinalMes
+	toColumn: LocalDateTable_98fe56af-8af9-4bc2-83cd-639bad45d329.Date
+
+relationship b9a0e4f7-3d47-4d62-9617-ebe057f7e9d1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioA.InicioSemana
+	toColumn: LocalDateTable_3d7a7947-fac7-4ce7-afe3-d27e8adf752d.Date
+
+relationship 0ca4a492-30f4-4b4d-a3d9-582fb4eec5f0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioA.FinalSemana
+	toColumn: LocalDateTable_22342f63-1b65-44c4-a51f-4d9a17437b51.Date
+
+relationship c1df7f8a-17fc-4c37-8a7a-fb92c57b7089
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioB.Data
+	toColumn: LocalDateTable_45d49f86-4729-47e5-a1f8-8724087cd692.Date
+
+relationship c2f96105-c668-4486-a9ed-6b403ddab533
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioB.InicioMes
+	toColumn: LocalDateTable_58cea556-82b7-41e1-99dd-2e2a82c21959.Date
+
+relationship ef62feac-d711-4c23-8793-b0a42cb7db9a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioB.FinalMes
+	toColumn: LocalDateTable_d67eafca-c3d4-41c0-bf57-bf81362647d4.Date
+
+relationship aed052f7-9137-4311-8f7f-d93c3f1c7035
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioB.InicioSemana
+	toColumn: LocalDateTable_79baf2f6-9ba8-4f4b-90cf-a965608c1637.Date
+
+relationship 1454132f-98cf-4424-88e4-5a47d039c9fa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioB.FinalSemana
+	toColumn: LocalDateTable_a107a86e-f9ca-460e-9de4-e063563923b6.Date
+
+relationship AutoDetected_ec40d34e-9188-43ef-b2ae-58d090bf3d02
+	fromColumn: fEstoque.COD_PRODUTO
+	toColumn: dProdutos.cod_produto
+
+relationship b863fb44-8208-1d88-8ab2-69f3b5db18ce
+	fromColumn: fEstoque.DATA
+	toColumn: dCalendario.Data
+
+relationship a74195fa-0fac-4ef4-95ad-d16ba1688770
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioAux.Data
+	toColumn: LocalDateTable_609e6af5-d100-47e3-9e9c-5e1f9c19041b.Date
+
+relationship 5fc174a7-a217-444d-8e49-45c5582ad636
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioAux.InicioMes
+	toColumn: LocalDateTable_e29fc9cd-0cff-4bee-9237-a8a9cfd7d0fc.Date
+
+relationship 425336dd-b16c-43dc-b71a-a607cc89d9a8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioAux.FinalMes
+	toColumn: LocalDateTable_da86cd4e-5b40-4cdc-9b7b-7ff2ab6389a8.Date
+
+relationship af78e603-228e-4632-a06f-5617ae4b92a9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioAux.InicioSemana
+	toColumn: LocalDateTable_84347ced-a605-4803-8e24-410f47775538.Date
+
+relationship 8cca0162-0992-4f29-a477-106842feead0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendarioAux.FinalSemana
+	toColumn: LocalDateTable_1692f10e-6c1c-470b-a253-f2b4919fac02.Date
+
+relationship b7b1eb5b-9aa3-eb65-89cb-a33d762c3240
+	fromColumn: fA_Receber.data_vencimento
+	toColumn: dCalendarioAux.Data
+
+relationship 52e51cbb-726a-b84f-6f77-1c94fa70b6fd
+	fromColumn: fA_Pagar.data_vencimento
+	toColumn: dCalendarioAux.Data
+
+relationship 47720b0f-4bbf-a457-4b4c-91520c93b524
+	fromColumn: fOperadoras.PAGAMENTO
+	toColumn: dCalendarioAux.Data
+
+relationship 8e1eadc5-b9f0-43b2-b600-4213476d0a4b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fA_Pagar.'Dia Atual'
+	toColumn: LocalDateTable_f36f27a0-3bb2-4ef4-8422-f2c55dc11d7e.Date
+

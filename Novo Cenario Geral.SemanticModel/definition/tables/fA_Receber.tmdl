@@ -1,0 +1,262 @@
+table fA_Receber
+	lineageTag: 1ebfce7d-35f6-4124-bbd3-cd000e62b39d
+
+	column cod_empresa
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f5f0de9-f164-4560-8235-609691810b26
+		summarizeBy: sum
+		sourceColumn: cod_empresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_fatura
+		dataType: int64
+		formatString: 0
+		lineageTag: f6dc46b3-fe9f-467b-ac1e-0fd51335a6b1
+		summarizeBy: sum
+		sourceColumn: cod_fatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_fatura
+		dataType: string
+		lineageTag: 124d3d76-1072-414e-a23d-670f9b0f4279
+		summarizeBy: none
+		sourceColumn: tipo_fatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_parc
+		dataType: string
+		lineageTag: 1487d7d8-4a5f-4ae8-9f0e-f470556e0033
+		summarizeBy: none
+		sourceColumn: cod_parc
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b824b36-6799-4f7a-8c5c-cfd35a733dfd
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 12a16087-9d55-4407-b52b-0e440c4a076e
+		summarizeBy: none
+		sourceColumn: cod_vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0a20f55f-2099-44e5-8362-88fba42508bd
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: 8bce6b61-0a5b-43a2-8978-4406cbcac19b
+			defaultHierarchy: LocalDateTable_8ba6aef7-94bb-4a93-856e-7ae0b081498f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vr_liquido
+		dataType: double
+		lineageTag: 911cf6b9-26ec-4be3-a0ed-b7868738ea09
+		summarizeBy: sum
+		sourceColumn: vr_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cod_banco
+		dataType: int64
+		formatString: 0
+		lineageTag: f149a39b-199c-42ff-9359-b63308203fbd
+		summarizeBy: sum
+		sourceColumn: cod_banco
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_banco_seq
+		dataType: int64
+		formatString: 0
+		lineageTag: 1105ec63-0356-4024-88f9-5f9b16ad9ccf
+		summarizeBy: sum
+		sourceColumn: cod_banco_seq
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cobranca
+		dataType: int64
+		formatString: 0
+		lineageTag: 1215ff54-991d-4409-a37e-cc183ce324e9
+		summarizeBy: sum
+		sourceColumn: cod_cobranca
+
+		annotation SummarizationSetBy = Automatic
+
+	column desc_cobranca
+		dataType: string
+		lineageTag: 95c1c949-28b1-422b-8a2c-bb423543fff0
+		summarizeBy: none
+		sourceColumn: desc_cobranca
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_vencimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9a9a4f69-6848-40dc-b78e-fe57a67fdf4c
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column obs
+		dataType: string
+		lineageTag: be7aa0c5-5a6f-4e76-b6a8-181dd65519fb
+		summarizeBy: none
+		sourceColumn: obs
+
+		annotation SummarizationSetBy = Automatic
+
+	column vr_parcela
+		dataType: double
+		lineageTag: 0fdd7938-52f2-4ff2-96e6-1ce58681b062
+		summarizeBy: sum
+		sourceColumn: vr_parcela
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_baixa
+		dataType: double
+		lineageTag: 90398759-b4f4-4bc3-94f9-bb3d6f776e13
+		summarizeBy: sum
+		sourceColumn: vr_baixa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_baixa_outras
+		dataType: double
+		lineageTag: 5841b059-22ec-466c-8bf5-f5dd08b536fa
+		summarizeBy: sum
+		sourceColumn: vr_baixa_outras
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column data_recebimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e67d850b-74c2-4450-9bd5-603b5d0c186f
+		summarizeBy: none
+		sourceColumn: data_recebimento
+
+		variation Variation
+			isDefault
+			relationship: 52cacea3-ea7e-4574-9c05-08d97dc1b826
+			defaultHierarchy: LocalDateTable_df506ad3-585d-491a-b73f-1cbd89cbd0b4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column saldo
+		dataType: decimal
+		lineageTag: 0dae24b1-a3e4-4ba1-b185-20dedc8b31c4
+		summarizeBy: sum
+		sourceColumn: saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_baixa
+		dataType: double
+		lineageTag: b0ff2741-18ad-4e81-87e9-438c4cc7adc9
+		summarizeBy: sum
+		sourceColumn: total_baixa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cod_venda
+		dataType: int64
+		formatString: 0
+		lineageTag: 7023bba0-1265-414b-9ed5-59ef88aa849f
+		summarizeBy: sum
+		sourceColumn: cod_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atual
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6cdc0221-3960-4513-a5d2-d9ba586042c3
+		summarizeBy: none
+		sourceColumn: data_atual
+
+		variation Variation
+			isDefault
+			relationship: d9d918df-24ea-488e-af86-aaeb9221d17b
+			defaultHierarchy: LocalDateTable_a0dcf7a0-4ddd-4f62-ae3a-8e22c8d7e3e4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column atraso
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c756fa6-14ec-4655-a525-5fe519f777bc
+		summarizeBy: sum
+		sourceColumn: atraso
+
+		annotation SummarizationSetBy = Automatic
+
+	column prazo
+		dataType: int64
+		formatString: 0
+		lineageTag: 82632d85-b9c7-41be-9fa7-332e2dc2eb45
+		summarizeBy: sum
+		sourceColumn: prazo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fA_Receber = m
+		mode: import
+		queryGroup: Financeiro
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"0efc2f46-894b-4412-8357-a44a3864343e" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="0efc2f46-894b-4412-8357-a44a3864343e"]}[Data],
+				    fA_Receber_ = #"0efc2f46-894b-4412-8357-a44a3864343e"{[entity="fA_Receber",version=""]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(fA_Receber_,{{"saldo", Currency.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

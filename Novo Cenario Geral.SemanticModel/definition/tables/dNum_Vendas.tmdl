@@ -1,0 +1,28 @@
+table dNum_Vendas
+	lineageTag: c2c1e9c0-0eab-42a4-8f57-daf8f7aaf0c8
+
+	column cod_venda
+		dataType: string
+		lineageTag: b874b939-869d-4090-94ec-b95f8d13b9ef
+		summarizeBy: none
+		sourceColumn: cod_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dNum_Vendas = m
+		mode: import
+		queryGroup: VENDAS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"40e921ed-4dfa-4cab-830e-367eac84b432" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="40e921ed-4dfa-4cab-830e-367eac84b432"]}[Data],
+				    dNum_Vendas_ = #"40e921ed-4dfa-4cab-830e-367eac84b432"{[entity="dNum_Vendas",version=""]}[Data]
+				in
+				    dNum_Vendas_
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

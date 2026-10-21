@@ -1,0 +1,262 @@
+table fPagos
+	lineageTag: fb5ced26-7086-4513-a90c-247485a0b585
+
+	column cod_sequencia
+		dataType: int64
+		formatString: 0
+		lineageTag: d2aff226-d4b2-46b8-abdd-9725b354119d
+		summarizeBy: sum
+		sourceColumn: cod_sequencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_parc
+		dataType: string
+		lineageTag: 44a56a03-d20d-4624-aa97-56c5eceef672
+		summarizeBy: none
+		sourceColumn: cod_parc
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_pagamento
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 07150d92-0ecf-4dcb-9f79-eceaf3ced6c2
+		summarizeBy: none
+		sourceColumn: data_pagamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vr_baixa
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 8387fd31-7982-4c46-af3d-f0d883ba7319
+		summarizeBy: sum
+		sourceColumn: vr_baixa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_descontos
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: ac532d0a-005e-4400-82a9-9ec607a64da1
+		summarizeBy: sum
+		sourceColumn: vr_descontos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column cod_banco
+		dataType: int64
+		formatString: 0
+		lineageTag: 245746e6-708b-4629-afee-ca7dddafd007
+		summarizeBy: sum
+		sourceColumn: cod_banco
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_vencimento
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: df29a024-5e35-49d7-aa1c-8c648e4453bc
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		variation Variation
+			isDefault
+			relationship: bdeb65ff-711b-4efb-afdb-f5a52adc846e
+			defaultHierarchy: LocalDateTable_ab6756b3-61c0-4840-a3a9-f7951ae6e1d8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column desc_tipo_fatura
+		dataType: string
+		lineageTag: 513ed658-cc35-4488-a888-564edda15cab
+		summarizeBy: none
+		sourceColumn: desc_tipo_fatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column vr_total_baixa
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: b5ca65e3-663c-4967-826f-68f5d3b54ed1
+		summarizeBy: sum
+		sourceColumn: vr_total_baixa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column total_acrescimos
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 2b1a8db8-488e-4f50-9eed-e432a546d12d
+		summarizeBy: sum
+		sourceColumn: total_acrescimos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column cod_fornecedor
+		dataType: int64
+		formatString: 0
+		lineageTag: c367e3cd-6107-46c1-a553-a678b7906d8b
+		summarizeBy: none
+		sourceColumn: cod_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0bcc0e82-8569-4ec8-a468-cedeedd1d882
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: 2d160484-3007-4e21-b074-0a76a40a14c0
+			defaultHierarchy: LocalDateTable_66241a86-abd2-4f88-a33b-1ffd95a8cda4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column documento
+		dataType: string
+		lineageTag: a4e354c0-fbc8-4024-96c8-6b8691d8651d
+		summarizeBy: none
+		sourceColumn: documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cc
+		dataType: int64
+		formatString: 0
+		lineageTag: bf5a76a5-9a55-46fe-82bd-99e5266984a9
+		summarizeBy: none
+		sourceColumn: cod_cc
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_pc
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bed5bf4-fdd8-437e-916d-8df738064a3c
+		summarizeBy: none
+		sourceColumn: cod_pc
+
+		annotation SummarizationSetBy = Automatic
+
+	column vr_baixa_rateio
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 6b59232c-cca2-4faf-bbc8-847425ffe2c0
+		summarizeBy: sum
+		sourceColumn: vr_baixa_rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_desconto_rateio
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 1d371f9a-4afa-4561-b23b-39991985f9ae
+		summarizeBy: sum
+		sourceColumn: vr_desconto_rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_acrescimo_rateio
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: b3cf1bc6-0a25-4c0f-9604-ce13da9ef33e
+		summarizeBy: sum
+		sourceColumn: vr_acrescimo_rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_liquido_rateio
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: d2fa53d7-92e9-409b-8dfc-a84c2d73afb6
+		summarizeBy: sum
+		sourceColumn: vr_liquido_rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column DESC_PC
+		dataType: string
+		lineageTag: 5a18ae50-42a1-4942-a918-5673ce3476b8
+		summarizeBy: none
+		sourceColumn: DESC_PC
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO
+		dataType: string
+		lineageTag: 4a77b606-6817-4d3c-bd62-08d61b7da74d
+		summarizeBy: none
+		sourceColumn: TIPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESTINO
+		dataType: string
+		lineageTag: 4f87a65a-4c72-4a33-be52-56db92f38cbc
+		summarizeBy: none
+		sourceColumn: DESTINO
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_contabil
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e4bcea03-b5e9-41fb-bd78-c54263d6c39d
+		summarizeBy: none
+		sourceColumn: data_contabil
+
+		variation Variation
+			isDefault
+			relationship: c6b4c6df-6004-4829-babe-e45ed5b6d0c3
+			defaultHierarchy: LocalDateTable_c37cf4a7-6e19-4f57-85d1-f60c8aa52f89.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fPagos = m
+		mode: import
+		queryGroup: Financeiro
+		source =
+				let
+				    Fonte = PowerBI.Dataflows(null),
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Fonte{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"0efc2f46-894b-4412-8357-a44a3864343e" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="0efc2f46-894b-4412-8357-a44a3864343e"]}[Data],
+				    fPagos1 = #"0efc2f46-894b-4412-8357-a44a3864343e"{[entity="fPagos"]}[Data],
+				    #"Consultas Mescladas" = Table.NestedJoin(fPagos1, {"cod_pc"}, dPlano_Contas, {"COD_PLANO CONTAS"}, "PLANO_DE_CONTAS", JoinKind.LeftOuter),
+				    #"PLANO_DE_CONTAS Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "PLANO_DE_CONTAS", {"DESC_PC", "TIPO", "DESTINO"}, {"DESC_PC", "TIPO", "DESTINO"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"PLANO_DE_CONTAS Expandido",{{"vr_total_baixa", Currency.Type}, {"vr_baixa", Currency.Type}, {"vr_descontos", Currency.Type}, {"total_acrescimos", Currency.Type}, {"vr_baixa_rateio", Currency.Type}, {"vr_desconto_rateio", Currency.Type}, {"vr_acrescimo_rateio", Currency.Type}, {"vr_liquido_rateio", Currency.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,294 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "e66adbdf0043a490d6ce",
+  "position": {
+    "x": 21.103896103896105,
+    "y": 159.09090909090909,
+    "z": 1000,
+    "height": 1137.987012987013,
+    "width": 1956.1688311688313,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "fat_data_emissao"
+                }
+              },
+              "queryRef": "fRecebidos.fat_data_emissao",
+              "nativeQueryRef": "Emissão",
+              "displayName": "Emissão"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "bxa_data_recebimento"
+                }
+              },
+              "queryRef": "fRecebidos.bxa_data_recebimento",
+              "nativeQueryRef": "Recebimento",
+              "displayName": "Recebimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "bxa_data_contabil"
+                }
+              },
+              "queryRef": "fRecebidos.bxa_data_contabil",
+              "nativeQueryRef": "Contabil",
+              "displayName": "Contabil"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "fat_cod_fatura"
+                }
+              },
+              "queryRef": "fRecebidos.fat_cod_fatura",
+              "nativeQueryRef": "Fatura",
+              "displayName": "Fatura"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "fat_cod_venda"
+                }
+              },
+              "queryRef": "fRecebidos.fat_cod_venda",
+              "nativeQueryRef": "Venda",
+              "displayName": "Venda"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "prc_cod_parc"
+                }
+              },
+              "queryRef": "fRecebidos.prc_cod_parc",
+              "nativeQueryRef": "Parcela",
+              "displayName": "Parcela"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dClientes"
+                    }
+                  },
+                  "Property": "Cód + Cliente"
+                }
+              },
+              "queryRef": "dClientes.Cód + Cliente",
+              "nativeQueryRef": "Cód + Cliente"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Recebidos"
+                }
+              },
+              "queryRef": "Medidas.Recebidos",
+              "nativeQueryRef": "Recebidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Comissao Recebimento"
+                }
+              },
+              "queryRef": "Medidas.Comissao Recebimento",
+              "nativeQueryRef": "Comissao Recebimento"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fRecebidos"
+                  }
+                },
+                "Property": "fat_cod_fatura"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "242.2726099575363D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.Comissao Recebimento"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "208.28261835555486D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.Recebidos"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "788.9238758372522D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dClientes.Cód + Cliente"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'None'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

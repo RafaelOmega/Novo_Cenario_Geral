@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "df3b862283f4a3816eda",
+  "displayName": "Faturamento",
+  "displayOption": "FitToWidth",
+  "height": 1320,
+  "width": 2000,
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#000000'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Faturamento.svg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Faturamento2892564236306774.svg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#242A38'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "ebe34f65675c846454ac",
+      "target": "95d9adb65984b69c8b50",
+      "type": "DataFilter"
+    },
+    {
+      "source": "95d9adb65984b69c8b50",
+      "target": "ebe34f65675c846454ac",
+      "type": "DataFilter"
+    },
+    {
+      "source": "95d9adb65984b69c8b50",
+      "target": "bec82f035396e12c1c97",
+      "type": "DataFilter"
+    },
+    {
+      "source": "ebe34f65675c846454ac",
+      "target": "bec82f035396e12c1c97",
+      "type": "DataFilter"
+    },
+    {
+      "source": "bec82f035396e12c1c97",
+      "target": "ebe34f65675c846454ac",
+      "type": "DataFilter"
+    },
+    {
+      "source": "bec82f035396e12c1c97",
+      "target": "95d9adb65984b69c8b50",
+      "type": "DataFilter"
+    }
+  ]
+}

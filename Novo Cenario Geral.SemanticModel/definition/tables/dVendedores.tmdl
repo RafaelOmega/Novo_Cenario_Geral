@@ -1,0 +1,237 @@
+table dVendedores
+	lineageTag: 56549e9c-9ed7-43cc-b033-a72ddd448f39
+
+	column cod_vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 11a44c8e-fa38-4d72-bf79-4194e89011fe
+		summarizeBy: none
+		sourceColumn: cod_vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendedor
+		dataType: string
+		lineageTag: 356475d1-c91f-4ad9-a118-5ece2263132b
+		summarizeBy: none
+		sourceColumn: vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cnpj_cpf
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f39b302-2e3a-4d58-93b5-3d9165c7764d
+		summarizeBy: sum
+		sourceColumn: cnpj_cpf
+
+		annotation SummarizationSetBy = Automatic
+
+	column inscr_estadual
+		dataType: string
+		lineageTag: 496ee210-e9b7-4188-8e01-8cdde5dcd81a
+		summarizeBy: none
+		sourceColumn: inscr_estadual
+
+		annotation SummarizationSetBy = Automatic
+
+	column rg
+		dataType: string
+		lineageTag: 27c062d2-f721-42d4-ac19-6d91957a1434
+		summarizeBy: none
+		sourceColumn: rg
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: daa65049-0e50-4c5a-9cf3-a1b7cc1c01de
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column endereco
+		dataType: string
+		lineageTag: 6c402e2f-bb2a-4ad2-9c5d-bd059f4d26b4
+		summarizeBy: none
+		sourceColumn: endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero
+		dataType: string
+		lineageTag: a9db1fde-a46d-4f48-9f9f-ca9c367f2ff7
+		summarizeBy: none
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	column complemento
+		dataType: string
+		lineageTag: b3c9600e-b58a-4313-8ff9-ebac87eeb8d6
+		summarizeBy: none
+		sourceColumn: complemento
+
+		annotation SummarizationSetBy = Automatic
+
+	column bairro
+		dataType: string
+		lineageTag: 4f4c3838-c0f6-42ec-bf36-0f9b67c1fe48
+		summarizeBy: none
+		sourceColumn: bairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column cep
+		dataType: int64
+		formatString: 0
+		lineageTag: 88b5b292-85d8-4afd-a30a-c082d104ed1e
+		summarizeBy: sum
+		sourceColumn: cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_munic
+		dataType: int64
+		formatString: 0
+		lineageTag: 06f5dd1c-f1a7-4069-b363-96f013b50742
+		summarizeBy: sum
+		sourceColumn: cod_munic
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_munic
+		dataType: string
+		lineageTag: 403b92b8-9fa8-4473-a626-6580689ce027
+		summarizeBy: none
+		sourceColumn: nome_munic
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf
+		dataType: string
+		lineageTag: f8246ecc-663b-45e5-83ce-fbfd46590ce4
+		summarizeBy: none
+		sourceColumn: uf
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_pais
+		dataType: string
+		lineageTag: 568f7156-efa1-42e4-b699-f017cb47103d
+		summarizeBy: none
+		sourceColumn: nome_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column telefone
+		dataType: int64
+		formatString: 0
+		lineageTag: 02e60455-d607-4652-a5b0-5a83d22dbfab
+		summarizeBy: sum
+		sourceColumn: telefone
+
+		annotation SummarizationSetBy = Automatic
+
+	column fax
+		dataType: string
+		lineageTag: 79f03033-22ca-48b6-8e80-d55e78705304
+		summarizeBy: none
+		sourceColumn: fax
+
+		annotation SummarizationSetBy = Automatic
+
+	column celular
+		dataType: string
+		lineageTag: ad908148-8dbb-4605-a7f9-44af6a5f98ab
+		summarizeBy: none
+		sourceColumn: celular
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_ativo
+		dataType: int64
+		formatString: 0
+		lineageTag: a3dfff37-1fc8-4a0f-a583-8b56e43a1e6c
+		summarizeBy: sum
+		sourceColumn: flag_ativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column historico
+		dataType: string
+		lineageTag: 481c5a63-3961-4288-b105-2cb3ae1803e9
+		summarizeBy: none
+		sourceColumn: historico
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_cadastro
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 83ecf884-5bac-4a08-b1e6-506564fbbecf
+		summarizeBy: none
+		sourceColumn: data_cadastro
+
+		variation Variation
+			isDefault
+			relationship: c8a0e54b-13c0-4fa2-8d6a-09e3f80916dc
+			defaultHierarchy: LocalDateTable_adad0e53-5bd8-4ee4-8a2b-d5072b235739.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_alteracao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6aac73ce-8aae-446a-878c-b7ceb8c1a164
+		summarizeBy: none
+		sourceColumn: data_alteracao
+
+		variation Variation
+			isDefault
+			relationship: 4db70dcc-3bfe-4807-b2a2-a4f1a3b51660
+			defaultHierarchy: LocalDateTable_f1358c46-0f52-4d37-9fc4-bc55d54976b2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column setor
+		dataType: string
+		lineageTag: d26618ec-96f1-4ab0-ae0d-d255dd31e1ec
+		summarizeBy: none
+		sourceColumn: setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cód + Vendedor'
+		dataType: string
+		lineageTag: 4fd8d327-1310-443e-a9a9-6fd09ffe6a37
+		summarizeBy: none
+		sourceColumn: Cód + Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dVendedores = m
+		mode: import
+		queryGroup: PESSOAS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"ef9589b0-b641-4a7d-aa71-3aea97f930bd" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="ef9589b0-b641-4a7d-aa71-3aea97f930bd"]}[Data],
+				    dVendedores_ = #"ef9589b0-b641-4a7d-aa71-3aea97f930bd"{[entity="dVendedores",version=""]}[Data],
+				    #"Colunas Renomeadas" = Table.RenameColumns(dVendedores_,{{"cod_pessoa", "cod_vendedor"}, {"razao_social", "vendedor"}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Colunas Renomeadas", each [data_cadastro] <> null),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Linhas Filtradas", "Cód + Vendedor", each Text.Combine({Text.From([cod_vendedor], "pt-BR"), [vendedor]}, " - "), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

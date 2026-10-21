@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "9b58e612900686299402",
+  "position": {
+    "x": 112.03321380299312,
+    "y": 77.338333027038729,
+    "z": 15501,
+    "height": 580,
+    "width": 730,
+    "tabOrder": 12000
+  },
+  "visualGroup": {
+    "displayName": "Menu Suspenso",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

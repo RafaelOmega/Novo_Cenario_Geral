@@ -1,0 +1,110 @@
+table fEstoque
+	lineageTag: 37c06349-e110-4e80-8a90-5f27a949e6c4
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 304ef582-ed1e-4db3-bbe1-cadd7e94aa03
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column COD_PRODUTO
+		dataType: string
+		lineageTag: bfa323fd-ce8f-42ba-a352-b7b910a15c90
+		summarizeBy: none
+		sourceColumn: COD_PRODUTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESC_PRODUTO
+		dataType: string
+		lineageTag: fcb00021-4765-48a8-b253-8a39c82dbfb4
+		summarizeBy: none
+		sourceColumn: DESC_PRODUTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNIDADE
+		dataType: string
+		lineageTag: c2398ac5-484a-4f7b-9cef-edfb01cdcfff
+		summarizeBy: none
+		sourceColumn: UNIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRECO_CUSTO
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: b636e7c9-9693-4676-ab03-bd29c2ce4415
+		summarizeBy: sum
+		sourceColumn: PRECO_CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column SALDO_FISICO
+		dataType: double
+		lineageTag: e3fcfcf5-bcdf-4a8f-9d3b-35281a404b54
+		summarizeBy: sum
+		sourceColumn: SALDO_FISICO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SALDO_CONTABIL
+		dataType: double
+		lineageTag: 8273a36f-07cb-4d3e-b81a-8eeea6f27a3d
+		summarizeBy: sum
+		sourceColumn: SALDO_CONTABIL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CUSTO_FISICO
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 02bc1564-0608-485f-b8bf-1843a577af69
+		summarizeBy: sum
+		sourceColumn: CUSTO_FISICO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column CUSTO_CONTABIL
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 8400b08a-1286-492c-add5-44a08424bab9
+		summarizeBy: sum
+		sourceColumn: CUSTO_CONTABIL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition fEstoque = m
+		mode: import
+		queryGroup: PRODUTOS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"a7c4ad03-bdb1-4ccd-a79c-94200bb6f5b9" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="a7c4ad03-bdb1-4ccd-a79c-94200bb6f5b9"]}[Data],
+				    fEstoque_ = #"a7c4ad03-bdb1-4ccd-a79c-94200bb6f5b9"{[entity="fEstoque",version=""]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(fEstoque_,{{"PRECO_CUSTO", Currency.Type}, {"CUSTO_FISICO", Currency.Type}, {"CUSTO_CONTABIL", Currency.Type}}),
+				    #"Linhas Classificadas" = Table.Sort(#"Tipo Alterado",{{"DATA", Order.Descending}})
+				in
+				    #"Linhas Classificadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

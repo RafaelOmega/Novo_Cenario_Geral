@@ -1,0 +1,1197 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 2892.0059423081198,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 18.75
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1536.2527152696798,
+            "y": 508.04344416150536
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "610722ca-3f23-43c3-b6ac-a5220707e0c2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2035.9157051069592,
+            "y": 423.01236993362306
+          },
+          "nodeIndex": "dGrupo_Centro_Custos",
+          "nodeLineageTag": "ffae24cc-387c-46a8-b033-a92c1ef77b68",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2046.9500412228845,
+            "y": 806.73550167119072
+          },
+          "nodeIndex": "dPlano_Contas",
+          "nodeLineageTag": "2f71676f-97c7-40aa-9a6b-45e8bb105d89",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 460.28556840077312,
+            "y": 534.753591151677
+          },
+          "nodeIndex": "dProdutos",
+          "nodeLineageTag": "4c07d9ab-e927-4f9e-8afb-8ddd2d26f2b0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1169.1838424683644,
+            "y": 823.80897496315242
+          },
+          "nodeIndex": "dVendedores",
+          "nodeLineageTag": "56549e9c-9ed7-43cc-b033-a72ddd448f39",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 937.37414129505646,
+            "y": 18.75
+          },
+          "nodeIndex": "fDevolucoes",
+          "nodeLineageTag": "ac54367b-4418-4818-9877-15faeb99164d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 466.94366366406331
+          },
+          "nodeIndex": "fOperadoras",
+          "nodeLineageTag": "2d2e02c0-133d-4d19-9e6c-c169f2d778d4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 2251.9365745424043,
+            "y": 23.096865563317692
+          },
+          "nodeIndex": "fPagos",
+          "nodeLineageTag": "fb5ced26-7086-4513-a90c-247485a0b585",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1802.3564499036722,
+            "y": 18.987172988310761
+          },
+          "nodeIndex": "fRecebidos",
+          "nodeLineageTag": "dac9b1de-a941-4c37-b697-c286bb288584",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 470.35115297485231,
+            "y": 18.75
+          },
+          "nodeIndex": "fVendas",
+          "nodeLineageTag": "b9fdfce9-b815-4076-b30a-e4828233da9b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1364.4179349022918,
+            "y": 18.75
+          },
+          "nodeIndex": "fVendas_Canceladas",
+          "nodeLineageTag": "55183d91-76cc-49bd-bfbb-975aa5a71ab8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 2425.6640871118293,
+            "y": 361.00700005100094
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "dd56f280-c864-489f-b724-b4f3860525a2",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 2034.8142611500184,
+            "y": 614.75822249495445
+          },
+          "nodeIndex": "dForma_Pgto",
+          "nodeLineageTag": "2e8583c2-9eb8-430e-8bbd-420627db8a39",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 792.29187040732586,
+            "y": 805.11256873030925
+          },
+          "nodeIndex": "fNotas_Fiscais_Saida",
+          "nodeLineageTag": "35b8e50f-4d40-4783-bfd9-0b8ac12d9a0e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 2554.6216221930736,
+            "y": 18.75
+          },
+          "nodeIndex": "dNum_Vendas",
+          "nodeLineageTag": "c2c1e9c0-0eab-42a4-8f57-daf8f7aaf0c8",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 242.54967964688592,
+            "y": 328.13749057646396
+          },
+          "nodeIndex": "fEntregas",
+          "nodeLineageTag": "e0037181-99f0-4a3a-95b0-614069630000",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3172.6216221930736,
+            "y": 371.27948748157621
+          },
+          "nodeIndex": "fA_Pagar",
+          "nodeLineageTag": "be63d220-6f38-4682-8665-9777c47e6004",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3494.1376204472394,
+            "y": 371.55448847352739
+          },
+          "nodeIndex": "fA_Receber",
+          "nodeLineageTag": "1ebfce7d-35f6-4124-bbd3-cd000e62b39d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2888.6216221930736,
+            "y": 371.27948748157621
+          },
+          "nodeIndex": "dFornecedor",
+          "nodeLineageTag": "4e9cdc4c-4569-4158-bbef-7edab43e5832",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3690.6216221930736,
+            "y": 471.27948748157621
+          },
+          "nodeIndex": "dCalendarioA",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3974.6216221930736,
+            "y": 471.27948748157621
+          },
+          "nodeIndex": "dCalendarioB",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4258.6216221930736,
+            "y": 471.27948748157621
+          },
+          "nodeIndex": "Medidas_Comp",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4542.6216221930736,
+            "y": 423.27948748157621
+          },
+          "nodeIndex": "fEstoque",
+          "nodeLineageTag": "37c06349-e110-4e80-8a90-5f27a949e6c4",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4826.6216221930736,
+            "y": 458.77948748157621
+          },
+          "nodeIndex": "dCalendarioAux",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 50.2765218677095,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 410,
+            "y": 0
+          },
+          "nodeIndex": "fVendas",
+          "nodeLineageTag": "b9fdfce9-b815-4076-b30a-e4828233da9b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 800,
+            "y": 0
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "610722ca-3f23-43c3-b6ac-a5220707e0c2",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 802,
+            "y": 206
+          },
+          "nodeIndex": "dVendedores",
+          "nodeLineageTag": "56549e9c-9ed7-43cc-b033-a72ddd448f39",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 410,
+            "y": 368
+          },
+          "nodeIndex": "dProdutos",
+          "nodeLineageTag": "4c07d9ab-e927-4f9e-8afb-8ddd2d26f2b0",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 370.487922705314
+          },
+          "nodeIndex": "dNum_Vendas",
+          "nodeLineageTag": "c2c1e9c0-0eab-42a4-8f57-daf8f7aaf0c8",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Vendas",
+      "zoomValue": 93.665158371040718,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 407,
+            "y": 0
+          },
+          "nodeIndex": "fDevolucoes",
+          "nodeLineageTag": "ac54367b-4418-4818-9877-15faeb99164d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 789,
+            "y": 0
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "610722ca-3f23-43c3-b6ac-a5220707e0c2",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 792,
+            "y": 202
+          },
+          "nodeIndex": "dVendedores",
+          "nodeLineageTag": "56549e9c-9ed7-43cc-b033-a72ddd448f39",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 413,
+            "y": 361
+          },
+          "nodeIndex": "dProdutos",
+          "nodeLineageTag": "4c07d9ab-e927-4f9e-8afb-8ddd2d26f2b0",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Devolucoes",
+      "zoomValue": 94.66463414634147,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 446,
+            "y": 0
+          },
+          "nodeIndex": "fVendas_Canceladas",
+          "nodeLineageTag": "55183d91-76cc-49bd-bfbb-975aa5a71ab8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 841,
+            "y": 0
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "610722ca-3f23-43c3-b6ac-a5220707e0c2",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 819,
+            "y": 205
+          },
+          "nodeIndex": "dProdutos",
+          "nodeLineageTag": "4c07d9ab-e927-4f9e-8afb-8ddd2d26f2b0",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Cancelados",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 4,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 423,
+            "y": 0
+          },
+          "nodeIndex": "fRecebidos",
+          "nodeLineageTag": "dac9b1de-a941-4c37-b697-c286bb288584",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 805,
+            "y": 2
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "610722ca-3f23-43c3-b6ac-a5220707e0c2",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 802,
+            "y": 200
+          },
+          "nodeIndex": "dVendedores",
+          "nodeLineageTag": "56549e9c-9ed7-43cc-b033-a72ddd448f39",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 341.96779388083741,
+            "y": 361.52657004830917
+          },
+          "nodeIndex": "dGrupo_Centro_Custos",
+          "nodeLineageTag": "ffae24cc-387c-46a8-b033-a92c1ef77b68",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 596,
+            "y": 366
+          },
+          "nodeIndex": "dPlano_Contas",
+          "nodeLineageTag": "2f71676f-97c7-40aa-9a6b-45e8bb105d89",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 340.87761674718206
+          },
+          "nodeIndex": "dNum_Vendas",
+          "nodeLineageTag": "c2c1e9c0-0eab-42a4-8f57-daf8f7aaf0c8",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 923.62884222551406,
+            "y": 393.00451143833567
+          },
+          "nodeIndex": "dForma_Pgto",
+          "nodeLineageTag": "2e8583c2-9eb8-430e-8bbd-420627db8a39",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Recebidos",
+      "zoomValue": 75.204222788496537,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 5,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 417,
+            "y": 0
+          },
+          "nodeIndex": "fPagos",
+          "nodeLineageTag": "fb5ced26-7086-4513-a90c-247485a0b585",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 803,
+            "y": 0
+          },
+          "nodeIndex": "dGrupo_Centro_Custos",
+          "nodeLineageTag": "ffae24cc-387c-46a8-b033-a92c1ef77b68",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 809,
+            "y": 197
+          },
+          "nodeIndex": "dPlano_Contas",
+          "nodeLineageTag": "2f71676f-97c7-40aa-9a6b-45e8bb105d89",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1,
+            "y": 183
+          },
+          "nodeIndex": "dFornecedor",
+          "nodeLineageTag": "4e9cdc4c-4569-4158-bbef-7edab43e5832",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Pagos",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 6,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 403,
+            "y": -44
+          },
+          "nodeIndex": "fOperadoras",
+          "nodeLineageTag": "2d2e02c0-133d-4d19-9e6c-c169f2d778d4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Operadoras",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 7,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 371,
+            "y": 0
+          },
+          "nodeIndex": "fEntregas",
+          "nodeLineageTag": "e0037181-99f0-4a3a-95b0-614069630000",
+          "size": {
+            "height": 362,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 758,
+            "y": 0
+          },
+          "nodeIndex": "dProdutos",
+          "nodeLineageTag": "4c07d9ab-e927-4f9e-8afb-8ddd2d26f2b0",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 767,
+            "y": 226
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "610722ca-3f23-43c3-b6ac-a5220707e0c2",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 7,
+            "y": 223
+          },
+          "nodeIndex": "dVendedores",
+          "nodeLineageTag": "56549e9c-9ed7-43cc-b033-a72ddd448f39",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 591,
+            "y": 380
+          },
+          "nodeIndex": "dNum_Vendas",
+          "nodeLineageTag": "c2c1e9c0-0eab-42a4-8f57-daf8f7aaf0c8",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 6
+        }
+      ],
+      "name": "Entregas",
+      "zoomValue": 94.53125,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 8,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 423,
+            "y": 0
+          },
+          "nodeIndex": "fA_Receber",
+          "nodeLineageTag": "1ebfce7d-35f6-4124-bbd3-cd000e62b39d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 830,
+            "y": 0
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "610722ca-3f23-43c3-b6ac-a5220707e0c2",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 830,
+            "y": 177
+          },
+          "nodeIndex": "dVendedores",
+          "nodeLineageTag": "56549e9c-9ed7-43cc-b033-a72ddd448f39",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 183
+          },
+          "nodeIndex": "dCalendarioAux",
+          "nodeLineageTag": "f09de5ae-2628-4229-82e2-412931407a80",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "A Receber",
+      "zoomValue": 83.113673805601323,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 9,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 415,
+            "y": 0
+          },
+          "nodeIndex": "fA_Pagar",
+          "nodeLineageTag": "be63d220-6f38-4682-8665-9777c47e6004",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 810,
+            "y": 0
+          },
+          "nodeIndex": "dFornecedor",
+          "nodeLineageTag": "4e9cdc4c-4569-4158-bbef-7edab43e5832",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 812,
+            "y": 179
+          },
+          "nodeIndex": "dPlano_Contas",
+          "nodeLineageTag": "2f71676f-97c7-40aa-9a6b-45e8bb105d89",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 182
+          },
+          "nodeIndex": "dGrupo_Centro_Custos",
+          "nodeLineageTag": "ffae24cc-387c-46a8-b033-a92c1ef77b68",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 410,
+            "y": 357
+          },
+          "nodeIndex": "dCalendarioAux",
+          "nodeLineageTag": "f09de5ae-2628-4229-82e2-412931407a80",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "A Pagar",
+      "zoomValue": 76.533742331288352,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 10,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 674,
+            "y": 1
+          },
+          "nodeIndex": "dProdutos",
+          "nodeLineageTag": "4c07d9ab-e927-4f9e-8afb-8ddd2d26f2b0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337,
+            "y": 0
+          },
+          "nodeIndex": "fEstoque",
+          "nodeLineageTag": "37c06349-e110-4e80-8a90-5f27a949e6c4",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Estoque",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 11,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 368,
+            "y": 0
+          },
+          "nodeIndex": "fOperadoras",
+          "nodeLineageTag": "2d2e02c0-133d-4d19-9e6c-c169f2d778d4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": -64,
+            "y": 2
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "a3379255-7125-4015-a82d-adc8e1671ae5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 683,
+            "y": 11
+          },
+          "nodeIndex": "dCalendarioAux",
+          "nodeLineageTag": "f09de5ae-2628-4229-82e2-412931407a80",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Cartões",
+      "zoomValue": 67.462422634836429,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Entregas",
+  "defaultDiagram": "Todas as tabelas"
+}

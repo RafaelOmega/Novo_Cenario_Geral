@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "7eaac1d19b3a0d360a94",
+  "displayName": "A Pagar",
+  "displayOption": "FitToWidth",
+  "height": 1320,
+  "width": 2000,
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#000000'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Pagar.svg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Pagar061784468449106233.svg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#242A38'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "d82a4df61674ab0ae964",
+      "target": "c99316b28687ca162c01",
+      "type": "DataFilter"
+    },
+    {
+      "source": "c99316b28687ca162c01",
+      "target": "d82a4df61674ab0ae964",
+      "type": "DataFilter"
+    },
+    {
+      "source": "c99316b28687ca162c01",
+      "target": "2f2e1d041500b4356bc2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d82a4df61674ab0ae964",
+      "target": "2f2e1d041500b4356bc2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "2f2e1d041500b4356bc2",
+      "target": "d82a4df61674ab0ae964",
+      "type": "DataFilter"
+    },
+    {
+      "source": "2f2e1d041500b4356bc2",
+      "target": "c99316b28687ca162c01",
+      "type": "DataFilter"
+    }
+  ]
+}

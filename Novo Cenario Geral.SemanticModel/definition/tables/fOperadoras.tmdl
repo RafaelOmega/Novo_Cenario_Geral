@@ -1,0 +1,132 @@
+table fOperadoras
+	lineageTag: 2d2e02c0-133d-4d19-9e6c-c169f2d778d4
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f8d8b688-6b89-4a6b-8ece-8d2dff7b8daa
+		summarizeBy: none
+		sourceColumn: DATA
+
+		variation Variation
+			isDefault
+			relationship: cd05d8e0-1b62-4765-8014-e9035aa89279
+			defaultHierarchy: LocalDateTable_242bbf38-f542-4d77-851f-53be88b1ad6f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'HORA DA VENDA'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 0c9af92e-683e-4eab-a504-96bb9f803278
+		summarizeBy: none
+		sourceColumn: HORA DA VENDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column PAGAMENTO
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c8391b95-651c-4560-ac25-9b46296e4173
+		summarizeBy: none
+		sourceColumn: PAGAMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column BANDEIRA
+		dataType: string
+		lineageTag: 4422f952-0f9e-44fc-a879-c31fcfbc6aae
+		summarizeBy: none
+		sourceColumn: BANDEIRA
+
+		annotation SummarizationSetBy = Automatic
+
+	column FORMA
+		dataType: string
+		lineageTag: 44d38dda-5adb-4f6d-936e-8f4cc52cdca4
+		summarizeBy: none
+		sourceColumn: FORMA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QTDE PARCELAS'
+		dataType: int64
+		formatString: 0
+		lineageTag: 098ec895-325e-4b34-a212-fcaa7c41857c
+		summarizeBy: sum
+		sourceColumn: QTDE PARCELAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column VALOR
+		dataType: double
+		lineageTag: cb0891f8-8492-4565-9037-1c672bb1bb8d
+		summarizeBy: sum
+		sourceColumn: VALOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TAXA
+		dataType: double
+		lineageTag: cd5a3830-bc04-4b7c-b261-c473cad9e056
+		summarizeBy: sum
+		sourceColumn: TAXA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'VALOR TAXA'
+		dataType: double
+		lineageTag: 340ca507-aed1-4075-9218-264454331ead
+		summarizeBy: sum
+		sourceColumn: VALOR TAXA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LIQUIDO
+		dataType: double
+		lineageTag: 8d9c16fa-b68b-4717-9740-fe5f6a9d4a53
+		summarizeBy: sum
+		sourceColumn: LIQUIDO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OPERADORA
+		dataType: string
+		lineageTag: a19cd0f7-e61c-4ad3-ba00-815c1851e641
+		summarizeBy: none
+		sourceColumn: OPERADORA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fOperadoras = m
+		mode: import
+		queryGroup: Financeiro
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"b119a56a-31e8-4a44-8235-ab77f5dba75b" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="b119a56a-31e8-4a44-8235-ab77f5dba75b"]}[Data],
+				    OPERADORAS_ = #"b119a56a-31e8-4a44-8235-ab77f5dba75b"{[entity="OPERADORAS",version=""]}[Data],
+				    #"Linhas Classificadas" = Table.Sort(OPERADORAS_,{{"DATA", Order.Descending}})
+				in
+				    #"Linhas Classificadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

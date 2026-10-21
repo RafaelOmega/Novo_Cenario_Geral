@@ -1,0 +1,403 @@
+table dProdutos
+	lineageTag: 4c07d9ab-e927-4f9e-8afb-8ddd2d26f2b0
+
+	column cod_produto
+		dataType: string
+		lineageTag: c4a3fb70-4243-4102-a6fe-1024b8528c6f
+		summarizeBy: none
+		sourceColumn: cod_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_grupo
+		dataType: int64
+		formatString: 0
+		lineageTag: b0cecdd5-109c-49bf-a713-92be878c277e
+		summarizeBy: sum
+		sourceColumn: cod_grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_barras
+		dataType: string
+		lineageTag: 5bb1d782-1e13-42a1-93b7-9b6ead3c052b
+		summarizeBy: none
+		sourceColumn: cod_barras
+
+		annotation SummarizationSetBy = Automatic
+
+	column desc_produto
+		dataType: string
+		lineageTag: 4b9c0289-b044-46c2-a803-32ebd496001f
+		summarizeBy: none
+		sourceColumn: desc_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column desc_grupo
+		dataType: string
+		lineageTag: d8d28451-180c-49bc-bcb4-e7d3a5a4e728
+		summarizeBy: none
+		sourceColumn: desc_grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	column prod_unidade
+		dataType: string
+		lineageTag: 2c44e8a6-cb6b-4bac-91ea-6dc4c56889ed
+		summarizeBy: none
+		sourceColumn: prod_unidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column preco_custo
+		dataType: double
+		lineageTag: 37f541e7-5345-4258-9597-d5a03713e062
+		summarizeBy: sum
+		sourceColumn: preco_custo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column preco_custo_real
+		dataType: double
+		lineageTag: 5e1430f0-4478-4c8b-804e-13772fb2c1c6
+		summarizeBy: sum
+		sourceColumn: preco_custo_real
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column preco_prazo
+		dataType: double
+		lineageTag: ff91162d-402d-40a6-a912-f33a575a4f9e
+		summarizeBy: sum
+		sourceColumn: preco_prazo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column preco_vista
+		dataType: double
+		lineageTag: ba392956-80e2-4c97-80b0-f5e7331cb1e3
+		summarizeBy: sum
+		sourceColumn: preco_vista
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column flag_ativo
+		dataType: int64
+		formatString: 0
+		lineageTag: adf4fb86-bca1-48b6-916e-08e1d50bc019
+		summarizeBy: sum
+		sourceColumn: flag_ativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column peso_liquido
+		dataType: double
+		lineageTag: c407282e-ccf8-411e-b29d-079fa2a984aa
+		summarizeBy: sum
+		sourceColumn: peso_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column perc_comissao_vista
+		dataType: double
+		lineageTag: 2306a085-0378-4ae3-b819-906239c5c510
+		summarizeBy: sum
+		sourceColumn: perc_comissao_vista
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column perc_comissao_prazo
+		dataType: double
+		lineageTag: 048e9c13-600b-40a7-b994-07e999db9c54
+		summarizeBy: sum
+		sourceColumn: perc_comissao_prazo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_outras_despesas
+		dataType: double
+		lineageTag: 59b9d5af-12cc-4ed6-aae6-985aff177c93
+		summarizeBy: sum
+		sourceColumn: vr_outras_despesas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cod_class
+		dataType: string
+		lineageTag: c7d12f06-42d4-4804-b0a4-d428ed5517bf
+		summarizeBy: none
+		sourceColumn: cod_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column icms_aliq
+		dataType: double
+		lineageTag: d0f5df90-8209-4945-aae2-843527bd3d7b
+		summarizeBy: sum
+		sourceColumn: icms_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ipi_aliq
+		dataType: double
+		lineageTag: c5ea5e8f-aa2a-40e3-a88e-72d2482cc78e
+		summarizeBy: sum
+		sourceColumn: ipi_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column st_iva
+		dataType: double
+		lineageTag: 77c3c2f4-ee3c-414d-b05c-ab4c3d4623dd
+		summarizeBy: sum
+		sourceColumn: st_iva
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column st_icms_aliq
+		dataType: double
+		lineageTag: 54a714dd-20fa-4ceb-8f0b-5aaf3fce1c55
+		summarizeBy: sum
+		sourceColumn: st_icms_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column data_ultimo_reajuste
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 74fd99f4-5059-4807-b9da-56c7485aff6c
+		summarizeBy: none
+		sourceColumn: data_ultimo_reajuste
+
+		variation Variation
+			isDefault
+			relationship: dd7c8db4-2d47-4f4e-960d-a12e82f06f66
+			defaultHierarchy: LocalDateTable_c17a2f11-980b-494b-a4cb-3335edec25fb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vr_frete
+		dataType: double
+		lineageTag: 3244ee2c-7f4e-4c04-b4e5-a13effe156a8
+		summarizeBy: sum
+		sourceColumn: vr_frete
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_seguro
+		dataType: double
+		lineageTag: 1bf79861-2298-467c-a0c6-d4e03ce2e13a
+		summarizeBy: sum
+		sourceColumn: vr_seguro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_desc_custo
+		dataType: double
+		lineageTag: 24ce9f94-c1a6-4afd-81ed-1354cb181ebe
+		summarizeBy: sum
+		sourceColumn: vr_desc_custo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column icms_red_base
+		dataType: double
+		lineageTag: 161821d7-f678-47b3-967f-8a0067d553ec
+		summarizeBy: sum
+		sourceColumn: icms_red_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column st_icms_red_base
+		dataType: double
+		lineageTag: d8ff9dd8-b562-47f7-a5c6-14eae9b302ba
+		summarizeBy: sum
+		sourceColumn: st_icms_red_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pis_aliq
+		dataType: double
+		lineageTag: 61d667a8-6015-4018-95eb-75949b9f2d8c
+		summarizeBy: sum
+		sourceColumn: pis_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cofins_aliq
+		dataType: double
+		lineageTag: ac2bd68a-8565-454a-a101-3966de71daa1
+		summarizeBy: sum
+		sourceColumn: cofins_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ipi_tipo_aliquota
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a106ed1-c53a-4b5f-a223-eb0f3ef84c6b
+		summarizeBy: sum
+		sourceColumn: ipi_tipo_aliquota
+
+		annotation SummarizationSetBy = Automatic
+
+	column pis_tipo_aliquota
+		dataType: int64
+		formatString: 0
+		lineageTag: ca1b7e87-a181-471d-855f-72f9337f4c6f
+		summarizeBy: sum
+		sourceColumn: pis_tipo_aliquota
+
+		annotation SummarizationSetBy = Automatic
+
+	column cofins_tipo_aliquota
+		dataType: int64
+		formatString: 0
+		lineageTag: 3cd102d8-88a7-455b-8cfe-f57a28278909
+		summarizeBy: sum
+		sourceColumn: cofins_tipo_aliquota
+
+		annotation SummarizationSetBy = Automatic
+
+	column st_icms_vr_pauta
+		dataType: double
+		lineageTag: 9c457d8d-4c75-4752-a77e-1b413ec2de9e
+		summarizeBy: sum
+		sourceColumn: st_icms_vr_pauta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pis_cofins_base
+		dataType: double
+		lineageTag: f5e6f45e-010e-4c55-911d-f3aa8c9e9e35
+		summarizeBy: sum
+		sourceColumn: pis_cofins_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column icms_base
+		dataType: double
+		lineageTag: a5493bc7-2387-4012-b674-7db915fd0e79
+		summarizeBy: sum
+		sourceColumn: icms_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column icmsst_base
+		dataType: double
+		lineageTag: 3890e4c4-d3eb-4e6a-90e7-ca39808309c3
+		summarizeBy: sum
+		sourceColumn: icmsst_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ipi_base
+		dataType: double
+		lineageTag: 9eb85cb8-60e9-4d88-ba48-73662d78df7d
+		summarizeBy: sum
+		sourceColumn: ipi_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column estoque
+		dataType: double
+		lineageTag: 7b526c57-1875-42a6-a6e9-6c8cb8d8e1c7
+		summarizeBy: sum
+		sourceColumn: estoque
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column estoque_contabil
+		dataType: double
+		lineageTag: 8ddd6156-fb36-42de-9e55-edbb22b47dfb
+		summarizeBy: sum
+		sourceColumn: estoque_contabil
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cod + Descrição'
+		dataType: string
+		lineageTag: 48c896c9-676e-408c-8cdb-6078395af541
+		summarizeBy: none
+		sourceColumn: Cod + Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dProdutos = m
+		mode: import
+		queryGroup: PRODUTOS
+		source =
+				let
+				    Fonte = PowerBI.Dataflows(null),
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Fonte{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"1790b082-9848-4670-9dbe-7e94ca45848c" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="1790b082-9848-4670-9dbe-7e94ca45848c"]}[Data],
+				    PRODUTOS_COMPLETO = #"1790b082-9848-4670-9dbe-7e94ca45848c"{[entity="PRODUTOS_COMPLETO"]}[Data],
+				    #"Personalização Adicionada" = Table.AddColumn(PRODUTOS_COMPLETO, "Cod + Descrição", each [cod_produto] & " - " & [desc_produto]),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"Cod + Descrição", type text}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Tipo Alterado1", {"cod_produto"}, dProdutos_Vendidos, {"cod_prod"}, "dProdutos_Vendidos", JoinKind.LeftOuter),
+				    #"dProdutos_Vendidos Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "dProdutos_Vendidos", {"cod_prod"}, {"cod_prod"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"dProdutos_Vendidos Expandido", each [cod_prod] <> ""),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Linhas Filtradas", each [cod_prod] <> null),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Linhas Filtradas1",{"cod_prod"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

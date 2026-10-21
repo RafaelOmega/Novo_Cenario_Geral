@@ -1,0 +1,284 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU12",
+      "reportVersionAtImport": {
+        "visual": "2.5.0",
+        "report": "3.1.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Data_Expert6073631816269744.json",
+      "reportVersionAtImport": {
+        "visual": "2.6.0",
+        "report": "3.1.0",
+        "page": "2.3.0"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "SmartFilterBySQLBI1458262140625",
+    "SimpleWaterfall"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU12",
+          "path": "BaseThemes/CY25SU12.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Abrir_Filtro4351307805452902.svg",
+          "path": "Abrir_Filtro4351307805452902.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Abrir_Filtro8889106686462384.svg",
+          "path": "Abrir_Filtro8889106686462384.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Abrir_Filtro925861283462482.svg",
+          "path": "Abrir_Filtro925861283462482.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Abrir_Filtro9974704127393611.svg",
+          "path": "Abrir_Filtro9974704127393611.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Clientes15812819145069568.svg",
+          "path": "Clientes15812819145069568.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Clientes19943957599400264.svg",
+          "path": "Clientes19943957599400264.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Data_Expert6073631816269744.json",
+          "path": "Data_Expert6073631816269744.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "Entregas28277575353146034.svg",
+          "path": "Entregas28277575353146034.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Faturamento2892564236306774.svg",
+          "path": "Faturamento2892564236306774.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Fechar_Filtro021175940153948747.svg",
+          "path": "Fechar_Filtro021175940153948747.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Fechar_Filtro043219276130322504.svg",
+          "path": "Fechar_Filtro043219276130322504.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Fechar_Filtro3206970080394498.svg",
+          "path": "Fechar_Filtro3206970080394498.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Fechar_Filtro7181007795490413.svg",
+          "path": "Fechar_Filtro7181007795490413.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Fechar_Filtro8037951145169651.png",
+          "path": "Fechar_Filtro8037951145169651.png",
+          "type": "Image"
+        },
+        {
+          "name": "Menu_Suspenso_Faturamento1835200837170331.svg",
+          "path": "Menu_Suspenso_Faturamento1835200837170331.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Menu_Suspenso_Faturamento19745590082148856.svg",
+          "path": "Menu_Suspenso_Faturamento19745590082148856.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Menu_Suspenso_Faturamento4005649247301045.svg",
+          "path": "Menu_Suspenso_Faturamento4005649247301045.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Menu_Suspenso_Faturamento757254359131585.svg",
+          "path": "Menu_Suspenso_Faturamento757254359131585.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Menu_Suspenso_Financeiro498164683735015.svg",
+          "path": "Menu_Suspenso_Financeiro498164683735015.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Menu_Suspenso_Relativo3860569331231315.svg",
+          "path": "Menu_Suspenso_Relativo3860569331231315.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Pagar061784468449106233.svg",
+          "path": "Pagar061784468449106233.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Pagos5070004033935606.svg",
+          "path": "Pagos5070004033935606.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Principal2065808350814068.svg",
+          "path": "Principal2065808350814068.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Produtos231658691403417.svg",
+          "path": "Produtos231658691403417.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Receber9486863681978327.svg",
+          "path": "Receber9486863681978327.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Recebidos18701221619400976.svg",
+          "path": "Recebidos18701221619400976.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tabela_Forma_Pgto62506386305393.svg",
+          "path": "Tabela_Forma_Pgto62506386305393.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tabela39507429950629014.svg",
+          "path": "Tabela39507429950629014.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tabela47746241120064226.svg",
+          "path": "Tabela47746241120064226.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tabela5397571790365351.svg",
+          "path": "Tabela5397571790365351.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tabela9846582602732417.svg",
+          "path": "Tabela9846582602732417.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip_Faturamento_Geral8879028456965395.svg",
+          "path": "Tooltip_Faturamento_Geral8879028456965395.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip_Faturamento_Individual020841747515508935.svg",
+          "path": "Tooltip_Faturamento_Individual020841747515508935.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip_Faturamento_Individual13623828337667643.svg",
+          "path": "Tooltip_Faturamento_Individual13623828337667643.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip_Faturamento_Individual2847062481578846.svg",
+          "path": "Tooltip_Faturamento_Individual2847062481578846.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip_Faturamento_Individual7221757624265939.svg",
+          "path": "Tooltip_Faturamento_Individual7221757624265939.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip_Faturamento_Individual9592787840245427.svg",
+          "path": "Tooltip_Faturamento_Individual9592787840245427.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip_Markup8919591634237257.svg",
+          "path": "Tooltip_Markup8919591634237257.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Vendedores1943888754886438.svg",
+          "path": "Vendedores1943888754886438.svg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

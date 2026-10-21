@@ -1,0 +1,83 @@
+table Medidas_Comp
+	lineageTag: bdafe079-3550-41b5-a564-029130c95266
+
+	measure 'Comparacao Faturamento' = ```
+			
+			VAR vMesA = SELECTEDVALUE(dCalendarioA[MesAnoNum])
+			VAR vFaturamentoMesA = 
+			CALCULATE(
+			    [Faturamento],
+			    ALL(dCalendario),
+			    dCalendario[MesAnoNum] = vMesA
+			)
+			VAR vMesB = SELECTEDVALUE(dCalendarioB[MesAnoNum])
+			VAR vFaturamentoMesB = 
+			CALCULATE(
+			    [Faturamento],
+			    ALL(dCalendario),
+			    dCalendario[MesAnoNum] = vMesB
+			)
+			RETURN
+			DIVIDE(
+			    vFaturamentoMesB - vFaturamentoMesA,
+			    vFaturamentoMesA
+			)
+			```
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		lineageTag: 4bd3043e-b519-4e8f-9ded-03a57997a370
+
+	measure 'Comparacao YMax' =
+			
+			CALCULATE(
+			    MAXX(
+			        ALL(dCalendario[MesAnoNum]),
+			        [Faturamento]
+			    ),
+			    ALL(dCalendario)
+			) * 1.20
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: da8d5373-6952-414f-8ab8-b9abaec5bc90
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Comparacao Periodos' =
+			
+			VAR vMesEixo = SELECTEDVALUE(dCalendario[MesAnoNum])
+			VAR vMesA = SELECTEDVALUE(dCalendarioA[MesAnoNum])
+			VAR vMesB = SELECTEDVALUE(dCalendarioB[MesAnoNum])
+			RETURN
+			IF(
+			    vMesEixo = vMesA || vMesEixo = vMesB,
+			    [Comparacao YMax] * 0.95
+			)
+		lineageTag: b945f692-4b7a-41be-b796-c6c259968667
+
+		formatStringDefinition = ```
+				VAR vMesEixo = SELECTEDVALUE(dCalendario[MesAnoNum])
+				VAR vMesB = SELECTEDVALUE(dCalendarioB[MesAnoNum])
+				VAR vResultado = 
+				IF(
+				    vMesEixo = vMesB,
+				    FORMAT([Comparacao Faturamento], "+0.00%; -0.00%"),
+				    BLANK()
+				)
+				RETURN
+				"""" & vResultado & """"
+				```
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: f4db3801-0e3b-47d8-8442-223e797dc33e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas_Comp = calculated
+		mode: import
+		source = {0}
+
+	annotation PBI_Id = 91869cd821cd4a5584e04622eb411cb6
+

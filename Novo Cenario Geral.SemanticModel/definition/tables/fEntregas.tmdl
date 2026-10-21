@@ -1,0 +1,590 @@
+table fEntregas
+	lineageTag: e0037181-99f0-4a3a-95b0-614069630000
+
+	column cod_carregamento
+		dataType: string
+		lineageTag: b3663744-7495-4aa9-b3d2-4e720034664a
+		summarizeBy: none
+		sourceColumn: cod_carregamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column vend_cod_venda
+		dataType: string
+		lineageTag: f83324c5-5bab-4a4d-a699-0677212c652f
+		summarizeBy: none
+		sourceColumn: vend_cod_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1bc6a9b3-0c68-438b-83d3-9dc4365aa371
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column descricao
+		dataType: string
+		lineageTag: 4383b472-9e81-4c0f-8938-b2e5f0301e6c
+		summarizeBy: none
+		sourceColumn: descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente
+		dataType: int64
+		formatString: 0
+		lineageTag: ac8a000b-1265-4bb7-90ba-1c59aea8516a
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b6cd0ff-9310-41b1-a050-924446b2f437
+		summarizeBy: none
+		sourceColumn: cod_vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_prod
+		dataType: string
+		lineageTag: 474de7e2-db30-456d-8215-e3a1a2144c5a
+		summarizeBy: none
+		sourceColumn: cod_prod
+
+		annotation SummarizationSetBy = Automatic
+
+	column vend_cod_item
+		dataType: int64
+		formatString: 0
+		lineageTag: 89962737-fe97-4c2b-80a6-17dcfef4174e
+		summarizeBy: sum
+		sourceColumn: vend_cod_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd
+		dataType: double
+		lineageTag: 446659bc-85ed-49b5-938e-8d36e855ffea
+		summarizeBy: sum
+		sourceColumn: qtd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column preco_custo
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 7f3b5b17-3746-4652-bbfc-1211bad25738
+		summarizeBy: sum
+		sourceColumn: preco_custo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_unitario
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 6a2b89c1-7863-4851-b96e-4aff5353a0c9
+		summarizeBy: sum
+		sourceColumn: vr_unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_bruto
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 42c5921b-c431-4340-82f8-378c7c9c09a7
+		summarizeBy: sum
+		sourceColumn: vr_bruto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_desconto
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 7d6dc6ee-bb4b-46bf-94fb-3ac0c0f9e6a5
+		summarizeBy: sum
+		sourceColumn: vr_desconto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_liquido
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 5a1a5788-449e-4144-9df3-39a409ed927b
+		summarizeBy: sum
+		sourceColumn: vr_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_acrescimo
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: e5bb7099-068a-4396-b3a0-cec3c0204394
+		summarizeBy: sum
+		sourceColumn: vr_acrescimo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column icms_cst
+		dataType: string
+		lineageTag: be863883-3471-44c7-b7df-1210c4c96be8
+		summarizeBy: none
+		sourceColumn: icms_cst
+
+		annotation SummarizationSetBy = Automatic
+
+	column pis_cst
+		dataType: string
+		lineageTag: 4f9399f3-ec8f-4550-9750-5d00db286d95
+		summarizeBy: none
+		sourceColumn: pis_cst
+
+		annotation SummarizationSetBy = Automatic
+
+	column cofins_cst
+		dataType: string
+		lineageTag: 5e59cc58-bf0a-496f-8d80-66391770af87
+		summarizeBy: none
+		sourceColumn: cofins_cst
+
+		annotation SummarizationSetBy = Automatic
+
+	column pis_base_calculo
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: b73a37bf-57b0-4fa0-bfe9-5c3e25dcfa28
+		summarizeBy: sum
+		sourceColumn: pis_base_calculo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column pis_aliq
+		dataType: double
+		lineageTag: 358886bc-a693-4d20-bb5e-5a9415d5a657
+		summarizeBy: sum
+		sourceColumn: pis_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pis_aliq_reais
+		dataType: double
+		lineageTag: 4219f001-f5b8-40ea-ae95-3c481a557cd9
+		summarizeBy: sum
+		sourceColumn: pis_aliq_reais
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pis_valor
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 3ef96f5b-338d-4151-9b88-41a3fd6503b3
+		summarizeBy: sum
+		sourceColumn: pis_valor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column cofins_base_calculo
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 174c832e-5a32-43eb-9153-c8ba0f29b329
+		summarizeBy: sum
+		sourceColumn: cofins_base_calculo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column cofins_aliq
+		dataType: double
+		lineageTag: a6460a9f-5ec3-4e55-87cf-76fcda152d58
+		summarizeBy: sum
+		sourceColumn: cofins_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cofins_aliq_reais
+		dataType: double
+		lineageTag: f69daad4-5cc8-48b3-a9cb-380a7d3aac72
+		summarizeBy: sum
+		sourceColumn: cofins_aliq_reais
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cofins_valor
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: cbcf8727-76c0-4a10-8009-5074047a86d4
+		summarizeBy: sum
+		sourceColumn: cofins_valor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column imposto_base_calculo
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: f1a4e513-21c3-4baa-8659-39ae68cd8b1a
+		summarizeBy: sum
+		sourceColumn: imposto_base_calculo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column imposto_aliq
+		dataType: double
+		lineageTag: 6fe35306-8920-4181-9356-dd1b9c5b611a
+		summarizeBy: sum
+		sourceColumn: imposto_aliq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column imposto_valor
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 30a0f7fa-1f56-40a7-9c7e-2394a1e8495e
+		summarizeBy: sum
+		sourceColumn: imposto_valor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_desconto_venda
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 700ced75-0b7f-4498-b490-2ff4090567cf
+		summarizeBy: sum
+		sourceColumn: vr_desconto_venda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_acrescimo_venda
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: c4bf4008-ed10-4d2f-8b89-a2919173713a
+		summarizeBy: sum
+		sourceColumn: vr_acrescimo_venda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column cfop_cod
+		dataType: int64
+		formatString: 0
+		lineageTag: 07655cab-6c8a-4b2c-a849-3369feb35f7f
+		summarizeBy: sum
+		sourceColumn: cfop_cod
+
+		annotation SummarizationSetBy = Automatic
+
+	column pis_aliq_Nfe =
+			
+			VAR vVenda = fEntregas[vend_cod_venda]
+			VAR vProd  = fEntregas[cod_prod]
+			VAR vAliq =
+			    CALCULATE(
+			        MAX(fNotas_Fiscais_Saida[pis_aliq]),
+			        FILTER(
+			            fNotas_Fiscais_Saida,
+			            fNotas_Fiscais_Saida[venda_cod_venda] = vVenda &&
+			            fNotas_Fiscais_Saida[cod_prod] = vProd &&
+			            fNotas_Fiscais_Saida[cod_cfop] <> "5929"
+			        )
+			    )
+			RETURN
+			COALESCE(vAliq, 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c29dd986-8aa2-47ef-abb2-134e46d8340b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column cofins_aliq_Nfe =
+			
+			VAR vVenda = fEntregas[vend_cod_venda]
+			VAR vProd  = fEntregas[cod_prod]
+			VAR vAliq =
+			    CALCULATE(
+			        MAX(fNotas_Fiscais_Saida[cofins_aliq]),
+			        FILTER(
+			            fNotas_Fiscais_Saida,
+			            fNotas_Fiscais_Saida[venda_cod_venda] = vVenda &&
+			            fNotas_Fiscais_Saida[cod_prod] = vProd &&
+			            fNotas_Fiscais_Saida[cod_cfop] <> "5929"
+			        )
+			    )
+			RETURN
+			COALESCE(vAliq, 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 27d1389f-9ef6-49e0-949d-108a2a17287e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column pis_cofins_nfe = fEntregas[pis_aliq_Nfe] + fEntregas[cofins_aliq_Nfe]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bb115f18-4b7b-471b-9095-556bde05d5d9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column icms_aliq_Nfe =
+			
+			VAR vVenda = fEntregas[vend_cod_venda]
+			VAR vProd  = fEntregas[cod_prod]
+			VAR vAliq =
+			    CALCULATE(
+			        MAX(fNotas_Fiscais_Saida[icms_aliq]),
+			        FILTER(
+			            fNotas_Fiscais_Saida,
+			            fNotas_Fiscais_Saida[venda_cod_venda] = vVenda &&
+			            fNotas_Fiscais_Saida[cod_prod] = vProd &&
+			            fNotas_Fiscais_Saida[cod_cfop] <> "5929"
+			        )
+			    )
+			RETURN
+			COALESCE(vAliq, 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 46c19458-4093-48a5-a86f-db25ef8d2b41
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column pis_cofins_aliq = fEntregas[pis_aliq] + fEntregas[cofins_aliq]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 96714cf2-07d9-460d-a642-ad9a831a9cb8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vr_Liquido_Ajustado =
+			
+			VAR vVrLiquido = COALESCE(fEntregas[vr_liquido], 0)
+			
+			VAR vDescVenda = COALESCE(fEntregas[vr_desconto_venda], 0)
+			VAR vDesc       = COALESCE(fEntregas[vr_desconto], 0)
+			VAR vDifDesc =
+			    IF(vDescVenda <> vDesc, vDescVenda - vDesc, 0)
+			
+			VAR vAcrVenda = COALESCE(fEntregas[vr_acrescimo_venda], 0)
+			VAR vAcr      = COALESCE(fEntregas[vr_acrescimo], 0)
+			VAR vDifAcr =
+			    IF(vAcrVenda <> vAcr, vAcrVenda - vAcr, 0)
+			
+			RETURN
+			    vVrLiquido - vDifDesc + vDifAcr
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: c7df7175-640d-4eab-96da-557d6a928e7b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vr_unitario_liquido = DIVIDE(fEntregas[Vr_Liquido_Ajustado], fEntregas[qtd], 0)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: ecf2df8d-6bfc-467a-9737-66277cc609e2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column comissao_prazo =
+			
+			VAR vVendedor = fEntregas[cod_vendedor]
+			VAR vUnit     = fEntregas[vr_unitario_liquido]
+			VAR vData     = fEntregas[DATA]
+			VAR vPrecoPrazo = RELATED(dProdutos[preco_prazo])
+			VAR vPrecoVista = RELATED(dProdutos[preco_vista])
+			RETURN
+			IF(
+			    NOT ( vVendedor IN {165,234,236,237,238,248,250,2858,2885,3025,3065,3174} ),
+			    0,
+			    IF(
+			        vVendedor = 234,
+			        0.05,
+			        IF(
+			            vVendedor = 3174,
+			            IF(
+			                vData <= DATE(2026, 1, 31),
+			                SWITCH(
+			                    TRUE(),
+			                    vUnit >= vPrecoPrazo, 0.05,
+			                    vUnit < vPrecoPrazo && vUnit >= vPrecoVista, 0.04,
+			                    vUnit < vPrecoVista, 0.02,
+			                    RELATED(dProdutos[perc_comissao_prazo])
+			                ),
+			                0.04
+			            ),
+			            RELATED(dProdutos[perc_comissao_prazo])
+			        )
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ad4307d4-45d1-446e-a2a5-d4213912ee18
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column vr_comissao = fEntregas[vr_liquido_final] * fEntregas[comissao_prazo]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 433a61c3-c96a-4989-b272-611abc6d098b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column rateio = [Rateio de despesas/Custos]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ad60abb8-30d5-481c-894a-5d25538de4a9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column TemPagto3 =
+			
+			VAR vCodVenda = fEntregas[vend_cod_venda]
+			RETURN
+			IF(
+			    CALCULATE(
+			        COUNTROWS(fRecebidos),
+			        FILTER(
+			            fRecebidos,
+			            fRecebidos[fat_cod_venda] = vCodVenda &&
+			            fRecebidos[cod_pagto] = 3
+			        )
+			    ) > 0,
+			    1,
+			    0
+			)
+		formatString: 0
+		lineageTag: fb693a37-1123-4c33-8b3f-1c8a6f74b71e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column taxa_cartao =
+			
+			IF(
+			    fEntregas[TemPagto3] = 1,
+			    [Taxa de Cartão de Crédito],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e25b37b2-4f1e-4db1-a3a2-47d7bec68559
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Num_Entrega
+		dataType: int64
+		formatString: 0
+		lineageTag: 47bc3f80-6c3d-4de6-b512-0f49e73af74e
+		summarizeBy: sum
+		sourceColumn: Num_Entrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column vr_liquido_final = fEntregas[vr_unitario_liquido] * fEntregas[qtd]
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 3b02e330-99c6-48db-9077-a779a55a28bf
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column numero_nfe =
+			
+			VAR vVenda = fEntregas[vend_cod_venda]
+			VAR vProd  = fEntregas[cod_prod]
+			RETURN
+			CONCATENATEX(
+			    DISTINCT(
+			        FILTER(
+			            fNotas_Fiscais_Saida,
+			            fNotas_Fiscais_Saida[venda_cod_venda] = vVenda &&
+			            fNotas_Fiscais_Saida[cod_prod] = vProd &&
+			            fNotas_Fiscais_Saida[cod_cfop] <> "5929"
+			        )
+			    ),
+			    fNotas_Fiscais_Saida[numero_nf],
+			    "; "
+			)
+		lineageTag: d222eb4f-da5c-4041-b6a4-2bec585c197a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'rateio geral' = [Rateio de despesas/Custos Geral]
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		lineageTag: 91fd51ad-2c77-447e-819f-6a1812da0b4e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fEntregas = m
+		mode: import
+		queryGroup: VENDAS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"40e921ed-4dfa-4cab-830e-367eac84b432" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="40e921ed-4dfa-4cab-830e-367eac84b432"]}[Data],
+				    fEntregas_ = #"40e921ed-4dfa-4cab-830e-367eac84b432"{[entity="fEntregas",version=""]}[Data],
+				    #"Linhas Classificadas" = Table.Sort(fEntregas_,{{"DATA", Order.Descending}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Linhas Classificadas",{{"vend_cod_venda", type text}, {"preco_custo", Currency.Type}, {"vr_unitario", Currency.Type}, {"vr_bruto", Currency.Type}, {"vr_desconto", Currency.Type}, {"vr_liquido", Currency.Type}, {"vr_acrescimo", Currency.Type}, {"pis_base_calculo", Currency.Type}, {"pis_valor", Currency.Type}, {"cofins_base_calculo", Currency.Type}, {"cofins_valor", Currency.Type}, {"imposto_base_calculo", Currency.Type}, {"imposto_valor", Currency.Type}, {"vr_desconto_venda", Currency.Type}, {"vr_acrescimo_venda", Currency.Type}, {"pis_aliq", Percentage.Type}, {"cofins_aliq", Percentage.Type}, {"imposto_aliq", Percentage.Type}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Tipo Alterado", "cod_carregamento", "cod_carregamento - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"cod_carregamento - Copiar", "Num_Entrega"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"Num_Entrega", Int64.Type}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

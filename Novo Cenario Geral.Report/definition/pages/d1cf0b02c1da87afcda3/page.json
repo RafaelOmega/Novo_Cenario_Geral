@@ -1,0 +1,229 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "d1cf0b02c1da87afcda3",
+  "displayName": "Markup",
+  "displayOption": "FitToWidth",
+  "height": 1320,
+  "width": 2000,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "233a50bb243d2adae7f5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dVendedores"
+              }
+            },
+            "Property": "Cód + Vendedor"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "9b76f66025cb0e569d74",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dClientes"
+              }
+            },
+            "Property": "Cód + Cliente"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "427e9abc10425ee48cb4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dProdutos"
+              }
+            },
+            "Property": "Cod + Descrição"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "64ea40b94dee47e3c4a5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dProdutos"
+              }
+            },
+            "Property": "desc_grupo"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dProdutos",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "desc_grupo"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'FARELOS'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "bac3fabddb8153ce0a37",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "1fb5f190dbc0c85bfd8e",
+        "boundFilter": "233a50bb243d2adae7f5",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dVendedores"
+              }
+            },
+            "Property": "Cód + Vendedor"
+          }
+        }
+      },
+      {
+        "name": "69bf96fe50346de40dd7",
+        "boundFilter": "9b76f66025cb0e569d74",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dClientes"
+              }
+            },
+            "Property": "Cód + Cliente"
+          }
+        }
+      },
+      {
+        "name": "d50364ee53c4c5648bd4",
+        "boundFilter": "427e9abc10425ee48cb4",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dProdutos"
+              }
+            },
+            "Property": "Cod + Descrição"
+          }
+        }
+      },
+      {
+        "name": "67a1b5039be3b161806a",
+        "boundFilter": "64ea40b94dee47e3c4a5",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dProdutos"
+              }
+            },
+            "Property": "desc_grupo"
+          }
+        }
+      }
+    ],
+    "referenceScope": "CrossReport"
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Tabela.svg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Tabela9846582602732417.svg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#242A38'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "type": "Drillthrough"
+}

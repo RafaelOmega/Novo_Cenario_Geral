@@ -1,0 +1,244 @@
+table dClientes
+	lineageTag: 610722ca-3f23-43c3-b6ac-a5220707e0c2
+
+	column cod_cliente
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e526691-2e98-4b52-84fc-15ce7dc27b5b
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cliente
+		dataType: string
+		lineageTag: 8d3c7c87-7331-44f9-8f99-24a9634e23ed
+		summarizeBy: none
+		sourceColumn: cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cnpj_cpf
+		dataType: string
+		lineageTag: bc5f31aa-f227-41a6-b08b-52046eb3c4b2
+		summarizeBy: none
+		sourceColumn: cnpj_cpf
+
+		annotation SummarizationSetBy = Automatic
+
+	column inscr_estadual
+		dataType: string
+		lineageTag: 7c905852-0b83-4064-95e7-48fe6bc86c38
+		summarizeBy: none
+		sourceColumn: inscr_estadual
+
+		annotation SummarizationSetBy = Automatic
+
+	column rg
+		dataType: string
+		lineageTag: dcacbf03-ec71-4ba4-9fb1-991a4293ef79
+		summarizeBy: none
+		sourceColumn: rg
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: 7a80a356-cd57-407b-9faa-dfd5f02c1a5c
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column endereco
+		dataType: string
+		lineageTag: c728efbc-b24b-486b-bb15-c82970689542
+		summarizeBy: none
+		sourceColumn: endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero
+		dataType: string
+		lineageTag: e126ec35-9f2f-4b81-b8aa-047db328f127
+		summarizeBy: none
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	column complemento
+		dataType: string
+		lineageTag: e2e29588-1a3a-4e8a-a426-01d3a899277b
+		summarizeBy: none
+		sourceColumn: complemento
+
+		annotation SummarizationSetBy = Automatic
+
+	column bairro
+		dataType: string
+		lineageTag: 81228989-c6fa-4010-948a-be2ab9803eb6
+		summarizeBy: none
+		sourceColumn: bairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column cep
+		dataType: string
+		lineageTag: 803dda13-7ac3-4863-aaaa-bccd0b0d7683
+		summarizeBy: none
+		sourceColumn: cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_munic
+		dataType: string
+		lineageTag: 727b03c2-f708-43d8-a9c0-ae3a191e9760
+		summarizeBy: none
+		sourceColumn: cod_munic
+
+		annotation SummarizationSetBy = Automatic
+
+	column municipio
+		dataType: string
+		lineageTag: 3e2aa9f5-6071-4002-bf50-3f68019ae38e
+		summarizeBy: none
+		sourceColumn: municipio
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf
+		dataType: string
+		lineageTag: 8aad2416-99d7-4744-8016-d6c36fdba740
+		summarizeBy: none
+		sourceColumn: uf
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		lineageTag: 8f686739-4f21-413a-8615-c0c4b87a2d69
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column telefone
+		dataType: string
+		lineageTag: ee65ca9c-1e83-4266-a25f-03b3cd197c18
+		summarizeBy: none
+		sourceColumn: telefone
+
+		annotation SummarizationSetBy = Automatic
+
+	column fax
+		dataType: string
+		lineageTag: ab6a1bed-626f-4b6c-9db2-e7d0751bcc24
+		summarizeBy: none
+		sourceColumn: fax
+
+		annotation SummarizationSetBy = Automatic
+
+	column celular
+		dataType: string
+		lineageTag: 7ea0cffa-abf0-4e11-9c2b-a4e90c2ef4f7
+		summarizeBy: none
+		sourceColumn: celular
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_vendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: e76e16ba-6fdc-4397-8f97-ca8a10be74a5
+		summarizeBy: sum
+		sourceColumn: cod_vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_ativo
+		dataType: double
+		lineageTag: c7143d91-eacd-4703-866f-b8bb352489a7
+		summarizeBy: sum
+		sourceColumn: flag_ativo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column historico
+		dataType: string
+		lineageTag: 530a338f-bc8e-4991-a242-6b1686f1f1f7
+		summarizeBy: none
+		sourceColumn: historico
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_cadastro
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3ab77a58-736c-4386-9e4f-b7b4bd4bfe78
+		summarizeBy: none
+		sourceColumn: data_cadastro
+
+		variation Variation
+			isDefault
+			relationship: 24ae4880-9fde-4026-8f12-a96f038123e7
+			defaultHierarchy: LocalDateTable_d1bda748-b1ab-4188-bcf3-98ee831b9c30.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_alteracao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ad334aa6-b5c6-4027-8262-d9854c66a631
+		summarizeBy: none
+		sourceColumn: data_alteracao
+
+		variation Variation
+			isDefault
+			relationship: 8c32507b-a110-4c55-93f8-b53d9a9622b4
+			defaultHierarchy: LocalDateTable_30c8d6d0-5088-42ad-9439-36d19af637fa.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column setor
+		dataType: string
+		lineageTag: 3cb76b6c-190f-42ac-9051-9939c55532e0
+		summarizeBy: none
+		sourceColumn: setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cód + Cliente'
+		dataType: string
+		lineageTag: 5abcc77d-25ef-4874-8ce0-fed47de07897
+		summarizeBy: none
+		sourceColumn: Cód + Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dClientes = m
+		mode: import
+		queryGroup: PESSOAS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"ef9589b0-b641-4a7d-aa71-3aea97f930bd" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="ef9589b0-b641-4a7d-aa71-3aea97f930bd"]}[Data],
+				    dClientes_ = #"ef9589b0-b641-4a7d-aa71-3aea97f930bd"{[entity="dClientes",version=""]}[Data],
+				    #"Linhas Classificadas" = Table.Sort(dClientes_,{{"cod_cliente", Order.Ascending}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Linhas Classificadas", each [data_cadastro] <> null),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Linhas Filtradas", "Cód + Cliente", each Text.Combine({Text.From([cod_cliente], "pt-BR"), [cliente]}, " - "), type text),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Mesclada Inserida",{{"Cód + Cliente", "Cód + Cliente"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

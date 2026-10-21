@@ -1,0 +1,129 @@
+table dPlano_Contas
+	lineageTag: 2f71676f-97c7-40aa-9a6b-45e8bb105d89
+
+	column 'COD_PLANO CONTAS'
+		dataType: int64
+		formatString: 0
+		lineageTag: 48f8758c-81fb-4af7-b4ea-1bfeb80629e6
+		summarizeBy: none
+		sourceColumn: COD_PLANO CONTAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAI_COD_PC
+		dataType: int64
+		formatString: 0
+		lineageTag: 2969b36d-e395-49c0-854d-b0b6a49422ca
+		summarizeBy: sum
+		sourceColumn: PAI_COD_PC
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD_ARVORE
+		dataType: string
+		lineageTag: 98688222-e5b1-4976-ac3c-04ae8034dc34
+		summarizeBy: none
+		sourceColumn: COD_ARVORE
+
+		annotation SummarizationSetBy = Automatic
+
+	column N1
+		dataType: string
+		lineageTag: 4ffb5bd0-42ab-4d1e-a85a-7542571dd5ff
+		summarizeBy: none
+		sourceColumn: N1
+
+		annotation SummarizationSetBy = Automatic
+
+	column N2
+		dataType: string
+		lineageTag: aa3f477f-974d-48da-97f5-3bc8121db591
+		summarizeBy: none
+		sourceColumn: N2
+
+		annotation SummarizationSetBy = Automatic
+
+	column N3
+		dataType: string
+		lineageTag: 287e5253-42d9-4049-bc44-24d01d09fe29
+		summarizeBy: none
+		sourceColumn: N3
+
+		annotation SummarizationSetBy = Automatic
+
+	column NIVEL
+		dataType: int64
+		formatString: 0
+		lineageTag: dc76fe24-fa74-4569-aa67-b56e8c7f6b26
+		summarizeBy: sum
+		sourceColumn: NIVEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column FLAG_GRUPO
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ebdd759-df56-4dfd-996b-9f1b740cb67b
+		summarizeBy: sum
+		sourceColumn: FLAG_GRUPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO_PLANO_CTA
+		dataType: int64
+		formatString: 0
+		lineageTag: 65d7b8b6-456d-4c15-a9ee-06a40f4f4810
+		summarizeBy: sum
+		sourceColumn: TIPO_PLANO_CTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESC_TIPO
+		dataType: string
+		lineageTag: b47fada7-671d-49a1-8344-7d6784c47e04
+		summarizeBy: none
+		sourceColumn: DESC_TIPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column FLAG_ATIVO
+		dataType: int64
+		formatString: 0
+		lineageTag: 24759091-0364-4f09-bb0b-97b8b7fbdbcc
+		summarizeBy: sum
+		sourceColumn: FLAG_ATIVO
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO
+		dataType: string
+		lineageTag: bedb39d7-5aac-49f1-8ef5-1818048f4276
+		summarizeBy: none
+		sourceColumn: TIPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESTINO
+		dataType: string
+		lineageTag: 938bde5f-8c0c-4de4-a8c1-882d4da1373d
+		summarizeBy: none
+		sourceColumn: DESTINO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dPlano_Contas = m
+		mode: import
+		queryGroup: Financeiro
+		source =
+				let
+				    Fonte = PowerBI.Dataflows(null),
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Fonte{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"0efc2f46-894b-4412-8357-a44a3864343e" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="0efc2f46-894b-4412-8357-a44a3864343e"]}[Data],
+				    dPlano_Contas = #"0efc2f46-894b-4412-8357-a44a3864343e"{[entity="dPlano_Contas"]}[Data]
+				in
+				    dPlano_Contas
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

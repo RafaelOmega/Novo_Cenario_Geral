@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "67a76f51276766a8e709",
+  "displayName": "Recebimentos",
+  "displayOption": "FitToWidth",
+  "height": 1320,
+  "width": 2000,
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#000000'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Recebidos.svg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Recebidos18701221619400976.svg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#242A38'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "483b40b2a023b10c77c9",
+      "target": "6d1d141d4546c3c03067",
+      "type": "DataFilter"
+    },
+    {
+      "source": "6d1d141d4546c3c03067",
+      "target": "483b40b2a023b10c77c9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "6d1d141d4546c3c03067",
+      "target": "9ee057430a6d3503026e",
+      "type": "DataFilter"
+    },
+    {
+      "source": "483b40b2a023b10c77c9",
+      "target": "9ee057430a6d3503026e",
+      "type": "DataFilter"
+    },
+    {
+      "source": "9ee057430a6d3503026e",
+      "target": "483b40b2a023b10c77c9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "9ee057430a6d3503026e",
+      "target": "6d1d141d4546c3c03067",
+      "type": "DataFilter"
+    }
+  ]
+}

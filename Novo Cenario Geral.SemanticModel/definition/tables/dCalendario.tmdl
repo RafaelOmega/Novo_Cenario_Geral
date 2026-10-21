@@ -1,0 +1,393 @@
+table dCalendario
+	lineageTag: a3379255-7125-4015-a82d-adc8e1671ae5
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fa98e597-06d7-4634-805f-67e0eb61623b
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: d6c97814-45d7-40da-bc34-d009c253d921
+			defaultHierarchy: LocalDateTable_9595b029-c464-4f34-baca-4db4300e964a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e47cb91-65b4-45a9-8707-7ff8cf036707
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: 60118765-e029-4256-b399-327fb8bb0abb
+		summarizeBy: none
+		sourceColumn: Mes
+		sortByColumn: MesNum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mesab
+		dataType: string
+		lineageTag: dfeb1d35-a1e3-4843-9728-1fdaf87552c5
+		summarizeBy: none
+		sourceColumn: Mesab
+		sortByColumn: MesNum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNum
+		dataType: int64
+		formatString: 0
+		lineageTag: 27dca1b9-94dd-4c33-bf4c-400021f712e8
+		summarizeBy: sum
+		sourceColumn: MesNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoAtual
+		dataType: string
+		lineageTag: 73c4dc38-41e7-431f-8286-5048d74c9638
+		summarizeBy: none
+		sourceColumn: AnoAtual
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAtual
+		dataType: string
+		lineageTag: b96ff707-4b9a-4bad-961a-415784a73536
+		summarizeBy: none
+		sourceColumn: MesAtual
+		sortByColumn: MesNum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column InicioMes
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 163aafdb-f59d-4136-95f4-785331ffb2fb
+		summarizeBy: none
+		sourceColumn: InicioMes
+
+		variation Variation
+			isDefault
+			relationship: e8c44488-d0a8-45c8-8e4c-39c194b9597a
+			defaultHierarchy: LocalDateTable_8ca8fc21-cb38-4521-a3a1-cb0467c1e137.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FinalMes
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d13179d9-6d4b-474c-b05a-586c09f5eac1
+		summarizeBy: none
+		sourceColumn: FinalMes
+
+		variation Variation
+			isDefault
+			relationship: 8d4148a1-e4dc-4987-8df3-d94ff6fccf2f
+			defaultHierarchy: LocalDateTable_c0d9500d-c8d9-4bd5-8400-423b585baafb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MesAno
+		dataType: string
+		lineageTag: 2da5191b-7474-423b-8557-c39190cdee2d
+		summarizeBy: none
+		sourceColumn: MesAno
+		sortByColumn: MesAnoNum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAnoNum
+		dataType: int64
+		formatString: 0
+		lineageTag: e08baae5-aa2c-4116-8180-f062560d65c8
+		summarizeBy: sum
+		sourceColumn: MesAnoNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		dataType: int64
+		formatString: 0
+		lineageTag: 800a1317-08b8-4350-b138-87c4a9e72068
+		summarizeBy: sum
+		sourceColumn: Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaNum
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f5bb9d4-cd1f-4110-a033-7643bbe8a3e7
+		summarizeBy: sum
+		sourceColumn: SemanaNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column InicioSemana
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3441cf32-fc18-4aef-a046-01fbe2b07f11
+		summarizeBy: none
+		sourceColumn: InicioSemana
+
+		variation Variation
+			isDefault
+			relationship: 26d1dd14-0e89-4387-895b-49fdf261b88a
+			defaultHierarchy: LocalDateTable_5a59152a-2e23-404b-b445-8599460d9d81.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FinalSemana
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 59f1773d-4a39-4a12-a1b6-ca5f2e8e304f
+		summarizeBy: none
+		sourceColumn: FinalSemana
+
+		variation Variation
+			isDefault
+			relationship: 5f95c65a-6ed6-4bd8-9620-e8d65a5a0429
+			defaultHierarchy: LocalDateTable_fe3c6a4c-9707-4db0-9aac-73954dcbf3de.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SemanaAno
+		dataType: string
+		lineageTag: 287dd023-650e-43e6-a36f-ce57355132df
+		summarizeBy: none
+		sourceColumn: SemanaAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaAnoNum
+		dataType: int64
+		formatString: 0
+		lineageTag: d414a3d9-fbe9-4c3e-aa9d-9c609283acbf
+		summarizeBy: sum
+		sourceColumn: SemanaAnoNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		dataType: string
+		lineageTag: 13a6f132-1f9b-41a3-8927-088eecbfb674
+		summarizeBy: none
+		sourceColumn: DiaSemana
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaAb
+		dataType: string
+		lineageTag: 7905ea56-1fb5-43d6-b57b-c69f4a8eccb3
+		summarizeBy: none
+		sourceColumn: DiaSemanaAb
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNum
+		dataType: int64
+		formatString: 0
+		lineageTag: ce008f23-21c2-4488-aa4a-25c4730d7293
+		summarizeBy: sum
+		sourceColumn: DiaSemanaNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrimestreNum
+		dataType: int64
+		formatString: 0
+		lineageTag: f9a6e5da-ccf9-4e41-b711-39bead15b9ed
+		summarizeBy: sum
+		sourceColumn: TrimestreNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: string
+		lineageTag: 38c2cf37-3224-4609-8a63-57fe67b3d0de
+		summarizeBy: none
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrimestreAno
+		dataType: string
+		lineageTag: eca0a74e-9c2e-4eca-85eb-8e888cc8b1be
+		summarizeBy: none
+		sourceColumn: TrimestreAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrimestreAnoNum
+		dataType: int64
+		formatString: 0
+		lineageTag: 41271a6f-f8e9-48b0-81a4-84ab33152208
+		summarizeBy: sum
+		sourceColumn: TrimestreAnoNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semestre
+		dataType: string
+		lineageTag: 8c8cb9d8-1dba-434b-91bf-bb86d9753fd6
+		summarizeBy: none
+		sourceColumn: Semestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemestreNum
+		dataType: int64
+		formatString: 0
+		lineageTag: f1b03d94-ce46-4eb2-8b1d-8c4430fd4ff4
+		summarizeBy: sum
+		sourceColumn: SemestreNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemestreAno
+		dataType: string
+		lineageTag: f0a56864-061c-4ea4-9cbe-b181a58a51fd
+		summarizeBy: none
+		sourceColumn: SemestreAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemestreAnoNum
+		dataType: int64
+		formatString: 0
+		lineageTag: beec7dbe-8e00-4c59-a62e-9201c1d2d821
+		summarizeBy: sum
+		sourceColumn: SemestreAnoNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaNumAno
+		dataType: int64
+		formatString: 0
+		lineageTag: c0d0385c-219a-4536-9ad9-ed1dd9e18dba
+		summarizeBy: sum
+		sourceColumn: SemanaNumAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaMesNum
+		dataType: int64
+		formatString: 0
+		lineageTag: ddfc49e3-59c6-4461-9eff-feccaec6e8dd
+		summarizeBy: sum
+		sourceColumn: SemanaMesNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaMesAno
+		dataType: int64
+		formatString: 0
+		lineageTag: 6af86f5e-2b38-4c76-a29a-bbadeae460a7
+		summarizeBy: sum
+		sourceColumn: SemanaMesAno
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = m
+		mode: import
+		source = ```
+				let
+				    // Definir datas inicial e final
+				    StartDate = #date(Ano_Inicial, 01, 01),
+				    EndDate = #date(Date.Year(DateTime.LocalNow()) + 1, 12, 31),
+				    DayCount = Duration.Days(Duration.From(EndDate - StartDate)) + 1, 
+				    ListDates = List.Dates(StartDate, DayCount, #duration(1,0,0,0)),
+				    
+				    // Criar tabela a partir da lista de datas
+				    TableFromList = Table.FromList(ListDates, Splitter.SplitByNothing()),
+				    ChangedType = Table.TransformColumnTypes(TableFromList,{{"Column1", type date}}),
+				    RenamedColumns = Table.RenameColumns(ChangedType,{{"Column1", "Data"}}),
+				    
+				    // Colunas base
+				    Ano = Table.AddColumn(RenamedColumns, "Ano", each Date.Year([Data]), Int64.Type),
+				    Mes = Table.AddColumn(Ano, "Mes", each Date.MonthName([Data]), type text),
+				    #"Mes Abreviado" = Table.AddColumn(Mes, "Mesab", each Text.Start([Mes], 3), type text),
+				    #"Numero do Mes" = Table.AddColumn(#"Mes Abreviado", "MesNum", each Date.Month([Data]), Int64.Type),
+				    
+				    // Colunas de AnoAtual e MesAtual usando data atual do sistema
+				    DataAtual = DateTime.Date(DateTime.LocalNow()),
+				    AnoAtual = Table.AddColumn(#"Numero do Mes", "AnoAtual", 
+				        each if Date.Year([Data]) = Date.Year(DataAtual) 
+				             then "Ano Atual" 
+				             else Text.From(Date.Year([Data]))),
+				    
+				    MesAtual = Table.AddColumn(AnoAtual, "MesAtual",
+				        each if Date.Year([Data]) = Date.Year(DataAtual) and Date.Month([Data]) = Date.Month(DataAtual)
+				             then "Mês Atual"
+				             else Text.Proper(Date.MonthName([Data]))),
+				    
+				    // Continuação das colunas originais
+				    #"Inicio do Mes" = Table.AddColumn(MesAtual, "InicioMes", each Date.StartOfMonth([Data]), type date),
+				    #"Final do Mes" = Table.AddColumn(#"Inicio do Mes", "FinalMes", each Date.EndOfMonth([Data]), type date),
+				    #"Mes do Ano" = Table.AddColumn(#"Final do Mes", "MesAno", each [Mesab] & "/" & Text.From([Ano]), type text),
+				    MesAnoNum = Table.AddColumn(#"Mes do Ano", "MesAnoNum", each [Ano] * 100 + [MesNum], Int64.Type),
+				    Dia = Table.AddColumn(MesAnoNum, "Dia", each Date.Day([Data]), Int64.Type),
+				    SemanaNum = Table.AddColumn(Dia, "SemanaNum", each Date.WeekOfYear([Data]), Int64.Type),
+				    #"Inicio Semana" = Table.AddColumn(SemanaNum, "InicioSemana", each Date.StartOfWeek([Data]), type date),
+				    #"Final Semana" = Table.AddColumn(#"Inicio Semana", "FinalSemana", each Date.EndOfWeek([Data]), type date),
+				    SemanaAno = Table.AddColumn(#"Final Semana", "SemanaAno", each "S" &
+				        Text.PadStart(Text.From([SemanaNum]), 2, "0") & "/" & Text.From([Ano]), type text),
+				    SemanaAnoNum = Table.AddColumn(SemanaAno, "SemanaAnoNum", each [Ano] * 100 + [SemanaNum], Int64.Type),
+				    DiaSemana = Table.AddColumn(SemanaAnoNum, "DiaSemana", each Date.DayOfWeekName([Data]), type text),
+				    DiaSemanaAb = Table.AddColumn(DiaSemana, "DiaSemanaAb", each Text.Start([DiaSemana], 3), type text),
+				    DiaSemanaNum = Table.AddColumn(DiaSemanaAb, "DiaSemanaNum", each Date.DayOfWeek([Data]), Int64.Type),
+				    TrimestreNum = Table.AddColumn(DiaSemanaNum, "TrimestreNum", each Date.QuarterOfYear([Data]), Int64.Type),
+				    Trimestre = Table.AddColumn(TrimestreNum, "Trimestre", each "T" & Text.From([TrimestreNum]), type text),
+				    TrimestreAno = Table.AddColumn(Trimestre, "TrimestreAno", each [Trimestre] & "/" & Text.From([Ano]), type text),
+				    TrimestreAnoNum = Table.AddColumn(TrimestreAno, "TrimestreAnoNum", each [Ano] * 10 + [TrimestreNum], Int64.Type),
+				    Semestre = Table.AddColumn(TrimestreAnoNum, "Semestre", 
+				        each if [MesNum] >= 1 and [MesNum] <= 6 then "Semestre1" else "Semestre2", type text),
+				    SemestreNum = Table.AddColumn(Semestre, "SemestreNum",
+				        each if [MesNum] >= 1 and [MesNum] <= 6 then 1 else 2, Int64.Type),
+				    SemestreAno = Table.AddColumn(SemestreNum, "SemestreAno", 
+				        each "Sem" & Text.From([SemestreNum]) & "/" & Text.From([Ano]), type text),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(SemestreAno,{{"SemestreNum", Int64.Type}}),
+				    SemestreAnoNum = Table.AddColumn(#"Tipo Alterado", "SemestreAnoNum", each [Ano] * 100 + [SemestreNum], Int64.Type),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(SemestreAnoNum, "SemanaNumAno", 
+				        each Text.Combine({Text.From([SemanaNum], "pt-BR"), Text.From([Ano], "pt-BR")}, ""), Int64.Type),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Coluna Mesclada Inserida",{{"SemanaNumAno", Int64.Type}}),
+				    #"Semana do Mês Inserida" = Table.AddColumn(#"Tipo Alterado1", "Semana do Mês", each Date.WeekOfMonth([Data]), Int64.Type),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Semana do Mês Inserida",{{"Semana do Mês", "SemanaMesNum"}}),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Colunas Renomeadas", "SemanaMesAno", 
+				        each Text.Combine({Text.From([Ano], "pt-BR"), Text.From([MesNum], "pt-BR"), Text.From([SemanaMesNum], "pt-BR")}, ""), type text),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Coluna Mesclada Inserida1",{{"SemanaMesAno", Int64.Type}, {"AnoAtual", type text}, {"MesAtual", type text}})
+				in
+				    #"Tipo Alterado2"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

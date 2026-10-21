@@ -1,0 +1,103 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup VENDAS
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup PRODUTOS
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup PESSOAS
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Financeiro
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["fVendas","fDevolucoes","fVendas_Canceladas","dProdutos_Vendidos","dProdutos","dClientes","dVendedores","fRecebidos","fPagos","dPlano_Contas","dGrupo_Centro_Custos","fOperadoras","Ano_Inicial","dCalendario","fNotas_Fiscais_Saida","dForma_Pgto","dNum_Vendas","fEntregas","fA_Receber","fA_Pagar","dFornecedor","fEstoque"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fVendas
+ref table DateTableTemplate_8c4fb55d-1439-4d5a-81d7-0049cef302fc
+ref table fDevolucoes
+ref table fVendas_Canceladas
+ref table LocalDateTable_f5f3f958-98b4-4e7d-b5a1-0f3bd99d59ae
+ref table dProdutos
+ref table LocalDateTable_c17a2f11-980b-494b-a4cb-3335edec25fb
+ref table dClientes
+ref table LocalDateTable_d1bda748-b1ab-4188-bcf3-98ee831b9c30
+ref table LocalDateTable_30c8d6d0-5088-42ad-9439-36d19af637fa
+ref table dVendedores
+ref table LocalDateTable_adad0e53-5bd8-4ee4-8a2b-d5072b235739
+ref table LocalDateTable_f1358c46-0f52-4d37-9fc4-bc55d54976b2
+ref table fRecebidos
+ref table LocalDateTable_68e989da-5cf6-4320-a62f-38bdbc9b4d80
+ref table LocalDateTable_282d4b96-f037-48ae-9531-80783b5b488f
+ref table LocalDateTable_ef01cf39-43e9-46e9-b7f3-9d56d924057e
+ref table LocalDateTable_20212259-7e85-4692-b46f-77472a69e50e
+ref table LocalDateTable_79eeccd6-0e1f-4a5f-94dc-b08614bc8e95
+ref table fPagos
+ref table LocalDateTable_ab6756b3-61c0-4840-a3a9-f7951ae6e1d8
+ref table LocalDateTable_66241a86-abd2-4f88-a33b-1ffd95a8cda4
+ref table dPlano_Contas
+ref table dGrupo_Centro_Custos
+ref table fOperadoras
+ref table LocalDateTable_242bbf38-f542-4d77-851f-53be88b1ad6f
+ref table dCalendario
+ref table LocalDateTable_9595b029-c464-4f34-baca-4db4300e964a
+ref table LocalDateTable_8ca8fc21-cb38-4521-a3a1-cb0467c1e137
+ref table LocalDateTable_c0d9500d-c8d9-4bd5-8400-423b585baafb
+ref table LocalDateTable_5a59152a-2e23-404b-b445-8599460d9d81
+ref table LocalDateTable_fe3c6a4c-9707-4db0-9aac-73954dcbf3de
+ref table Medidas
+ref table fNotas_Fiscais_Saida
+ref table LocalDateTable_9def1e1d-da8e-49bb-a5d5-b9c75d78802f
+ref table LocalDateTable_dcb873c8-ff28-4df4-bac6-c71f77139ce7
+ref table dForma_Pgto
+ref table LocalDateTable_c37cf4a7-6e19-4f57-85d1-f60c8aa52f89
+ref table dNum_Vendas
+ref table fEntregas
+ref table fA_Receber
+ref table LocalDateTable_8ba6aef7-94bb-4a93-856e-7ae0b081498f
+ref table LocalDateTable_df506ad3-585d-491a-b73f-1cbd89cbd0b4
+ref table LocalDateTable_a0dcf7a0-4ddd-4f62-ae3a-8e22c8d7e3e4
+ref table fA_Pagar
+ref table LocalDateTable_1d8e0388-000c-49de-a8de-b680d057ae9a
+ref table dFornecedor
+ref table LocalDateTable_97cfb1b1-ef37-4c4b-aa63-fc4b0f621166
+ref table LocalDateTable_df91f757-eb2b-4d74-862d-bee7730b0324
+ref table dCalendarioA
+ref table LocalDateTable_e537bcd0-174e-4e05-a546-43156327763d
+ref table LocalDateTable_28fa943c-5b80-4f30-9da3-623dc57a6032
+ref table LocalDateTable_98fe56af-8af9-4bc2-83cd-639bad45d329
+ref table LocalDateTable_3d7a7947-fac7-4ce7-afe3-d27e8adf752d
+ref table LocalDateTable_22342f63-1b65-44c4-a51f-4d9a17437b51
+ref table dCalendarioB
+ref table LocalDateTable_45d49f86-4729-47e5-a1f8-8724087cd692
+ref table LocalDateTable_58cea556-82b7-41e1-99dd-2e2a82c21959
+ref table LocalDateTable_d67eafca-c3d4-41c0-bf57-bf81362647d4
+ref table LocalDateTable_79baf2f6-9ba8-4f4b-90cf-a965608c1637
+ref table LocalDateTable_a107a86e-f9ca-460e-9de4-e063563923b6
+ref table Medidas_Comp
+ref table fEstoque
+ref table dCalendarioAux
+ref table LocalDateTable_609e6af5-d100-47e3-9e9c-5e1f9c19041b
+ref table LocalDateTable_e29fc9cd-0cff-4bee-9237-a8a9cfd7d0fc
+ref table LocalDateTable_da86cd4e-5b40-4cdc-9b7b-7ff2ab6389a8
+ref table LocalDateTable_84347ced-a605-4803-8e24-410f47775538
+ref table LocalDateTable_1692f10e-6c1c-470b-a253-f2b4919fac02
+ref table LocalDateTable_f36f27a0-3bb2-4ef4-8422-f2c55dc11d7e
+
+ref cultureInfo pt-BR
+

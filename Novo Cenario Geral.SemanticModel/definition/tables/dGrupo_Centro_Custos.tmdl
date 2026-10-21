@@ -1,0 +1,44 @@
+table dGrupo_Centro_Custos
+	lineageTag: ffae24cc-387c-46a8-b033-a92c1ef77b68
+
+	column GRUPO
+		dataType: string
+		lineageTag: 897e1169-0d4c-4d6f-8f3e-e95ae8d62f56
+		summarizeBy: none
+		sourceColumn: GRUPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a9254c9-830c-4c5b-a907-cb6715218159
+		summarizeBy: none
+		sourceColumn: COD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CENTRO CUSTO'
+		dataType: string
+		lineageTag: 481b5351-7c98-4eca-be87-03de3faade06
+		summarizeBy: none
+		sourceColumn: CENTRO CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dGrupo_Centro_Custos = m
+		mode: import
+		queryGroup: Financeiro
+		source =
+				let
+				    Fonte = PowerBI.Dataflows(null),
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Fonte{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"0efc2f46-894b-4412-8357-a44a3864343e" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="0efc2f46-894b-4412-8357-a44a3864343e"]}[Data],
+				    dCentro_Custo = #"0efc2f46-894b-4412-8357-a44a3864343e"{[entity="dCentro_Custo"]}[Data]
+				in
+				    dCentro_Custo
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

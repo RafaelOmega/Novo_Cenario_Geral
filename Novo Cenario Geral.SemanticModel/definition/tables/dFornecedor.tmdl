@@ -1,0 +1,223 @@
+table dFornecedor
+	lineageTag: 4e9cdc4c-4569-4158-bbef-7edab43e5832
+
+	column cod_fornecedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 2451b37f-9ae8-482a-a364-2e045185063a
+		summarizeBy: none
+		sourceColumn: cod_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column fornecedor
+		dataType: string
+		lineageTag: 5a6bb081-9cd4-4a8b-bb0f-54b5b9491b45
+		summarizeBy: none
+		sourceColumn: fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cnpj_cpf
+		dataType: string
+		lineageTag: 75067a19-87b4-46e8-a3ff-9644a9515a4e
+		summarizeBy: none
+		sourceColumn: cnpj_cpf
+
+		annotation SummarizationSetBy = Automatic
+
+	column inscr_estadual
+		dataType: string
+		lineageTag: 9fe985ce-1264-4d16-a272-a835a385f9d7
+		summarizeBy: none
+		sourceColumn: inscr_estadual
+
+		annotation SummarizationSetBy = Automatic
+
+	column rg
+		dataType: string
+		lineageTag: 7d9d3a63-a1b5-4aaa-9b86-d0b8b98b27f9
+		summarizeBy: none
+		sourceColumn: rg
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: 02007838-2a36-427d-95a5-845e18fc861e
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column endereco
+		dataType: string
+		lineageTag: 6fac41b8-2cb4-4bdb-aeda-67f01af53ca0
+		summarizeBy: none
+		sourceColumn: endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero
+		dataType: string
+		lineageTag: 1c8fb2ca-c977-44b6-82f5-fd1d6fc36746
+		summarizeBy: none
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	column complemento
+		dataType: string
+		lineageTag: 41f76d3b-ed94-4865-b06f-aca2d7f0e9dd
+		summarizeBy: none
+		sourceColumn: complemento
+
+		annotation SummarizationSetBy = Automatic
+
+	column bairro
+		dataType: string
+		lineageTag: 1c1f121b-ea15-4be6-af09-953fe6e69c5c
+		summarizeBy: none
+		sourceColumn: bairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column cep
+		dataType: string
+		lineageTag: e6993dee-c76d-489c-99d5-3ae529d7f01e
+		summarizeBy: none
+		sourceColumn: cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_munic
+		dataType: string
+		lineageTag: 8ae174c5-eef5-42d0-b31e-670149d4a680
+		summarizeBy: none
+		sourceColumn: cod_munic
+
+		annotation SummarizationSetBy = Automatic
+
+	column municipio
+		dataType: string
+		lineageTag: 5319ebdf-9804-4843-b01f-7fe6867cb436
+		summarizeBy: none
+		sourceColumn: municipio
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf
+		dataType: string
+		lineageTag: 2fb63da2-0374-40e8-9727-db15fc985599
+		summarizeBy: none
+		sourceColumn: uf
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		lineageTag: 520b7aa8-9bfd-4ada-b66d-33712d3b361b
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column telefone
+		dataType: string
+		lineageTag: bbfc1c4b-2ece-4d36-9198-ea5595817154
+		summarizeBy: none
+		sourceColumn: telefone
+
+		annotation SummarizationSetBy = Automatic
+
+	column fax
+		dataType: string
+		lineageTag: 0f04407d-3d41-4b51-8697-52df9b99f2a5
+		summarizeBy: none
+		sourceColumn: fax
+
+		annotation SummarizationSetBy = Automatic
+
+	column celular
+		dataType: string
+		lineageTag: 6f406368-72b7-45a7-938e-576886d8fb10
+		summarizeBy: none
+		sourceColumn: celular
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_ativo
+		dataType: int64
+		formatString: 0
+		lineageTag: ff6cc9a0-91a4-4e5b-a5c1-1415d0094d73
+		summarizeBy: sum
+		sourceColumn: flag_ativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column historico
+		dataType: string
+		lineageTag: 2521a660-b7d1-4de8-b6b5-97550b3d9da9
+		summarizeBy: none
+		sourceColumn: historico
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_cadastro
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 76950b65-1a0c-4d89-96b5-28f4c93235c7
+		summarizeBy: none
+		sourceColumn: data_cadastro
+
+		variation Variation
+			isDefault
+			relationship: bc434a28-eaa5-4589-afb5-57d630ea1d9b
+			defaultHierarchy: LocalDateTable_97cfb1b1-ef37-4c4b-aa63-fc4b0f621166.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_alteracao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1e6072e5-bb43-4520-b8ad-1bc4c30cf260
+		summarizeBy: none
+		sourceColumn: data_alteracao
+
+		variation Variation
+			isDefault
+			relationship: ea858bf9-4543-4baa-9d96-344f57f1bf81
+			defaultHierarchy: LocalDateTable_df91f757-eb2b-4d74-862d-bee7730b0324.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Cod + Fornecedor'
+		dataType: string
+		lineageTag: 880fa513-6ff8-4d62-93a3-b5342ce1b0d5
+		summarizeBy: none
+		sourceColumn: Cod + Fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dFornecedor = m
+		mode: import
+		queryGroup: PESSOAS
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"ef9589b0-b641-4a7d-aa71-3aea97f930bd" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="ef9589b0-b641-4a7d-aa71-3aea97f930bd"]}[Data],
+				    dFornecedor_ = #"ef9589b0-b641-4a7d-aa71-3aea97f930bd"{[entity="dFornecedor",version=""]}[Data],
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(dFornecedor_, "Cod + Fornecedor", each Text.Combine({Text.From([cod_fornecedor], "pt-BR"), [fornecedor]}, " - "), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

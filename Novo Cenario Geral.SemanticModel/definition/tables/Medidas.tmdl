@@ -1,0 +1,2800 @@
+table Medidas
+	lineageTag: dd56f280-c864-489f-b724-b4f3860525a2
+
+	measure Faturamento =
+			
+			SUMX(
+			    fVendas,
+			    fVendas[vr_liquido_final]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 1497727f-f36f-4d77-9ea7-3735de4c4750
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Qtde =
+			
+			SUMX(
+			    fVendas,
+			    fVendas[qtd_liquida]
+			)
+		formatString: #,0.00
+		displayFolder: 1 - Vendas\Qtde
+		lineageTag: 076cb194-6ad7-4acb-b4bf-a6c8561bdcdb
+
+	measure Custo =
+			
+			CALCULATE(
+			    SUMX(
+			        fVendas,
+			        fVendas[preco_custo] * fVendas[qtd_liquida]
+			    )
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: 3f579ef0-61e9-45d1-8768-8369a3f0636b
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Margem Bruta' = [Faturamento] - [Custo]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: 7322b25c-f759-476a-a419-2a39b702036d
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Faturamento LY' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: f0d59bfd-c51a-409a-8958-48c81a628ee1
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Custo LY' =
+			
+			CALCULATE(
+			    [Custo],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: d22d4000-0365-4765-a631-b6036d388c80
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Faturamento Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Faturamento],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 9fb05297-3a58-47ac-9e80-d168f871dc79
+
+	measure 'Faturamento Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Faturamento]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 6d9c63a5-c298-4fb9-abbe-f7524c541726
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Faturamento % Cresc' = DIVIDE([Faturamento] - [Faturamento LY], [Faturamento LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: b0d8dc58-2e21-4cd4-a6a4-11fcfd3d5323
+
+	measure 'Faturamento Format. Cond. Cresc' =
+			
+			IF(
+			    [Faturamento % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 277ec7b5-83e4-442a-9f1f-9266d3dee1a1
+
+	measure 'Faturamento Rotulo LY' =
+			
+			VAR vValor = [Faturamento]
+			VAR vDeslocamento = [Faturamento Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 00222b31-f934-4e51-a2c9-387c5018f635
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [Faturamento % Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure 'Custo % Cresc' = DIVIDE([Custo] - [Custo LY], [Custo LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: d639a6eb-b234-45b9-a1b2-398e97cd0cbe
+
+	measure 'Custo Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Custo],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: 294bc513-e3b8-4eae-aaa5-e929566b4504
+
+	measure 'Custo Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Custo]
+			    )
+			VAR vDeslocamento = 1.40
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: f67a8f1b-b98e-4486-a21a-f5b879151a1e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Custo Format. Cond. Cresc' =
+			
+			IF(
+			    [Custo % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: 89f72ec7-2097-4149-aab6-8c4fadc44ec0
+
+	measure 'Custo Rotulo LY' =
+			
+			VAR vValor = [Custo]
+			VAR vDeslocamento = [Custo Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: c9c93c47-8683-4166-8ed3-6c6f68eac613
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [Custo % Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure 'Margem Bruta LY' =
+			
+			CALCULATE(
+			    [Margem Bruta],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: 81e968a2-eae1-44e7-8a42-9b2c0a4f8d16
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Margem Bruta % Cresc' = DIVIDE([Margem Bruta] - [Margem Bruta LY], [Margem Bruta LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: c66cae42-6d1c-4fb2-9d11-fb95fd2287b3
+
+	measure 'Margem Bruta Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Margem Bruta],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: aae60e64-c574-4337-b0f2-6359d4eb6205
+
+	measure 'Margem Bruta Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Margem Bruta]
+			    )
+			VAR vDeslocamento = 1.40
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: 702fd342-4571-46ce-bdec-866a498bdc15
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Margem Bruta Format. Cond. Cresc' =
+			
+			IF(
+			    [Margem Bruta % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: d8df994b-0139-4881-b775-a8b7049a80d1
+
+	measure 'Margem Bruta Rotulo LY' =
+			
+			VAR vValor = [Margem Bruta]
+			VAR vDeslocamento = [Margem Bruta Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: daf76cd1-ee5c-4003-b61c-36b4771be2de
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [Margem Bruta % Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure 'Qtde Vendas' =
+			
+			DISTINCTCOUNT(fVendas[cod_venda])
+		formatString: #,0
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: 4533b599-0186-4a36-86fb-7f8ef587ff03
+
+	measure 'Qtde Vendas LY' =
+			
+			CALCULATE(
+			    [Qtde Vendas],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: #,0
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: bf9b3d14-10ee-41a0-82f1-e673bfdcdf9f
+
+	measure 'Qtde Vendas % Cresc' = DIVIDE([Qtde Vendas] - [Qtde Vendas LY], [Qtde Vendas LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: 9d3588ab-348e-4a39-8a9c-1ff660b96dff
+
+	measure 'Qtde Vendas Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Qtde Vendas],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: adf70886-8136-4258-8547-beb054238979
+
+	measure 'Qtde Vendas Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Qtde Vendas]
+			    )
+			VAR vDeslocamento = 1.40
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: 018f918a-d740-45d1-ac40-88d78e47f522
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Qtde Vendas Format. Cond. Cresc' =
+			
+			IF(
+			    [Qtde Vendas % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: 15ff58ae-6bec-4c80-85e3-c4527d497e37
+
+	measure 'Qtde Vendas Rotulo LY' =
+			
+			VAR vValor = [Qtde Vendas]
+			VAR vDeslocamento = [Qtde Vendas Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: 56cb64ef-ed09-4461-8b73-77e4cf6aa7ca
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [Qtde Vendas % Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure 'Ticket Médio' = ```
+			
+			DIVIDE(
+			    [Faturamento], 
+			    [Qtde Vendas]
+			)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: da3f0cbd-1a20-4f8f-88ea-177bf1d44b2a
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Ticket Médio LY' =
+			
+			CALCULATE(
+			    [Ticket Médio],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: 8c961d4e-c7b0-4ceb-b9fa-f6760b4c93f9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Ticket Médio % Cresc' = DIVIDE([Ticket Médio] - [Ticket Médio LY], [Ticket Médio LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: 1f3b68d5-9a0d-4bee-a717-bf1dbdc04937
+
+	measure 'Ticket Médio Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Ticket Médio],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: de5acf8b-f723-4cd3-94f4-fae8e46fe64d
+
+	measure 'Ticket Médio Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Ticket Médio]
+			    )
+			VAR vDeslocamento = 1.40
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: 5de6015f-fd0b-4640-b348-1877b6b52150
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Ticket Médio Format. Cond. Cresc' =
+			
+			IF(
+			    [Ticket Médio % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: f78349b1-1c56-4776-98d1-bf794f5ecc97
+
+	measure 'Ticket Médio Rotulo LY' =
+			
+			VAR vValor = [Ticket Médio]
+			VAR vDeslocamento = [Ticket Médio Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: 53a50c97-bc03-42b6-b3e9-dba86b1253b0
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [Ticket Médio % Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure 'Fatura Total' = ```
+			
+			CALCULATE(
+			    [Faturamento], 
+			    ALLSELECTED(fVendas)
+			)
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: becc9e50-ec3f-4463-ab5f-adba87d11397
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Fatura Total' = DIVIDE([Faturamento], [Fatura Total],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 923fd93b-286e-44b2-8b33-4599f409d831
+
+	measure Recebidos =
+			
+			SUMX(
+			    fRecebidos,
+			    fRecebidos[liquido_rateado]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Valores
+		lineageTag: 02c8407f-6e8e-44f7-af29-29a58c1fa19e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Recebidos Total' = ```
+			
+			CALCULATE(
+			    [Recebidos], 
+			    ALLSELECTED(fRecebidos)
+			)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Valores
+		lineageTag: 5af07327-f0f0-43ac-98ba-7ea7b0d8635a
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Recebidos Total' = DIVIDE([Recebidos], [Recebidos Total],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: 247b7ed4-f03b-462f-906f-4619a09eb54f
+
+	measure 'Recebidos LY' =
+			
+			CALCULATE(
+			    [Recebidos],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\Recebidos\Valores
+		lineageTag: 3d50f399-5b26-4c99-8522-f267f5d56a4e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Recebidos Cresc' = DIVIDE([Recebidos] - [Recebidos LY], [Recebidos LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: 243af580-1266-4098-8a78-fbe885872bce
+
+	measure 'Recebidos Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Recebidos]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\Recebidos\Formatação
+		lineageTag: 5ca89d7d-fe7b-49d7-a259-228c10bac5f3
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Recebidos Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Recebidos],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Recebidos\Formatação
+		lineageTag: 79b1c0d1-b6a1-464d-a7c7-cfe3d7d3ea8f
+
+	measure 'Recebidos Format. Cond. Cresc' =
+			
+			IF(
+			    [% Recebidos Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Recebidos\Formatação
+		lineageTag: 8d958143-5dcd-464d-9c43-2a331bae7a6a
+
+	measure 'Recebidos Rotulo LY' =
+			
+			VAR vValor = [Recebidos]
+			VAR vDeslocamento = [Recebidos Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 2 - Financeiro\Recebidos\Formatação
+		lineageTag: d0c6cc2d-1cc2-4eb9-b429-2f6c23d66f8e
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [% Recebidos Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure Pagos =
+			
+			SUMX(
+			    fPagos,
+			    fPagos[vr_liquido_rateio]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: 62d3d569-5bbe-4c6a-a315-e7f05d5270af
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Pagos Total (texto)' = ```
+			
+			VAR vPerc_Total = 
+			DIVIDE([Pagos], [Pagos Total],0)
+			RETURN
+			FORMAT(vPerc_Total, "0.00% do Total")
+			```
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: 80ed7265-6b21-4750-b281-b90aa9bd3be5
+
+	measure 'Pagos Total' = ```
+			
+			CALCULATE(
+			    [Pagos], 
+			    ALLSELECTED(fPagos)
+			)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: ef78de2f-78de-417c-85fb-9b25916b6f8a
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Pagos LY' =
+			
+			CALCULATE(
+			    [Pagos],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: 90d6b2ed-6d18-4b9b-a6ac-fcf0b81edab6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Pagos % Cresc' = DIVIDE([Pagos] - [Pagos LY], [Pagos LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: 723db752-067d-47a0-ab5e-c787452102c9
+
+	measure 'Pagos Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Pagos],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: 15d5e7e1-fb7e-45fb-b70e-5a721471cdd0
+
+	measure 'Pagos Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Pagos]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: d390aafd-8f39-4895-8cf4-9d60d905722b
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Pagos Format. Cond. Cresc' =
+			
+			IF(
+			    [Pagos % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: c0486e22-4a66-491d-8486-b4145e0dac7d
+
+	measure 'Pagos Rotulo LY' =
+			
+			VAR vValor = [Pagos]
+			VAR vDeslocamento = [Pagos Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: 5e6a20a8-a4ca-4c02-a23b-fcb219b8ec35
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [Pagos % Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure 'Saldo Financeiro Realizado' = [Recebidos] - [Pagos]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Saldo Realizado
+		lineageTag: 121abd94-f783-4b46-9c94-c65ff9d2ab89
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'R$ Faturamento AA' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    DATEADD(dCalendario[Data], -1, YEAR)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Faturamento\Tempo
+		lineageTag: d03eee80-dd21-4d43-87fa-7576a5ed7c43
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Faturamento AA' = DIVIDE([Faturamento] - [R$ Faturamento AA], [R$ Faturamento AA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Faturamento\Tempo
+		lineageTag: a792601e-072d-44dc-8e0d-8547bd89a9c9
+
+	measure 'R$ Faturamento MA' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    DATEADD(dCalendario[Data], -1, MONTH)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Faturamento\Tempo
+		lineageTag: 5205d45d-31f5-49b0-9c88-d4a1a81eefb8
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Faturamento MA' = DIVIDE([Faturamento] - [R$ Faturamento MA], [R$ Faturamento MA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Faturamento\Tempo
+		lineageTag: 0783af9d-b64b-467d-89cd-ec7f3c1ea5a2
+
+	measure 'R$ Faturamento SA' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    DATEADD(dCalendario[Data], -7, DAY)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Faturamento\Tempo
+		lineageTag: 3a6ef235-9f92-4c10-94b3-44a00026abbc
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Faturamento SA' = DIVIDE([Faturamento] - [R$ Faturamento SA], [R$ Faturamento SA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Faturamento\Tempo
+		lineageTag: e481949c-a449-47d6-8b9d-29a173a207e4
+
+	measure 'Faturamento PA R$' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISINSCOPE(dCalendario[Ano]), [R$ Faturamento AA],
+			    ISINSCOPE(dCalendario[MesAno]), [R$ Faturamento MA],
+			    ISINSCOPE(dCalendario[SemanaMesAno]), [R$ Faturamento SA],
+			    BLANK()
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 37b3963f-e06a-4c11-b337-1b39c8fdb8eb
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Faturamento PA %' =
+			
+			// SWITCH(
+			//     TRUE();
+			//     ISINSCOPE(dCalendario[Ano]); [Faturamento AA %];
+			//     ISINSCOPE(dCalendario[MesAno]); [Faturamento MA %];
+			//     ISINSCOPE(dCalendario[SemanaMesAno]); [Faturamento SA %];
+			//     BLANK()
+			// )
+			VAR Nivel =
+			    SWITCH(
+			        TRUE(),
+			        ISINSCOPE(dCalendario[SemanaMesAno]), "Semana",
+			        ISINSCOPE(dCalendario[MesAno]), "Mes",
+			        ISINSCOPE(dCalendario[Ano]), "Ano",
+			        "Total"
+			    )
+			RETURN
+			SWITCH(
+			    Nivel,
+			    "Semana", [% Faturamento SA],
+			    "Mes", [% Faturamento MA],
+			    "Ano", [% Faturamento AA],
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: d9a101a7-8aa8-47c9-aaa9-6d1333cbd6c1
+
+	measure '% Faturamento YoY (texto)' = FORMAT([Faturamento % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 28bb7ce1-7625-4eb7-a21e-a84091e4915e
+
+	measure '% Custo YoY (texto)' = FORMAT([Custo % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: 1f5accdb-7d51-493b-b372-175cd805cd9c
+
+	measure '% Margem Bruta YoY (texto)' = FORMAT([Margem Bruta % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: f74f8f90-9e11-4920-a85b-9885731cbfdd
+
+	measure '% Qtde Vendas YoY (texto)' = FORMAT([Qtde Vendas % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 1 - Vendas\Qtde Vendas
+		lineageTag: ee7842b0-bbc5-42f9-804b-a92bf99f7a19
+
+	measure '% Ticket Médio YoY (texto)' = FORMAT([Ticket Médio % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 1 - Vendas\Ticket Médio
+		lineageTag: 96780db5-9725-4ad2-b8fc-c81d6bdacf00
+
+	measure 'Comissão sobre Produto' = SELECTEDVALUE(dProdutos[PERC_COMISSAO_PRAZO])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Base
+		lineageTag: d95bb404-e471-4350-a4db-0326869acfca
+
+	measure 'Custo Real' = SELECTEDVALUE(dProdutos[PRECO_CUSTO_REAL])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Base
+		lineageTag: 2cc02cba-f05c-4e67-86d4-b7302ee20edf
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Fixas' = CALCULATE([Resultato Final], dPlano_Contas[DESTINO]= "RATEIO")
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Base
+		lineageTag: ea9583d0-82f0-4731-b36c-054489f63858
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Variaveis (CMV)' = CALCULATE([Resultato Final], dPlano_Contas[DESTINO] = "CMV")
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Base
+		lineageTag: 10968bf7-a78e-43bf-99c9-48761836c423
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'ICMS Sobre a Produto' = SELECTEDVALUE(dProdutos[ICMS_ALIQ])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Base
+		lineageTag: c93ef33f-5b8f-45ef-818f-b01015447460
+
+	measure IVA = [Rateio de despesas/Custos] + [Taxa de Cartão de Crédito] + [Comissão sobre Produto] + [ICMS Sobre a Produto] + [PIS/COFINS sobre a Produto] + [Markup IF]
+		displayFolder: 4 - Markup\Base
+		lineageTag: e0d1128d-2777-4668-9837-089689dcca4e
+
+	measure 'Markup IF' = ```
+			
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "ADUBO AGROSAFRA", -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "ADUBO REAL", -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "ADUBO HERINGER" , -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "ADUBOS FERTIPAR" , -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PESADOS ADUBOS" , -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "AREIA PARA GATOS" , 20 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "CALCARIO" , 7 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "ADUBO PROVASO" , 7 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES BLESSAM" , 3 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES GUABI", -7 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES DA FABRICA" , -3 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "FARDOS CONTROLADOS", -3 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PESADOS CONTROLADOS", -3 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "DERIVADOS DO MILHO" , -6 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "FARELOS" , -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "INSUMOS" , 0 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "MILHO" , -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "SAL COMUM" , -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES GRANVITA CAES" , -7 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES GRANVITA GATOS" , -7 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES RAMINELLI", 4 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES TOTAL", 3 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES PASSAROS", -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES SUPRA", 3 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PESADOS RACOES PASSAROS", -5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PASSARINHEIRO", 5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "RACOES PET PREMIER", -15 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PREMIER PET VITTA", 5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PRODUTOS PISCINA HIDROAZUL", -7 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PRODUTOS PISCINA CRIS AGUA", -10 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PRODUTOS PISCINA DOMCLOR", -10 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "SEMENTES MILHO DI SOLO", 5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "SEMENTES FEIJAO DI SOLO", 5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PESADOS SEMENTES MILHO DI SOLO", 5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "PESADOS SEMENTES FEIJAO DI SOLO", 5 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_GRUPO]) = "FERRADURAS", 0 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_PRODUTO]) = "BLESSAM 18% 15KG", 4 / 100,
+			    IF(SELECTEDVALUE(dProdutos[DESC_PRODUTO]) = "BLESSAM 22% 15KG", 19 / 100,
+			    5 / 100)
+			)))))))))))))))))))))))))))))))))))))
+			```
+		displayFolder: 4 - Markup\Base
+		lineageTag: 6f0e8646-07ec-4211-8c59-85b8c1cc1869
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PIS/COFINS sobre a Produto' = SELECTEDVALUE(dProdutos[PIS_ALIQ]) + SELECTEDVALUE(dProdutos[COFINS_ALIQ])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Base
+		lineageTag: 9b80a314-57e3-46f7-b2e5-e420101d8a8e
+
+	measure 'Rateio de despesas/Custos' = DIVIDE([Despesas Fixas], [Despesas Variaveis (CMV)] + [Despesas Fixas])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Base
+		lineageTag: f3d500ab-f703-4c6a-a19f-001c60e81715
+
+	measure 'Resultado Final Mês Anterior (baseado no HOJE)' =
+			
+			VAR DataRef = MAX('dCalendario'[Data])
+			VAR InicioMesAtual = DATE(YEAR(DataRef), MONTH(DataRef), 1)
+			VAR InicioMesAnterior = EDATE(InicioMesAtual, -1)
+			VAR FimMesAnterior = EOMONTH(InicioMesAtual, -1)
+			
+			// VAR vCCsGrupo =
+			//     CALCULATETABLE(
+			//         VALUES(dGrupo_Centro_Custos[COD]);
+			//         ALLSELECTED(dGrupo_Centro_Custos)
+			//     )
+			
+			VAR vCCsGrupo =
+			    CALCULATETABLE(
+			        VALUES(dGrupo_Centro_Custos[COD]),
+			        dGrupo_Centro_Custos[GRUPO] = "Agropecuaria"
+			    )
+			
+			RETURN
+			CALCULATE(
+			    SUM(fRecebidos[liquido_rateado]),
+			    'dCalendario'[Data] >= InicioMesAnterior,
+			    'dCalendario'[Data] <= FimMesAnterior,
+			    TREATAS(vCCsGrupo, fRecebidos[cod_cc])
+			)
+			+
+			CALCULATE(
+			    SUM(fPagos[vr_liquido_rateio]),
+			    'dCalendario'[Data] >= InicioMesAnterior,
+			    'dCalendario'[Data] <= FimMesAnterior,
+			    TREATAS(vCCsGrupo, fPagos[cod_cc])
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Base
+		lineageTag: d8f785a2-3192-4d31-8b42-fa8653ef2ebd
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Resultato Final' = [Resultado Final Mês Anterior (baseado no HOJE)]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Base
+		lineageTag: 12ce0a1e-05fa-4500-b74f-b4c6df9253d1
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Taxa de Cartão de Crédito' = [Taxa de Cartão de Crédito (baseado no HOJE)]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Base
+		lineageTag: 80f17731-0db9-42d3-a2d3-69fe11f5496f
+
+	measure 'Taxa de Cartão de Crédito (baseado no HOJE)' =
+			
+			VAR DataRef = MAX('dCalendario'[Data])
+			VAR InicioMesAtual = DATE(YEAR(DataRef), MONTH(DataRef), 1)
+			VAR InicioMesAnterior = EDATE(InicioMesAtual, -1)
+			VAR FimMesAnterior = EOMONTH(InicioMesAtual, -1)
+			RETURN
+			CALCULATE(
+			    DIVIDE(SUM(fOperadoras[VALOR TAXA]), SUM(fOperadoras[VALOR])),
+			    'dCalendario'[Data] >= InicioMesAnterior,
+			    'dCalendario'[Data] <= FimMesAnterior
+			)
+		displayFolder: 4 - Markup\Base
+		lineageTag: bca3b407-a32b-4254-80e3-ec08370ba112
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'R$ Recebidos AA' =
+			
+			CALCULATE(
+			    [Recebidos],
+			    DATEADD(dCalendario[Data], -1, YEAR)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Tempo
+		lineageTag: a499ccd9-64d3-47e3-b0c8-eeaebcfb94d9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Recebidos AA' = DIVIDE([Recebidos] - [R$ Recebidos AA], [R$ Recebidos AA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Tempo
+		lineageTag: 2db7aef0-19f3-4add-92cc-981e7807cf2e
+
+	measure 'R$ Recebidos MA' =
+			
+			CALCULATE(
+			    [Recebidos],
+			    DATEADD(dCalendario[Data], -1, MONTH)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Tempo
+		lineageTag: e95d5aa2-f056-4029-a419-abc4701c87e2
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'R$ Recebidos SA' =
+			
+			CALCULATE(
+			    [Recebidos],
+			    DATEADD(dCalendario[Data], -7, DAY)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Tempo
+		lineageTag: 44ff242c-1dd0-45b4-bb11-0fab98ba0e0a
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Recebidos MA' = DIVIDE([Recebidos] - [R$ Recebidos MA], [R$ Recebidos MA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Tempo
+		lineageTag: 9cbd9c5a-d853-4d4e-a822-191e675b9bf3
+
+	measure '% Recebidos SA' = DIVIDE([Recebidos] - [R$ Recebidos SA], [R$ Recebidos SA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Tempo
+		lineageTag: bef4709d-39fb-4a57-a698-489ef29728ed
+
+	measure 'R$ Pagos AA' =
+			
+			CALCULATE(
+			    [Pagos],
+			    DATEADD(dCalendario[Data], -1, YEAR)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Tempo
+		lineageTag: eced25fc-4276-40ac-86c6-88201a77e8ec
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'R$ Pagos MA' =
+			
+			CALCULATE(
+			    [Pagos],
+			    DATEADD(dCalendario[Data], -1, MONTH)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Tempo
+		lineageTag: cc545933-3e0a-47e8-8917-31cf257b5963
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'R$ Pagos SA' =
+			
+			CALCULATE(
+			    [Pagos],
+			    DATEADD(dCalendario[Data], -7, DAY)
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Tempo
+		lineageTag: fee55a35-0b0f-4795-8c6e-1ae25f7d59d8
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Pagos AA' = DIVIDE([Pagos] - [R$ Pagos AA], [R$ Pagos AA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos\Tempo
+		lineageTag: c02a5506-1bbe-49e5-bec8-bd1fe4b1f940
+
+	measure '% Pagos MA' = DIVIDE([Pagos] - [R$ Pagos MA], [R$ Pagos MA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos\Tempo
+		lineageTag: 97ebd779-e824-4dfa-a537-134cce18ab24
+
+	measure '% Pagos SA' = DIVIDE([Pagos] - [R$ Pagos SA], [R$ Pagos SA])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos\Tempo
+		lineageTag: 3a45bb05-00fc-4acb-ad92-a436a7544610
+
+	measure '% Recebidos YoY (texto)' = FORMAT([% Recebidos Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\Recebidos\Formatação
+		lineageTag: ff78f4c6-c62d-4991-a57c-545b94f2c634
+
+	measure '% Pagos YoY (texto)' = FORMAT([Pagos % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: 3fd2064e-7d92-4988-8386-3c8206ea2cce
+
+	measure 'Saldo Financeiro Realizado LY' =
+			
+			CALCULATE(
+			    [Saldo Financeiro Realizado],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Saldo Realizado
+		lineageTag: 688c1aea-a94a-4745-b12f-c81a27946ee3
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Financeiro Realizado % Cresc' = ```
+			
+			DIVIDE(
+			    [Saldo Financeiro Realizado] - 
+			    [Saldo Financeiro Realizado LY], 
+			    [Saldo Financeiro Realizado LY]
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Saldo Realizado
+		lineageTag: 85f5c0e3-bd8e-496e-87cc-6e77b159e2ad
+
+	measure '% Saldo Financeiro Realizado YoY (texto)' = FORMAT([Saldo Financeiro Realizado % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\Saldo Realizado
+		lineageTag: c02e737e-753f-4f57-b4b0-fb79fe62a79a
+
+	measure 'Saldo Financeiro Realizado Format. Cond. Cresc' =
+			
+			IF(
+			    [Saldo Financeiro Realizado % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Saldo Realizado
+		lineageTag: 77ae4f38-dbae-4c8a-8c1f-6f7456ea1bac
+
+	measure 'Estoque Fisico' =
+			
+			SUMX(
+			    fEstoque,
+			    fEstoque[CUSTO_FISICO]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 3 - Estoque
+		lineageTag: e116108d-5e70-43c8-94ca-95789b472306
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Estoque Contabil' =
+			
+			SUMX(
+			    fEstoque,
+			    fEstoque[CUSTO_CONTABIL]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 3 - Estoque
+		lineageTag: 7650fe0d-397d-454f-a712-d8f59dcaab38
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Financeiro Realizado Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Saldo Financeiro Realizado]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\Saldo Realizado
+		lineageTag: f79cea45-1e90-4e44-bf02-bade9440947c
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Financeiro Realizado Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Saldo Financeiro Realizado],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Saldo Realizado
+		lineageTag: 3690b93a-2e18-408b-8dcd-7fadb492aeed
+
+	measure 'A Receber' =
+			
+			SUMX(
+			    fA_Receber,
+			    fA_Receber[saldo]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 1c7b13a5-dc65-4201-b7c8-95e9855a026e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'A Receber LY' =
+			
+			CALCULATE(
+			    [A Receber],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: ecf5903a-6f41-4f72-9e1a-eb8f85d16bf0
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'A Receber % Cresc' = DIVIDE([A Receber] - [A Receber LY], [A Receber LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: ff04ca03-7e47-4f34-8f51-6c31b1e80923
+
+	measure '% A Receber YoY (texto)' = FORMAT([A Receber % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 76147a11-bfdb-40ce-a98f-d2167fa1025d
+
+	measure 'A Receber Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [A Receber],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 1686c345-5250-4885-9b15-15ff4427ee39
+
+	measure 'A Receber Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [A Receber]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 3eec2669-6df0-45d4-abd5-b3248502d2b9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'A Receber Format. Cond. Cresc' =
+			
+			IF(
+			    [A Receber % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 3bcb86cd-798d-4db3-9329-4237abed2622
+
+	measure 'A Pagar' =
+			
+			SUMX(
+			    fA_Pagar,
+			    fA_Pagar[vr_liq_rateio]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: 93c44345-a073-4377-ac87-7e1b52fc0d08
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'A Pagar LY' =
+			
+			CALCULATE(
+			    [A Pagar],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: 701d46ed-b10b-4c0a-8d7d-e9d97156afe8
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'A Pagar % Cresc' = DIVIDE([A Pagar] - [A Pagar LY], [A Pagar LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: 92aff706-ebbf-4160-b9bc-ed37ad219e3b
+
+	measure '% A Pagar YoY (texto)' = FORMAT([A Pagar % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: 535cacce-463c-4e1d-9bcd-9f43c3f031e2
+
+	measure 'A Pagar Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [A Pagar],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: e933aaf7-1fa7-4378-a5b4-12312c0ecbcb
+
+	measure 'A Pagar Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [A Pagar]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: 257a22f6-7458-475c-b132-1b49041c2881
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'A Pagar Format. Cond. Cresc' =
+			
+			IF(
+			    [A Pagar % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: b6151c8b-fe65-4b84-b2ad-7c9844346c84
+
+	measure 'Saldo Financeiro Previsto' = [A Receber] + [Cartões] - [A Pagar]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Saldo Previsto
+		lineageTag: d0af80b9-cd55-476d-9287-7f6b0e2ce224
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Financeiro Previsto LY' =
+			
+			CALCULATE(
+			    [Saldo Financeiro Previsto],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Saldo Previsto
+		lineageTag: 615ab212-96e7-44be-8952-3a2c410327bf
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Financeiro Previsto % Cresc' = ```
+			
+			DIVIDE(
+			    [Saldo Financeiro Previsto] - 
+			    [Saldo Financeiro Previsto LY], 
+			    [Saldo Financeiro Previsto LY]
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Saldo Previsto
+		lineageTag: 151be5d1-80e6-494e-8123-fc9ebbcc17af
+
+	measure '% Saldo Financeiro Previsto YoY (texto)' = FORMAT([Saldo Financeiro Previsto % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\Saldo Previsto
+		lineageTag: 689ba8af-7465-4e64-b7c0-9995e1d1d354
+
+	measure 'Saldo Financeiro Previsto Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Saldo Financeiro Previsto],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Saldo Previsto
+		lineageTag: 825ec797-7314-42ea-9643-806bfc1de22a
+
+	measure 'Saldo Financeiro Previsto Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Saldo Financeiro Previsto]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\Saldo Previsto
+		lineageTag: e19aaefc-9280-4d6f-bb10-c423e40390f9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Financeiro Previsto Format. Cond. Cresc' =
+			
+			IF(
+			    [Saldo Financeiro Previsto % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Saldo Previsto
+		lineageTag: b83162b2-d262-425c-9d0f-6b9aff43f7c4
+
+	measure Cartões =
+			
+			SUMX(
+			    fOperadoras,
+			    fOperadoras[LIQUIDO]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Cartões
+		lineageTag: f6e80fa7-a26d-46c3-a939-e5a7ed3f4756
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Qtde LY' =
+			
+			CALCULATE(
+			    [Qtde],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: #,0.00
+		displayFolder: 1 - Vendas\Qtde
+		lineageTag: 150ecb75-1d20-4811-b156-3daad61e633e
+
+	measure 'Qtde % Cresc' = DIVIDE([Qtde] - [Qtde LY], [Qtde LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 - Vendas\Qtde
+		lineageTag: 0c904f3b-b417-4f91-b6c9-5659c45ab0c8
+
+	measure '% Qtde YoY (texto)' = FORMAT([Qtde % Cresc], "⇧ 0.00%;⇩ 0.00%")
+		displayFolder: 1 - Vendas\Qtde
+		lineageTag: 4ecfb52a-6468-445c-b618-7407cc4bc516
+
+	measure 'Qtde Format. Cond. Cresc' =
+			
+			IF(
+			    [Qtde % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 1 - Vendas\Qtde
+		lineageTag: c5744c28-1584-4ccf-b782-1be2b6a78bd3
+
+	measure '% Faturamento YoY matriz' = FORMAT([Faturamento % Cresc], "⇧ 0.00%;⇩ 0.00%")
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: ab8c8577-6834-4df0-bc1a-8246e5b272be
+
+	measure '% Custo YoY Matriz' = FORMAT([Custo % Cresc], "⇧ 0.00%;⇩ 0.00%")
+		displayFolder: 1 - Vendas\Custo
+		lineageTag: 6703be00-8c05-43b1-96f7-c2504525a558
+
+	measure '% Margem Bruta YoY matriz' = FORMAT([Margem Bruta % Cresc], "⇧ 0.00%;⇩ 0.00%")
+		displayFolder: 1 - Vendas\Margem Bruta
+		lineageTag: a80e210a-c42e-445b-8a13-2469d96c5361
+
+	measure 'Titulo Vendedor' = SELECTEDVALUE(dVendedores[vendedor])
+		displayFolder: Titulos
+		lineageTag: 6b2ff6e3-1eab-4818-9901-6028dc2d74c6
+
+	measure 'Comissão sobre Venda' =
+			
+			CALCULATE(
+			    SUMX(
+			        fVendas,
+			        fVendas[comissao_prazo] * fVendas[vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: 88cd8f14-ae86-4a77-a676-5a66fde34e06
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'ICMS Sobre a Venda' =
+			
+			IF(
+			    SELECTEDVALUE(fVendas[numero_nfe]) <> " ",
+			        CALCULATE(
+			            SUMX(
+			                fVendas,
+			                fVendas[icms_aliq_Nfe] * fVendas[vr_liquido_final]
+			            )
+			        ),
+			        CALCULATE(
+			            SUMX(
+			                fVendas,
+			                fVendas[imposto_aliq] * fVendas[vr_liquido_final]
+			            )
+			        )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: 7e72c144-7fc3-4cba-8f2f-f291e068bc7c
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'PIS/COFINS sobre a Venda' =
+			
+			IF(
+			    SELECTEDVALUE(fVendas[numero_nfe]) <> " ",
+			        CALCULATE(
+			            SUMX(
+			                fVendas,
+			                fVendas[pis_cofins_nfe] * fVendas[vr_liquido_final]
+			            )
+			        ),
+			        CALCULATE(
+			            SUMX(
+			                fVendas,
+			                fVendas[pis_cofins_aliq] * fVendas[vr_liquido_final]
+			            )
+			        )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: beaed5c1-1725-4fe2-bddb-7bb588c78475
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Rateio de despesas/Custos Venda' =
+			
+			CALCULATE(
+			    SUMX(
+			        fVendas,
+			        fVendas[rateio] * [vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: d1ad46f4-814b-4362-9cd7-2bb790192b9d
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Taxa de Cartão de Crédito Venda' =
+			
+			CALCULATE(
+			    SUMX(
+			        fVendas,
+			        fVendas[taxa_cartao] * fVendas[vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: badc5cb9-fdf5-477e-8acd-0dacbaf25efc
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Lucro Liquido' =
+			
+			[Faturamento]
+			- [Custo]
+			- [Rateio de despesas/Custos Venda]
+			- [Taxa de Cartão de Crédito Venda]
+			- [Comissão sobre Venda]
+			- [ICMS Sobre a Venda]
+			- [PIS/COFINS sobre a Venda]
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: aa93243a-1215-475c-8988-2c7490f2b651
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Markup Venda' =
+			
+			DIVIDE( [Lucro Liquido], [Faturamento] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: 65e7da73-1304-4962-9d1b-49a58683abbb
+
+	measure 'Margem Liquida' =
+			
+			[Faturamento] * [Markup Venda]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: 68699baf-8985-40f4-a4af-5f79c582894c
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Menor Data' =
+			
+			VAR vMenorData = MIN(dCalendario[Data])
+			RETURN
+			FORMAT(vMenorData, "DD/MM/YYYY")
+		displayFolder: Titulos
+		lineageTag: dd05ba22-a504-4466-be93-6ba686e27ba2
+
+	measure 'Maior Data' =
+			
+			VAR vMaiorData = MAX(dCalendario[Data])
+			RETURN
+			FORMAT(vMaiorData, "DD/MM/YYYY")
+		displayFolder: Titulos
+		lineageTag: 25334e97-190f-49d3-a2f2-0b9d2d8142bb
+
+	measure 'Comissão Faturamento' =
+			
+			SUMX(
+			     fVendas,
+			     fVendas[vr_liquido_final] * fVendas[comissao_prazo]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Comissão
+		lineageTag: b689285c-28c7-4337-b09f-504ba7f017e6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Comissão Faturamento' = SELECTEDVALUE(fVendas[comissao_prazo])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Comissão
+		lineageTag: 01be0a22-1457-4e43-bb89-d7e302158813
+
+	measure 'Comissao Recebimento' =
+			
+			SUMX(
+			    fRecebidos,
+			    fRecebidos[comissao_recebimento]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Comissão
+		lineageTag: 1b00c060-1b1b-4b9b-8304-a3472e777063
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Resultato Final Filtro' = ```
+			
+			SUMX(
+			    VALUES(
+			        fRecebidos[bxa_data_recebimento]),
+			        CALCULATE(
+			            SUM(fRecebidos[liquido_rateado])
+			        )
+			) + 
+			SUMX(
+			    VALUES(
+			        fPagos[data_pagamento]),
+			        CALCULATE(
+			            SUM(fPagos[vr_liquido_rateio])
+			        )
+			)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Base\Filtro
+		lineageTag: 9cf1e255-a762-49ef-8110-ff17863d2ea4
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Fixas Filtro' = CALCULATE([Resultato Final Filtro], dPlano_Contas[DESTINO]= "RATEIO")
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Base\Filtro
+		lineageTag: 3cd36141-df02-440b-bdad-89aeb54cd47b
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Variaveis (CMV) Filtro' = CALCULATE([Resultato Final Filtro], dPlano_Contas[DESTINO] = "CMV")
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Base\Filtro
+		lineageTag: bcbebe81-686e-4c56-8851-b7e5030994df
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Rateio de despesas/Custos Filtro' = DIVIDE([Despesas Fixas Filtro], [Despesas Variaveis (CMV) Filtro] + [Despesas Fixas Filtro])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Base\Filtro
+		lineageTag: d4750006-0edf-421d-a6df-f71eda55f362
+
+	measure 'Título Cliente' = SELECTEDVALUE(dClientes[cliente])
+		displayFolder: Titulos
+		lineageTag: b5141ac3-d407-4af0-8ebf-222dc2785660
+
+	measure 'Titulo Faturamento' =
+			
+			VAR vAno = SELECTEDVALUE(dCalendario[AnoAtual], "Todos")
+			VAR vSemestre = SELECTEDVALUE(dCalendario[Semestre], "Todos")
+			VAR vTrimestre = SELECTEDVALUE(dCalendario[Trimestre], "Todos")
+			VAR vMes = SELECTEDVALUE(dCalendario[MesAtual], "Todos")
+			VAR vDia = SELECTEDVALUE(dCalendario[Dia], "Todos")
+			VAR vVendedor = SELECTEDVALUE(dVendedores[vendedor], "Todos")
+			VAR vCliente = SELECTEDVALUE(dClientes[cliente], "Todos")
+			VAR vSetor = SELECTEDVALUE(dClientes[setor], "Todos")
+			VAR vProdutos = SELECTEDVALUE(dProdutos[desc_produto], "Todos")
+			RETURN
+			"Filtros Aplicados: " &
+			" - " & "Ano: " & vAno &
+			" - " & "Semestre: " & vSemestre &
+			" - " & "Trimestre: " & vTrimestre &
+			" - " & "Mês: " & vMes &
+			" - " & "Dia: " & vDia &
+			" - " & "Vendedor: " & vVendedor &
+			" - " & "Cliente: " & vCliente &
+			" - " & "Setor: " & vSetor &
+			" - " & "Grupo de Produtos: " & vProdutos
+		displayFolder: Titulos
+		lineageTag: 5c549b38-d83b-4149-b5fc-608b6af4bd5f
+
+	measure 'Recebidos Antecipados' = ```
+			
+			VAR Valor = 
+			CALCULATE(
+			    [Recebidos],
+			    fRecebidos[antecipados] > 0
+			)
+			RETURN
+			IF([Recebidos], Valor + 0)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Antecipados
+		lineageTag: 428338d4-1339-4d0a-9ac7-ff3761aaaf80
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Recebidos Antecipados LY' =
+			
+			CALCULATE(
+			    [Recebidos Antecipados],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Antecipados
+		lineageTag: dc8d8f7f-1e60-45fe-b4d8-9065f0720a8d
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Recebidos Antecipados % Cresc' = ```
+			
+			DIVIDE(
+			    [Recebidos Antecipados] - 
+			    [Recebidos Antecipados LY], 
+			    [Recebidos Antecipados LY]
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Antecipados
+		lineageTag: 8472ea0d-ccd9-47e2-90b1-9806d575039e
+
+	measure '% Recebidos Antecipados YoY (texto)' = ```
+			
+			FORMAT(
+			    [Recebidos Antecipados % Cresc], 
+			    "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior"
+			)
+			```
+		displayFolder: 2 - Financeiro\Recebidos\Antecipados
+		lineageTag: 14b36066-4bfd-41ea-9628-1c134c3bddc7
+
+	measure 'Recebidos Antecipados Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Recebidos Antecipados],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Recebidos\Antecipados
+		lineageTag: fe74ffa7-6a36-4307-8d4a-42fca60bda8a
+
+	measure 'Recebidos Antecipados Format. Cond. Cresc' =
+			
+			IF(
+			    [Recebidos Antecipados % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Recebidos\Antecipados
+		lineageTag: c57c7ac7-fe3b-46de-9cc7-95fc8758a441
+
+	measure 'Qtd Recebimentos' = DISTINCTCOUNT(fRecebidos[cod_fatura/prc_cod_parc])
+		formatString: #,0
+		displayFolder: 2 - Financeiro\Recebidos\Qtde
+		lineageTag: d9efcccd-4cd7-4171-95f5-862ca53845f6
+
+	measure 'Titulo Recebidos' =
+			
+			VAR vAno = SELECTEDVALUE(dCalendario[AnoAtual], "Todos")
+			VAR vSemestre = SELECTEDVALUE(dCalendario[Semestre], "Todos")
+			VAR vTrimestre = SELECTEDVALUE(dCalendario[Trimestre], "Todos")
+			VAR vMes = SELECTEDVALUE(dCalendario[MesAtual], "Todos")
+			VAR vDia = SELECTEDVALUE(dCalendario[Dia], "Todos")
+			VAR vVendedor = SELECTEDVALUE(dVendedores[vendedor], "Todos")
+			VAR vCliente = SELECTEDVALUE(dClientes[cliente], "Todos")
+			VAR vSetor = SELECTEDVALUE(dClientes[setor], "Todos")
+			RETURN
+			"Filtros Aplicados: " &
+			" - " & "Ano: " & vAno &
+			" - " & "Semestre: " & vSemestre &
+			" - " & "Trimestre: " & vTrimestre &
+			" - " & "Mês: " & vMes &
+			" - " & "Dia: " & vDia &
+			" - " & "Vendedor: " & vVendedor &
+			" - " & "Cliente: " & vCliente &
+			" - " & "Setor: " & vSetor
+		displayFolder: Titulos
+		lineageTag: 5376c9e5-67b7-4989-b292-ba6a943811a4
+
+	measure 'Recebidos Atrasados' = ```
+			
+			VAR Valor = 
+			CALCULATE(
+			    [Recebidos],
+			    fRecebidos[atraso] > 0
+			)
+			RETURN
+			IF([Recebidos], Valor + 0)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Atrasados
+		lineageTag: a670e29d-b45c-4888-80df-c6d8d24199fc
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Qtd Recebimentos Antecipados' = ```
+			
+			VAR Quantidade = 
+			CALCULATE(
+			    [Qtd Recebimentos],
+			    fRecebidos[antecipados] > 0
+			)
+			RETURN
+			IF([Qtd Recebimentos], Quantidade + 0)
+			```
+		formatString: #,0
+		displayFolder: 2 - Financeiro\Recebidos\Qtde
+		lineageTag: af8a9899-7439-43e1-b0e7-5e473317ca1a
+
+	measure 'Qtd Recebimentos Atrasados' =
+			
+			VAR Quantidade =
+			CALCULATE(
+			    [Qtd Recebimentos],
+			    fRecebidos[atraso] > 0
+			)
+			RETURN
+			IF([Qtd Recebimentos], Quantidade + 0)
+		formatString: #,0
+		displayFolder: 2 - Financeiro\Recebidos\Qtde
+		lineageTag: 779d64bd-7bee-4a25-a511-2dd9774c32e1
+
+	measure 'Qtd Recebimentos no Prazo' = ```
+			
+			VAR Quantidade = 
+			CALCULATE(
+			    [Qtd Recebimentos],
+			    fRecebidos[antecipados] = 0
+			)
+			RETURN
+			IF([Qtd Recebimentos], Quantidade + 0)
+			```
+		formatString: 0
+		displayFolder: 2 - Financeiro\Recebidos\Qtde
+		lineageTag: 34e37da8-bab3-4b42-a7a3-e5797ac8af71
+
+	measure 'Recebidos Atrasados LY' =
+			
+			CALCULATE(
+			    [Recebidos Atrasados],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\Atrasados
+		lineageTag: 54ddf86d-1d78-4598-b275-a1ee2e37b965
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Recebidos Atrasados % Cresc' = ```
+			
+			DIVIDE(
+			    [Recebidos Atrasados] - 
+			    [Recebidos Atrasados LY], 
+			    [Recebidos Atrasados LY]
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Atrasados
+		lineageTag: 6a45cb52-293c-46f6-9a04-112e1b158f17
+
+	measure '% Recebidos Atrasados YoY (texto)' = ```
+			
+			FORMAT(
+			    [Recebidos Atrasados % Cresc], 
+			    "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior"
+			)
+			```
+		displayFolder: 2 - Financeiro\Recebidos\Atrasados
+		lineageTag: f88b2233-a499-448d-a415-254cc87dfe9d
+
+	measure 'Recebidos Atrasados Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Recebidos Atrasados],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Recebidos\Atrasados
+		lineageTag: 6a4ff822-32ee-44b0-b26a-f0342a735f10
+
+	measure 'Recebidos Atrasados Format. Cond. Cresc' =
+			
+			IF(
+			    [Recebidos Atrasados % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Recebidos\Atrasados
+		lineageTag: 01b7ea2a-a4d0-477b-a9f4-fd3423a316e6
+
+	measure '% Qtd Recebimentos Antecipados' = DIVIDE([Qtd Recebimentos Antecipados], [Qtd Recebimentos])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: c4b523a4-0e3c-4885-845b-e0076e982e8b
+
+	measure '% Qtd Recebimentos Atrasados' = DIVIDE([Qtd Recebimentos Atrasados], [Qtd Recebimentos])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: d8f881fb-e028-4b8f-a1b2-446dee5c6a25
+
+	measure '% Qtd Recebimentos no Prazo' = DIVIDE([Qtd Recebimentos no Prazo], [Qtd Recebimentos])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: c785e8f2-b6b5-413d-84d0-4f76ce17464c
+
+	measure '% Recebidos Antecipados' = DIVIDE([Recebidos Antecipados], [Recebidos])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: ad224873-3e2b-492c-9696-b1a0049c6346
+
+	measure '% Recebidos Atrasados' = DIVIDE([Recebidos Atrasados], [Recebidos])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: 00b79808-a459-479e-8f5e-07698f91da54
+
+	measure '% Recebidos no Prazo' = DIVIDE([Recebidos no Prazo], [Recebidos])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: a6590c3c-49da-4b6f-9c50-e89377768098
+
+	measure 'Recebidos no Prazo' = [Recebidos] - [Recebidos Antecipados] - [Recebidos Atrasados]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\No Prazo
+		lineageTag: fdbd209d-bd3a-4af8-9300-0a96dd342be7
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Recebidos no Prazo LY' =
+			
+			CALCULATE(
+			    [Recebidos no Prazo],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Recebidos\No Prazo
+		lineageTag: 455e8f1d-4236-45c5-81ea-43f706566ab5
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Recebidos no Prazo % Cresc' = ```
+			
+			DIVIDE(
+			    [Recebidos no Prazo] - 
+			    [Recebidos no Prazo LY], 
+			    [Recebidos no Prazo LY]
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\No Prazo
+		lineageTag: 9a765bfb-a2b2-4016-9e9a-a3755471a7d2
+
+	measure '% Recebidos no Prazo YoY (texto)' = ```
+			
+			FORMAT(
+			    [Recebidos no Prazo % Cresc], 
+			    "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior"
+			)
+			```
+		displayFolder: 2 - Financeiro\Recebidos\No Prazo
+		lineageTag: 072400fe-5f35-4478-9740-79dd6c71f68e
+
+	measure 'Recebidos no Prazo Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Recebidos no Prazo],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Recebidos\No Prazo
+		lineageTag: d5b1378c-0d4b-469c-9762-8990b6e797f5
+
+	measure 'Recebidos no Prazo Format. Cond. Cresc' =
+			
+			IF(
+			    [Recebidos no Prazo % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Recebidos\No Prazo
+		lineageTag: 00b8d20a-0750-4e6d-95cd-a14516bc7d37
+
+	measure '% Total Prazo' = ```
+			
+			DIVIDE(
+			    [Recebidos no Prazo],
+			    [Recebidos]    
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: 131587c8-14d9-41b7-9df4-e38e7b18c32f
+
+	measure 'Média Prazo Recebimento Previsto' =
+			
+			// AVERAGE(fRecebidos[prazo])
+			CALCULATE(
+			    AVERAGE(fRecebidos[prazo]),
+			    FILTER(
+			        dClientes,
+			        dClientes[Cód + Cliente] <> "2 - VENDA A CONSUMIDOR"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: 80e490ba-76dd-4d4f-96be-7a9dd8b16e68
+
+	measure 'Média Prazo Recebimento Real' =
+			
+			// AVERAGEX(fRecebidos; fRecebidos[prazo] + fRecebidos[atraso] - fRecebidos[antecipados])
+			CALCULATE(
+			    AVERAGEX(fRecebidos, fRecebidos[prazo] + fRecebidos[atraso] - fRecebidos[antecipados]),
+			    FILTER(
+			        dClientes,
+			        dClientes[Cód + Cliente] <> "2 - VENDA A CONSUMIDOR"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: 20360139-bb46-44d3-a478-db8a9d30c9a3
+
+	measure 'Titulo Pagos' =
+			
+			VAR vAno = SELECTEDVALUE(dCalendario[AnoAtual], "Todos")
+			VAR vSemestre = SELECTEDVALUE(dCalendario[Semestre], "Todos")
+			VAR vTrimestre = SELECTEDVALUE(dCalendario[Trimestre], "Todos")
+			VAR vMes = SELECTEDVALUE(dCalendario[MesAtual], "Todos")
+			VAR vDia = SELECTEDVALUE(dCalendario[Dia], "Todos")
+			VAR vFornecedor = SELECTEDVALUE(dFornecedor[fornecedor], "Todos")
+			VAR vGrupo_C_Custo = SELECTEDVALUE(dGrupo_Centro_Custos[GRUPO], "Todos")
+			VAR vPLano_Contas = SELECTEDVALUE(dPlano_Contas[N3], "Todos")
+			RETURN
+			"Filtros Aplicados: " &
+			" - " & "Ano: " & vAno &
+			" - " & "Semestre: " & vSemestre &
+			" - " & "Trimestre: " & vTrimestre &
+			" - " & "Mês: " & vMes &
+			" - " & "Dia: " & vDia &
+			" - " & "Fornecedor: " & vFornecedor &
+			" - " & "Grupo C. Custo: " & vGrupo_C_Custo &
+			" - " & "Plano de Contas: " & vPLano_Contas
+		displayFolder: Titulos
+		lineageTag: b27df470-162d-4a07-ba17-b36c6eddbd6b
+
+	measure Dare = CALCULATE([Pagos], dPlano_Contas[N3] = "DARE")
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas
+		lineageTag: 19179b09-a805-45b6-8926-357fdeef4550
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Fixas D' = CALCULATE([Pagos], dPlano_Contas[DESTINO]= "RATEIO")
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas Fixas
+		lineageTag: 7b78fe99-78f2-4428-afd0-8ef2c9eba365
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Variaveis (CMV) D' = CALCULATE([Pagos], dPlano_Contas[DESTINO] = "CMV")
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas
+		lineageTag: b1e87f56-0e85-4ad4-8ff1-d255661567a6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Variaveis (PREÇO DE VENDA)' = CALCULATE([Pagos], dPlano_Contas[DESTINO] = "PREÇO DE VENDA")
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas
+		lineageTag: bff2c424-36e5-4bdc-8184-e270743859d1
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Despesas = [Despesas Variaveis] + [Despesas Fixas D]  + [Despesas Variaveis (PREÇO DE VENDA)] + [Dare]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas
+		lineageTag: 2fb19d31-619c-495f-8d17-84f68498d5e8
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Variaveis' = [Despesas Variaveis (CMV) D] - [Dare]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas Variaveis
+		lineageTag: acf3fe3f-4152-43b4-87fe-b086ddca5c27
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Despesas Fixas' = DIVIDE([Despesas Fixas D], [Rateio] + [Despesas Variaveis (CMV) D])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos\Despesas
+		lineageTag: 049da40a-da3a-4025-b18f-139e01741485
+
+	measure Rateio = CALCULATE([Pagos], dPlano_Contas[DESTINO] = "RATEIO")
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 2 - Financeiro\Pagos\Despesas
+		lineageTag: 909bd18b-6474-442b-a15c-47fcdc1263b9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Variaveis LY' =
+			
+			CALCULATE(
+			    [Despesas Variaveis],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas Variaveis
+		lineageTag: 6323e8cd-3289-43a4-82c9-9509cfc2b9e6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Despesas Variaveis YoY (texto)' = FORMAT([Despesas Variaveis % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\Pagos\Despesas Variaveis
+		lineageTag: f4f41314-41e6-4f58-b7b9-3c16b6721364
+
+	measure 'Despesas Variaveis % Cresc' = DIVIDE([Despesas Variaveis] - [Despesas Variaveis LY], [Despesas Variaveis LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos\Despesas Variaveis
+		lineageTag: 73ffadb7-f8c9-4f00-9cac-532f2c816e40
+
+	measure 'Despesas Variaveis Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Despesas Variaveis],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Pagos\Despesas Variaveis
+		lineageTag: ecd20a69-94d0-454a-8e8b-39ae2c77bc70
+
+	measure 'Despesas Variaveis Format. Cond. Cresc' =
+			
+			IF(
+			    [Despesas Variaveis % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Pagos\Despesas Variaveis
+		lineageTag: 6206d296-e4a4-4a31-a727-2b78558a89ca
+
+	measure 'Despesas Fixas D LY' =
+			
+			CALCULATE(
+			    [Despesas Fixas D],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\Pagos\Despesas Fixas
+		lineageTag: 85fc2399-3aab-4b10-b3b9-e0be0aec9735
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Fixas D % Cresc' = DIVIDE([Despesas Fixas D] - [Despesas Fixas D LY], [Despesas Fixas D LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos\Despesas Fixas
+		lineageTag: e5e344c9-e5c4-442c-8186-1ca27c5ed0e6
+
+	measure '% Despesas Fixas D YoY (texto)' = FORMAT([Despesas Fixas D % Cresc], "⇧ 0.00% vs ano anterior;⇩ 0.00% vs ano anterior")
+		displayFolder: 2 - Financeiro\Pagos\Despesas Fixas
+		lineageTag: 2eb259ff-a2a1-479d-9657-7c0cd9749548
+
+	measure 'Despesas Fixas D Card Subtitulo' = ```
+			
+			VAR vMelhor_Mes_Tabela = 
+			    TOPN(
+			        1,
+			        ALL(dCalendario[Mes], dCalendario[MesNum]),
+			        [Despesas Fixas D],DESC)
+			VAR vMelhor_Mes = MAXX(vMelhor_Mes_Tabela, dCalendario[Mes])
+			RETURN
+			"(" & vMelhor_Mes & ")" & " Melhor Mês"
+			```
+		displayFolder: 2 - Financeiro\Pagos\Despesas Fixas
+		lineageTag: 4cc9b357-21c0-401e-88ee-cc7f5732734b
+
+	measure 'Despesas Fixas D Format. Cond. Cresc' =
+			
+			IF(
+			    [Despesas Fixas D % Cresc] >= 0,
+			    "#92D050",
+			    "#D05050"
+			)
+		displayFolder: 2 - Financeiro\Pagos\Despesas Fixas
+		lineageTag: 5abc245e-cb03-4224-9700-dc3276e3f8cf
+
+	measure '% Pagos Total' = DIVIDE([Pagos], [Pagos Total],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 2 - Financeiro\Pagos
+		lineageTag: c0e9ff37-7519-4873-ba9d-02ab775f4845
+
+	measure 'A Receber Atrasados' = ```
+			
+			VAR Valor = 
+			CALCULATE(
+			    [A Receber],
+			    fA_Receber[atraso] > 0
+			)
+			RETURN
+			IF([A Receber], Valor + 0)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 342b2ba6-1750-46f5-b8b0-d066dc802e72
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Qtd A Receber' = COUNTROWS(fA_Receber)
+		formatString: #,0
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 387aa4b7-7a83-4be2-a797-14f27a9109af
+
+	measure 'Qtd Títulos A Receber Atrasados' = ```
+			
+			CALCULATE(
+			    [Qtd A Receber], 
+			    FILTER(
+			        dCalendario, 
+			        dCalendario[Data] < TODAY()
+			    )
+			)
+			```
+		formatString: #,0
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: e46426a1-da96-454d-843a-0b31bb733fb1
+
+	measure 'Média Prazo A Receber Real' = ```
+			
+			AVERAGEX(
+			    fA_Receber, 
+			    fA_Receber[prazo] + fA_Receber[atraso]
+			)
+			```
+		formatString: #,0.00
+		displayFolder: 2 - Financeiro\A Receber
+		lineageTag: 22b225cc-5562-4c00-b0a5-bfa2175228b0
+
+	measure 'A Pagar Atrasados' = ```
+			
+			VAR vValor= 
+			CALCULATE(
+			    [A Pagar],
+			    fA_Pagar[Atraso] > 0
+			)
+			RETURN
+			IF([A Pagar], vValor + 0)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: 264c9be1-756d-4014-8995-df9bb318aa7f
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Qtd A Pagar' = COUNTROWS(fA_Pagar)
+		formatString: 0
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: f0b1047b-3e82-4b0c-ac2d-72f0eace3587
+
+	measure 'Qtd Títulos A Pagar Atrasados' = ```
+			
+			CALCULATE(
+			    [Qtd A Pagar], 
+			    FILTER(
+			        dCalendario, 
+			        dCalendario[Data] < TODAY()
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: f403ee14-4f5c-4cca-ae5b-81ec09f3e331
+
+	measure 'Média Prazo A Pagar Real' = AVERAGEX(fA_Pagar, fA_Pagar[PrazoRecebimento] + fA_Pagar[Atraso])
+		displayFolder: 2 - Financeiro\A Pagar
+		lineageTag: ce5c1d33-6c5a-4eab-8815-a6a5a269d209
+
+	measure '% Fatura Total (texto)' = ```
+			
+			VAR vPerc_Total = 
+			DIVIDE([Faturamento], [Fatura Total],0)
+			RETURN
+			FORMAT(vPerc_Total, "0.00% do Total")
+			```
+		displayFolder: 1 - Vendas\Faturamento
+		lineageTag: 68d8ef89-37cc-4dca-b198-2ee1a1fe5cc7
+
+	measure '% Recebidos Total (texto)' = ```
+			
+			VAR vPerc_Total = 
+			DIVIDE([Recebidos], [Recebidos Total],0)
+			RETURN
+			FORMAT(vPerc_Total, "0.00% do Total")
+			```
+		displayFolder: 2 - Financeiro\Recebidos\Percentuais
+		lineageTag: 4a677810-5f18-428e-85a2-6b6b623fe290
+
+	measure 'Data Estoque' = SELECTEDVALUE(dCalendario[Data])
+		formatString: Short Date
+		displayFolder: 3 - Estoque
+		lineageTag: e22dbd5c-68d3-4969-8e7a-4427e6844293
+
+	measure 'Titulo Faturamento Relativo' =
+			
+			VAR vMaior_Data = FORMAT(MAX(dCalendario[Data]), "dd/mm/yyyy")
+			VAR vMenor_Data = FORMAT(MIN(dCalendario[Data]), "dd/mm/yyyy")
+			VAR vVendedor = SELECTEDVALUE(dVendedores[vendedor], "Todos")
+			VAR vCliente = SELECTEDVALUE(dClientes[cliente], "Todos")
+			VAR vSetor = SELECTEDVALUE(dClientes[setor], "Todos")
+			VAR vProdutos = SELECTEDVALUE(dProdutos[desc_produto], "Todos")
+			RETURN
+			"Filtros Aplicados: " &
+			" - Inicio: " & vMenor_Data &
+			" - Fim: " & vMaior_Data &
+			" - Vendedor: " & vVendedor &
+			" - Cliente: " & vCliente &
+			" - Setor: " & vSetor &
+			" - Grupo de Produtos: " & vProdutos
+		displayFolder: Titulos
+		lineageTag: fb91ca0d-8a3d-4e89-b854-6c9786bc2a60
+
+	measure 'Margem Liquida Eixo Y Dinamico' = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED(dCalendario[Mes], dCalendario[MesNum])
+			VAR vMaior_Valor = 
+			    MAXX(
+			        vTabela,
+			        [Margem Liquida]
+			    )
+			VAR vDeslocamento = 1.30
+			RETURN
+			vMaior_Valor * vDeslocamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas\Formatação
+		lineageTag: b2a9737a-c11d-47f9-86e6-dfdbef11b39c
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Margem Liquida LY' =
+			
+			CALCULATE(
+			    [Margem Liquida],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Vendas\Formatação
+		lineageTag: b102f821-1451-4b86-8858-70699d28300d
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Margem Liquida % Cresc' = DIVIDE([Margem Liquida] - [Margem Liquida LY], [Margem Liquida LY])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Vendas\Formatação
+		lineageTag: 54d8af3c-8fba-4f74-a64e-234625eb4d6d
+
+	measure 'Margem Liquida Rotulo LY' =
+			
+			VAR vValor = [Margem Liquida]
+			VAR vDeslocamento = [Margem Liquida Eixo Y Dinamico] * 0.08
+			
+			RETURN
+			vValor + vDeslocamento
+		displayFolder: 4 - Markup\Vendas\Formatação
+		lineageTag: 246f60d3-250f-4fe2-8d78-184e8d073edc
+
+		formatStringDefinition = ```
+				VAR vPorcentagem = [Margem Liquida % Cresc]
+				VAR vPOrcentagem_Formatada = 
+				   IF(
+				       vPorcentagem >= 0,
+				        FORMAT(vPorcentagem, "⮝ 0.00%"),
+				        FORMAT(vPorcentagem, "⮟ 0.00%")
+				   )
+				RETURN
+				"""" & vPOrcentagem_Formatada & """"
+				```
+
+	measure Qtde_Entregas =
+			
+			SUMX(
+			    fEntregas,
+			    fEntregas[qtd]
+			)
+		formatString: 0.00
+		displayFolder: Entregas
+		lineageTag: 64561db6-6b10-4f3a-a9da-e58bdf04bac8
+
+	measure Faturamento_Entregas =
+			
+			SUMX(
+			    fEntregas,
+			    fEntregas[vr_liquido_final]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Entregas
+		lineageTag: 7d2dcb5c-1d60-49f4-9b18-4e9570f7ee3e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Comissão sobre Entrega' =
+			
+			CALCULATE(
+			    SUMX(
+			        fEntregas,
+			        fEntregas[comissao_prazo] * fEntregas[vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Entregas
+		lineageTag: 63c3ea3e-08f4-4c75-8a69-e73a7640a521
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'ICMS Sobre a Entrega' =
+			
+			IF(
+			    SELECTEDVALUE(fEntregas[numero_nfe]) <> " ",
+			        CALCULATE(
+			            SUMX(
+			                fEntregas,
+			                fEntregas[icms_aliq_Nfe] * fEntregas[vr_liquido_final]
+			            )
+			        ),
+			        CALCULATE(
+			            SUMX(
+			                fEntregas,
+			                fEntregas[imposto_aliq] * fEntregas[vr_liquido_final]
+			            )
+			        )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Entregas
+		lineageTag: 755c8de4-8032-47a7-a250-0c50db4cb805
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'PIS/COFINS sobre a Entrega' =
+			
+			IF(
+			    SELECTEDVALUE(fEntregas[numero_nfe]) <> " ",
+			        CALCULATE(
+			            SUMX(
+			                fEntregas,
+			                fEntregas[pis_cofins_nfe] * fEntregas[vr_liquido_final]
+			            )
+			        ),
+			        CALCULATE(
+			            SUMX(
+			                fEntregas,
+			                fEntregas[pis_cofins_aliq] * fEntregas[vr_liquido_final]
+			            )
+			        )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Entregas
+		lineageTag: d3e1794d-8457-4d7d-81f8-96ab5323e9e1
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Rateio de despesas/Custos Entrega' =
+			
+			CALCULATE(
+			    SUMX(
+			        fEntregas,
+			        fEntregas[rateio] * fEntregas[vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Entregas
+		lineageTag: a2e50fec-45d9-4a39-bf80-7afe932b14cb
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Taxa de Cartão de Crédito Entrega' =
+			
+			CALCULATE(
+			    SUMX(
+			        fEntregas,
+			        fEntregas[taxa_cartao] * fEntregas[vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Entregas
+		lineageTag: 28463194-fe68-4726-ba42-d90c585e96a8
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Lucro Liquido Entrega' =
+			
+			[Faturamento_Entregas]
+			- [Custo_Entregas]
+			- [Rateio de despesas/Custos Entrega]
+			- [Taxa de Cartão de Crédito Entrega]
+			- [Comissão sobre Entrega]
+			- [ICMS Sobre a Entrega]
+			- [PIS/COFINS sobre a Entrega]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Entregas
+		lineageTag: 2228ec05-9bdb-436d-b8d7-5243e7d5488c
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Custo_Entregas =
+			
+			CALCULATE(
+			    SUMX(
+			        fEntregas,
+			        fEntregas[preco_custo] * fEntregas[qtd]
+			    )
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Entregas
+		lineageTag: f78d9839-21d0-4b26-a47f-f2ad1a0837c4
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Markup Entregas' =
+			
+			DIVIDE([Lucro Liquido Entrega], [Faturamento_Entregas])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Entregas
+		lineageTag: 0bcca54c-b45c-4dd7-a434-ab5894361b05
+
+	measure 'Margem Liquida Entregas' =
+			
+			[Faturamento_Entregas] * [Markup Entregas]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Entregas
+		lineageTag: e61de22d-7185-467a-a432-af3d4379b384
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Lucro Bruto R$' = [Faturamento_Entregas] - [Custo_Entregas]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Entregas
+		lineageTag: 12aa850b-1583-431d-aa60-736b7364e285
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Lucro Bruto %' =
+			
+			DIVIDE(
+			    [Lucro Bruto R$],
+			    [Custo_Entregas],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Entregas
+		lineageTag: cc1ba3f9-7648-4f84-926f-9a02f995086c
+
+	measure Titulo_Entregas =
+			
+			VAR vMaior_Data = FORMAT(MAX(dCalendario[Data]), "dd/mm/yyyy")
+			VAR vMenor_Data = FORMAT(MIN(dCalendario[Data]), "dd/mm/yyyy")
+			VAR vVendedor = SELECTEDVALUE(dVendedores[vendedor], "Todos")
+			VAR vCliente = SELECTEDVALUE(dClientes[cliente], "Todos")
+			VAR vProdutos = SELECTEDVALUE(dProdutos[desc_produto], "Todos")
+			RETURN
+			"Filtros Aplicados: " &
+			" - Inicio: " & vMenor_Data &
+			" - Fim: " & vMaior_Data &
+			" - Vendedor: " & vVendedor &
+			" - Cliente: " & vCliente &
+			" - Grupo de Produtos: " & vProdutos
+		displayFolder: Titulos
+		lineageTag: e0137022-9bf4-4e24-994b-ad76c921f1f1
+
+	measure 'Resultado Final Mês Anterior (baseado no HOJE) Geral' =
+			
+			VAR DataRef = MAX('dCalendario'[Data])
+			VAR InicioMesAtual = DATE(YEAR(DataRef), MONTH(DataRef), 1)
+			VAR InicioMesAnterior = EDATE(InicioMesAtual, -1)
+			VAR FimMesAnterior = EOMONTH(InicioMesAtual, -1)
+			
+			VAR vCCsGrupo =
+			    CALCULATETABLE(
+			        VALUES(dGrupo_Centro_Custos[COD]),
+			        ALLSELECTED(dGrupo_Centro_Custos)
+			    )
+			
+			// VAR vCCsGrupo =
+			//     CALCULATETABLE(
+			//         VALUES(dGrupo_Centro_Custos[COD]);
+			//         dGrupo_Centro_Custos[GRUPO] = "Agropecuaria"
+			//     )
+			
+			RETURN
+			CALCULATE(
+			    SUM(fRecebidos[liquido_rateado]),
+			    'dCalendario'[Data] >= InicioMesAnterior,
+			    'dCalendario'[Data] <= FimMesAnterior,
+			    TREATAS(vCCsGrupo, fRecebidos[cod_cc])
+			)
+			+
+			CALCULATE(
+			    SUM(fPagos[vr_liquido_rateio]),
+			    'dCalendario'[Data] >= InicioMesAnterior,
+			    'dCalendario'[Data] <= FimMesAnterior,
+			    TREATAS(vCCsGrupo, fPagos[cod_cc])
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Base
+		lineageTag: e5f25725-7aa5-4d2d-8df8-989ac6674cc2
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Resultato Final Geral' = [Resultado Final Mês Anterior (baseado no HOJE) Geral]
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Base
+		lineageTag: 4c2718ae-0ab9-40d5-9406-40355f60398e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Fixas Geral' = CALCULATE([Resultato Final Geral], dPlano_Contas[DESTINO]= "RATEIO")
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Base
+		lineageTag: a0c09d0a-a554-49d8-9061-4216468941ea
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Despesas Variaveis (CMV) Geral' = CALCULATE([Resultato Final Geral], dPlano_Contas[DESTINO] = "CMV")
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Base
+		lineageTag: 7fac9f0d-c7eb-41ab-8e89-bbafd321ca98
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Rateio de despesas/Custos Geral' = ```
+			
+			DIVIDE(
+			    [Despesas Fixas Geral], 
+			    [Despesas Variaveis (CMV) Geral] + 
+			    [Despesas Fixas Geral]
+			)
+			```
+		displayFolder: 4 - Markup\Base
+		lineageTag: 344a54df-9d99-41e9-99fb-a841b6283e96
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rateio de despesas/Custos Venda Geral' =
+			
+			CALCULATE(
+			    SUMX(
+			        fVendas,
+			        fVendas[rateio geral] * [vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: e9993a88-6dc9-4d7d-a9dc-a5688e15bb03
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Lucro Liquido Geral' =
+			
+			[Faturamento]
+			- [Custo]
+			- [Rateio de despesas/Custos Venda Geral]
+			- [Taxa de Cartão de Crédito Venda]
+			- [Comissão sobre Venda]
+			- [ICMS Sobre a Venda]
+			- [PIS/COFINS sobre a Venda]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: 8b565b4e-2185-436a-bfc4-1507c1125e87
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Markup Venda Geral' =
+			
+			DIVIDE( [Lucro Liquido Geral], [Faturamento] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: 29e0dcaa-4b52-4994-9fea-0571bcb57928
+
+	measure 'Margem Liquida Geral' =
+			
+			[Faturamento] * [Markup Venda Geral]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: 4 - Markup\Vendas
+		lineageTag: 4f9da6d7-eb8c-463c-8b18-b225672c472a
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Lucro Liquido Entrega Geral' =
+			
+			[Faturamento_Entregas]
+			- [Custo_Entregas]
+			- [Rateio de despesas/Custos Entrega Geral]
+			- [Taxa de Cartão de Crédito Entrega]
+			- [Comissão sobre Entrega]
+			- [ICMS Sobre a Entrega]
+			- [PIS/COFINS sobre a Entrega]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Entregas
+		lineageTag: 867b5d72-b95f-45c3-84f4-2c3bfa525eff
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Rateio de despesas/Custos Entrega Geral' =
+			
+			CALCULATE(
+			    SUMX(
+			        fEntregas,
+			        fEntregas[rateio geral] * fEntregas[vr_liquido_final]
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Entregas
+		lineageTag: 07213b13-3e29-462c-87e5-00f70a7149c6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Markup Entregas Geral' =
+			
+			DIVIDE([Lucro Liquido Entrega Geral], [Faturamento_Entregas])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Entregas
+		lineageTag: ebfdc8fb-a85e-46ce-9c81-fc9a23e6ec71
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: 7066a7a8-f53d-4bcb-a327-9613ff0da94a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = {0}
+
+	annotation PBI_Id = 6f4d2e2247fc483680990275bcb6f2b1
+

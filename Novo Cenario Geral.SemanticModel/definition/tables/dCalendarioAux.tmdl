@@ -1,0 +1,306 @@
+table dCalendarioAux
+	lineageTag: f09de5ae-2628-4229-82e2-412931407a80
+
+	column Data
+		formatString: Short Date
+		lineageTag: cd953e4b-f16c-407e-b877-22ba8a6d61f4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[Data]
+
+		variation Variation
+			isDefault
+			relationship: a74195fa-0fac-4ef4-95ad-d16ba1688770
+			defaultHierarchy: LocalDateTable_609e6af5-d100-47e3-9e9c-5e1f9c19041b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		formatString: 0
+		lineageTag: 8bce68fe-3783-4eb2-bb2b-acfad6b98987
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[Ano]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		lineageTag: 18e51b01-2eb3-474e-96bb-5f5dfe5b4919
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mesab
+		lineageTag: 12813573-4a49-43d3-b002-8df575c89bab
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[Mesab]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNum
+		formatString: 0
+		lineageTag: d35a0042-3c45-4a07-8d61-e461b5d10196
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[MesNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoAtual
+		lineageTag: 4e96a39b-1c99-4c6f-bb60-cdf9715f9730
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[AnoAtual]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAtual
+		lineageTag: 50b8ba4d-0780-4525-bd66-0c23e6fd4f44
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[MesAtual]
+
+		annotation SummarizationSetBy = Automatic
+
+	column InicioMes
+		formatString: General Date
+		lineageTag: e954ba40-b2d8-4f98-ab34-40aa4da66f58
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[InicioMes]
+
+		variation Variation
+			isDefault
+			relationship: 5fc174a7-a217-444d-8e49-45c5582ad636
+			defaultHierarchy: LocalDateTable_e29fc9cd-0cff-4bee-9237-a8a9cfd7d0fc.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinalMes
+		formatString: General Date
+		lineageTag: 17b9e74b-8375-4b9a-92a7-2d5d6ef115fe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[FinalMes]
+
+		variation Variation
+			isDefault
+			relationship: 425336dd-b16c-43dc-b71a-a607cc89d9a8
+			defaultHierarchy: LocalDateTable_da86cd4e-5b40-4cdc-9b7b-7ff2ab6389a8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		lineageTag: ceda1624-1ee3-4c4c-a5c1-1f9e5b882bec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[MesAno]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAnoNum
+		formatString: 0
+		lineageTag: d72d7d42-64b0-4fcd-ace2-82d14ce4e8ba
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[MesAnoNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		formatString: 0
+		lineageTag: 430bbe23-a35b-434e-9ddc-d2eea4647f7e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[Dia]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaNum
+		formatString: 0
+		lineageTag: db93c56b-d914-46f2-909d-93a4ebe6ca4b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[SemanaNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column InicioSemana
+		formatString: General Date
+		lineageTag: 6e7e6a2d-480e-46cd-8cf8-f4a09cf676df
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[InicioSemana]
+
+		variation Variation
+			isDefault
+			relationship: af78e603-228e-4632-a06f-5617ae4b92a9
+			defaultHierarchy: LocalDateTable_84347ced-a605-4803-8e24-410f47775538.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinalSemana
+		formatString: General Date
+		lineageTag: 2d3bdb51-d1c8-4aec-8a22-b8e9507c0f5c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[FinalSemana]
+
+		variation Variation
+			isDefault
+			relationship: 8cca0162-0992-4f29-a477-106842feead0
+			defaultHierarchy: LocalDateTable_1692f10e-6c1c-470b-a253-f2b4919fac02.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaAno
+		lineageTag: 4a2bd4ea-7f44-47a3-b414-102cbf1d4657
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[SemanaAno]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaAnoNum
+		formatString: 0
+		lineageTag: 76178ab7-05b7-4491-9f2d-e048e2b3657b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[SemanaAnoNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		lineageTag: e18c2afb-9ca5-4781-9667-ec0c3d245f80
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[DiaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaAb
+		lineageTag: d2cdd6e8-8b94-431c-80da-9fc2a371d74a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[DiaSemanaAb]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNum
+		formatString: 0
+		lineageTag: 8d17f5f9-957e-44ab-8dc2-4b6f9b892c92
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[DiaSemanaNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrimestreNum
+		formatString: 0
+		lineageTag: d7b6ec80-1509-4588-84f7-966831e73d92
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[TrimestreNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		lineageTag: bc7b2395-907e-46ac-a128-6bd181355633
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrimestreAno
+		lineageTag: ab16f451-93df-4a85-88d2-80b98b78a494
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[TrimestreAno]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrimestreAnoNum
+		formatString: 0
+		lineageTag: 523da021-51c1-4671-9392-aac5b25028ab
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[TrimestreAnoNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semestre
+		lineageTag: a8e79124-6084-431b-a12d-40bee8d0c3e4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[Semestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemestreNum
+		formatString: 0
+		lineageTag: cd7e4a5e-cfd0-4f5e-8b3f-9dff40b614c2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[SemestreNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemestreAno
+		lineageTag: 664c1515-2dce-45dc-bd36-c3360cce1aea
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[SemestreAno]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemestreAnoNum
+		formatString: 0
+		lineageTag: 3efe230b-9677-4b3f-9701-d43a66f6ede5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[SemestreAnoNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaNumAno
+		formatString: 0
+		lineageTag: 07d41ff9-6a5b-40b0-8d45-94aeb99b57fc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[SemanaNumAno]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaMesNum
+		formatString: 0
+		lineageTag: b0c80f52-4872-4adb-90e9-e3ca7ca115ed
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[SemanaMesNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaMesAno
+		formatString: 0
+		lineageTag: a751ff57-7047-4497-9719-6403bde3e14d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: dCalendario[SemanaMesAno]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendarioAux = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    dCalendario,
+				    dCalendario[Data] >= TODAY()
+				)
+
+	annotation PBI_Id = a1652b234bed41fa8cf8e2b681cbdec1
+

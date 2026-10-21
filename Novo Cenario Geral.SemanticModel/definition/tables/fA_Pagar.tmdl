@@ -1,0 +1,238 @@
+table fA_Pagar
+	lineageTag: be63d220-6f38-4682-8665-9777c47e6004
+
+	column cod_fornecedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 45458b22-ac80-4ed5-a639-40b8c727598c
+		summarizeBy: none
+		sourceColumn: cod_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_sequencia
+		dataType: int64
+		formatString: 0
+		lineageTag: 6be68d6b-a57c-439d-a6b4-f7af75448a99
+		summarizeBy: sum
+		sourceColumn: cod_sequencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_fatura
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b3a8032-d03e-4a7e-b433-3c8efbb4418f
+		summarizeBy: sum
+		sourceColumn: tipo_fatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 81caa938-a92d-427a-8f49-b4ade2667242
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: c7603e26-f327-4ede-a862-ba9d80d98ec1
+			defaultHierarchy: LocalDateTable_1d8e0388-000c-49de-a8de-b680d057ae9a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column documento
+		dataType: string
+		lineageTag: a99fd951-8a52-4bbe-a98c-f1d7e44e2903
+		summarizeBy: none
+		sourceColumn: documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao
+		dataType: string
+		lineageTag: fb23ecd8-5cf4-4a5e-bfaf-f788afa3ed6f
+		summarizeBy: none
+		sourceColumn: descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_parc
+		dataType: string
+		lineageTag: 0afff318-1590-4fdf-afb1-e3ab787c82f1
+		summarizeBy: none
+		sourceColumn: cod_parc
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_vencimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 32b0fde7-538c-40cb-b2a1-9a84b9c3b4ae
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vr_parcela
+		dataType: double
+		lineageTag: 3b5fce41-8ed5-4715-8bb7-8da7493ddc70
+		summarizeBy: sum
+		sourceColumn: vr_parcela
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_baixa
+		dataType: double
+		lineageTag: 43c03780-d0a6-453b-b4bb-1ed70e306075
+		summarizeBy: sum
+		sourceColumn: vr_baixa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_baixa_outras
+		dataType: double
+		lineageTag: ce13fdfa-9168-45cb-bc6d-9a7ccf7b49f1
+		summarizeBy: sum
+		sourceColumn: vr_baixa_outras
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_baixa
+		dataType: double
+		lineageTag: db9e12fb-3034-41e7-b1c7-67f93f81be7f
+		summarizeBy: sum
+		sourceColumn: total_baixa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column saldo
+		dataType: double
+		lineageTag: db4de55b-d60f-4d69-a430-7efb4df87096
+		summarizeBy: sum
+		sourceColumn: saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column desc_tipo_fatura
+		dataType: string
+		lineageTag: 976faff7-66da-40fe-ba16-f7c2bdac8631
+		summarizeBy: none
+		sourceColumn: desc_tipo_fatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column previsao
+		dataType: string
+		lineageTag: 52bd4cf3-933e-41f9-97b0-826ddcd2a1ca
+		summarizeBy: none
+		sourceColumn: previsao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_pc
+		dataType: int64
+		formatString: 0
+		lineageTag: 93073669-5150-4161-8c47-dc53483d80a8
+		summarizeBy: none
+		sourceColumn: cod_pc
+
+		annotation SummarizationSetBy = Automatic
+
+	column vr_parc_rateio
+		dataType: double
+		lineageTag: 57495730-7740-4c99-8d58-a5bca0c44db2
+		summarizeBy: sum
+		sourceColumn: vr_parc_rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_baixa_rateio
+		dataType: double
+		lineageTag: b713bbe6-995e-4592-b0ae-8d044cd6b97e
+		summarizeBy: sum
+		sourceColumn: vr_baixa_rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vr_liq_rateio
+		dataType: decimal
+		lineageTag: d2c6339e-d6a2-426f-872f-85ea753bb017
+		summarizeBy: sum
+		sourceColumn: vr_liq_rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cod_cc
+		dataType: int64
+		formatString: 0
+		lineageTag: b82f482c-0073-4adb-adde-2f900c7d768d
+		summarizeBy: none
+		sourceColumn: cod_cc
+
+		annotation SummarizationSetBy = Automatic
+
+	column Atraso = DATEDIFF(fA_Pagar[data_vencimento], fA_Pagar[Dia Atual], DAY)
+		lineageTag: 0a051335-e61d-469e-ae30-c927b6b149d9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia Atual' = TODAY()
+		formatString: Short Date
+		lineageTag: 35982638-6930-4a32-88f0-036c735442d4
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 8e1eadc5-b9f0-43b2-b600-4213476d0a4b
+			defaultHierarchy: LocalDateTable_f36f27a0-3bb2-4ef4-8422-f2c55dc11d7e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrazoRecebimento = DATEDIFF(fA_Pagar[data_emissao], fA_Pagar[data_vencimento], DAY)
+		formatString: 0
+		lineageTag: e9e58317-57d9-4385-85f0-4f91ec6b08d6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fA_Pagar = m
+		mode: import
+		queryGroup: Financeiro
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"0efc2f46-894b-4412-8357-a44a3864343e" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="0efc2f46-894b-4412-8357-a44a3864343e"]}[Data],
+				    fA_Pagar_ = #"0efc2f46-894b-4412-8357-a44a3864343e"{[entity="fA_Pagar",version=""]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(fA_Pagar_,{{"vr_liq_rateio", Currency.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

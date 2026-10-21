@@ -1,0 +1,210 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "8998fdbc50a04bd73e3c",
+  "position": {
+    "x": 22.835394862036157,
+    "y": 157.94481446241676,
+    "z": 5000,
+    "height": 1136.0608943862987,
+    "width": 1956.2321598477643,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "rdlVisual",
+    "query": {
+      "queryState": {
+        "parameterValues": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "fat_data_emissao"
+                }
+              },
+              "queryRef": "fRecebidos.fat_data_emissao",
+              "nativeQueryRef": "Emissão",
+              "displayName": "Emissão"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "bxa_data_recebimento"
+                }
+              },
+              "queryRef": "fRecebidos.bxa_data_recebimento",
+              "nativeQueryRef": "Recebimento",
+              "displayName": "Recebimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fRecebidos"
+                    }
+                  },
+                  "Property": "fat_cod_venda"
+                }
+              },
+              "queryRef": "fRecebidos.fat_cod_venda",
+              "nativeQueryRef": "Venda",
+              "displayName": "Venda"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dClientes"
+                    }
+                  },
+                  "Property": "Cód + Cliente"
+                }
+              },
+              "queryRef": "dClientes.Cód + Cliente",
+              "nativeQueryRef": "Cód + Cliente"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Recebidos"
+                }
+              },
+              "queryRef": "Medidas.Recebidos",
+              "nativeQueryRef": "Recebidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Comissao Recebimento"
+                }
+              },
+              "queryRef": "Medidas.Comissao Recebimento",
+              "nativeQueryRef": "Comissão",
+              "displayName": "Comissão"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dVendedores"
+                    }
+                  },
+                  "Property": "Cód + Vendedor"
+                }
+              },
+              "queryRef": "dVendedores.Cód + Vendedor",
+              "nativeQueryRef": "Cód + Vendedor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dCalendario"
+                    }
+                  },
+                  "Property": "AnoAtual"
+                }
+              },
+              "queryRef": "dCalendario.AnoAtual",
+              "nativeQueryRef": "AnoAtual"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dCalendario"
+                    }
+                  },
+                  "Property": "MesAtual"
+                }
+              },
+              "queryRef": "dCalendario.MesAtual",
+              "nativeQueryRef": "MesAtual"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "reportInfo": [
+        {
+          "properties": {
+            "reference": {
+              "kind": "ItemLocation",
+              "byReference": {
+                "itemId": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'6fb8f545-7f2b-4b0a-a148-3c309ddedf0b'"
+                    }
+                  }
+                },
+                "workspaceId": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'9a5d1c56-f61c-459a-878e-7b24c649eafd'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "parameterMapping": [
+        {
+          "properties": {
+            "mappings": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"paramName\":\"Param_dVendedores_Cód_20__2b__20_Vendedor\",\"fieldName\":\"dVendedores.Cód + Vendedor\",\"fieldDisplayName\":\"Cód + Vendedor\",\"isMultiValue\":true},{\"paramName\":\"Param_dCalendario_AnoAtual\",\"fieldName\":\"dCalendario.AnoAtual\",\"fieldDisplayName\":\"AnoAtual\",\"isMultiValue\":true},{\"paramName\":\"Param_dCalendario_MesAtual\",\"fieldName\":\"dCalendario.MesAtual\",\"fieldDisplayName\":\"MesAtual\",\"isMultiValue\":true}]'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

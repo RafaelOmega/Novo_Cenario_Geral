@@ -1,0 +1,55 @@
+table dForma_Pgto
+	lineageTag: 2e8583c2-9eb8-430e-8bbd-420627db8a39
+
+	column cod_pagto
+		dataType: int64
+		formatString: 0
+		lineageTag: e9a22874-a7d4-4d07-bdae-18157320b87f
+		summarizeBy: none
+		sourceColumn: cod_pagto
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao
+		dataType: string
+		lineageTag: fa1d8080-d8c7-463d-8138-ddb884723d46
+		summarizeBy: none
+		sourceColumn: descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_pagto
+		dataType: int64
+		formatString: 0
+		lineageTag: 01effcb3-d59b-44e4-bc75-4264e7ddb194
+		summarizeBy: none
+		sourceColumn: tipo_pagto
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_ativo
+		dataType: int64
+		formatString: 0
+		lineageTag: 255abd30-eaa6-4591-9d62-781134a633d7
+		summarizeBy: none
+		sourceColumn: flag_ativo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dForma_Pgto = m
+		mode: import
+		queryGroup: Financeiro
+		source =
+				let
+				    Fonte = PowerPlatform.Dataflows(null),
+				    Workspaces = Fonte{[Id="Workspaces"]}[Data],
+				    #"9a5d1c56-f61c-459a-878e-7b24c649eafd" = Workspaces{[workspaceId="9a5d1c56-f61c-459a-878e-7b24c649eafd"]}[Data],
+				    #"0efc2f46-894b-4412-8357-a44a3864343e" = #"9a5d1c56-f61c-459a-878e-7b24c649eafd"{[dataflowId="0efc2f46-894b-4412-8357-a44a3864343e"]}[Data],
+				    dForma_Pgto_ = #"0efc2f46-894b-4412-8357-a44a3864343e"{[entity="dForma_Pgto",version=""]}[Data]
+				in
+				    dForma_Pgto_
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

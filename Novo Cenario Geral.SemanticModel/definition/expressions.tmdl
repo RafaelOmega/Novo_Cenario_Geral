@@ -1,0 +1,21 @@
+expression Ano_Inicial = 2006 meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 7bff3bb1-4d34-4bb0-b509-4b5671ba5ea0
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+
+expression dProdutos_Vendidos =
+		let
+		    Fonte = fVendas,
+		    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"cod_prod"}),
+		    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas")
+		in
+		    #"Duplicatas Removidas"
+	lineageTag: faebb550-1780-4fae-ab30-10086bca3957
+	queryGroup: PRODUTOS
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
