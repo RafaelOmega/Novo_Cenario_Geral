@@ -1,3 +1,27 @@
-**/.pbi/localSettings.json
-**/.pbi/cache.abf
-.venv/
+# ===== Power BI Project (.pbip) =====
+# Binário compilado — nunca versionar
+*.pbix
+*.pbix.original
+
+# Configurações locais por máquina (janelas, conexões recentes)
+**/.pbi/
+[Content_Types].xml
+
+# Arquivos temporários
+*.tmp
+*~
+*.log
+
+# ===== Sistemas operacionais =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== IDE (opcional) =====
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== Ambiente =====
+.env
